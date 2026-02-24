@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElectroBridge — PREVIEW DESIGN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-deep:   #0D1F3C;
+      --blue-mid:    #1E40AF;
+      --blue-bright: #2563EB;
+      --lime:        #84CC16;
+      --lime-dark:   #65A30D;
+      --gray-dark:   #1E293B;
+      --gray-mid:    #64748B;
+      --gray-light:  #F1F5F9;
+      --white:       #FFFFFF;
+      --border:      #E2E8F0;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-dark); background: #fff; }
+
+    /* ─── PREVIEW BANNER ─── */
+    .preview-banner {
+      background: #FEF3C7; border-bottom: 2px solid #F59E0B;
+      padding: 10px 24px; text-align: center;
+      font-size: 13px; font-weight: 600; color: #92400E;
+      position: sticky; top: 0; z-index: 9999;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 40px; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo span { font-size: 20px; font-weight: 800; color: var(--blue-deep); letter-spacing: -0.5px; }
+    .nav-logo span em { color: var(--lime-dark); font-style: normal; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--gray-mid); font-size: 14px; font-weight: 500;
+                   transition: color .2s; }
+    .nav-links a:hover { color: var(--blue-bright); }
+    .nav-cta { background: var(--blue-bright); color: #fff; padding: 10px 22px; border-radius: 8px;
+               text-decoration: none; font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-cta:hover { background: var(--blue-mid); }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, #132040 50%, #1a2d5a 100%);
+      padding: 100px 48px 90px; display: flex; align-items: center;
+      gap: 60px; min-height: 600px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 600px 400px at 80% 50%, rgba(37,99,235,.18) 0%, transparent 70%);
+    }
+    .hero-text { flex: 1; max-width: 580px; position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(132,204,22,.15); border: 1px solid rgba(132,204,22,.3);
+      color: var(--lime); padding: 6px 14px; border-radius: 100px;
+      font-size: 12px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 4vw, 56px); font-weight: 800; color: #fff;
+      line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 22px;
+    }
+    .hero h1 span { color: var(--lime); }
+    .hero p {
+      font-size: 18px; color: rgba(255,255,255,.68); line-height: 1.7;
+      max-width: 480px; margin-bottom: 36px; font-weight: 400;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--lime); color: var(--blue-deep); padding: 14px 28px;
+      border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px;
+      transition: all .2s; display: inline-block;
+    }
+    .btn-primary:hover { background: #a3e635; transform: translateY(-1px); }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,.3); color: #fff; padding: 14px 28px;
+      border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+      transition: all .2s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.07); }
+    .hero-visual { flex: 0 0 400px; position: relative; z-index: 1; }
+
+    /* ─── STATS STRIP ─── */
+    .stats { background: var(--lime); padding: 28px 48px;
+             display: flex; justify-content: center; gap: 0; }
+    .stat { flex: 1; max-width: 240px; text-align: center; padding: 0 20px;
+            border-right: 1px solid rgba(0,0,0,.12); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-size: 32px; font-weight: 900; color: var(--blue-deep); line-height: 1; }
+    .stat-label { font-size: 12px; font-weight: 600; color: rgba(13,31,60,.65);
+                  text-transform: uppercase; letter-spacing: .8px; margin-top: 4px; }
+
+    /* ─── SECTIONS COMMON ─── */
+    section { padding: 88px 48px; }
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+    .section-label {
+      font-size: 12px; font-weight: 700; color: var(--lime-dark); letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 12px; display: block;
+    }
+    h2 { font-size: clamp(28px, 3vw, 42px); font-weight: 800; color: var(--blue-deep);
+         letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px; }
+    .subtitle { font-size: 17px; color: var(--gray-mid); max-width: 540px; line-height: 1.7; margin-bottom: 52px; }
+
+    /* ─── PRODUCTS ─── */
+    .products-bg { background: var(--gray-light); }
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .product-card {
+      background: #fff; border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--border); transition: all .3s;
+    }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,.1); }
+    .product-img {
+      height: 160px; background: linear-gradient(135deg, var(--blue-deep), #1E40AF);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .product-icon { font-size: 48px; }
+    .product-body { padding: 24px; }
+    .product-tag { font-size: 11px; font-weight: 700; color: var(--lime-dark);
+                   text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: block; }
+    .product-name { font-size: 20px; font-weight: 800; color: var(--blue-deep); margin-bottom: 6px; }
+    .product-power { font-size: 13px; color: var(--gray-mid); margin-bottom: 14px; }
+    .product-price {
+      font-size: 13px; color: var(--gray-mid); margin-bottom: 16px; padding: 10px;
+      background: #F8FAFC; border-radius: 8px; border-left: 3px solid var(--lime);
+    }
+    .product-price strong { color: var(--blue-deep); font-size: 18px; }
+    .product-link {
+      display: block; text-align: center; background: var(--blue-deep); color: #fff;
+      padding: 10px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600;
+      transition: background .2s;
+    }
+    .product-link:hover { background: var(--blue-bright); }
+
+    /* ─── WHY ─── */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .why-card {
+      padding: 32px; border-radius: 16px; border: 1px solid var(--border);
+      transition: all .3s; background: #fff;
+    }
+    .why-card:hover { border-color: var(--blue-bright); box-shadow: 0 8px 30px rgba(37,99,235,.1); }
+    .why-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue-deep), var(--blue-bright));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 18px;
+    }
+    .why-title { font-size: 18px; font-weight: 700; color: var(--blue-deep); margin-bottom: 8px; }
+    .why-text { font-size: 14px; color: var(--gray-mid); line-height: 1.65; }
+
+    /* ─── COMPARISON ─── */
+    .compare-bg { background: var(--blue-deep); }
+    .compare-bg h2, .compare-bg .subtitle { color: #fff; }
+    .compare-bg .subtitle { color: rgba(255,255,255,.6); }
+    .compare-bg .section-label { color: var(--lime); }
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th {
+      padding: 14px 20px; text-align: left; font-size: 13px; font-weight: 700;
+      color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .8px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .compare-table th.ours { color: var(--lime); }
+    .compare-table td {
+      padding: 16px 20px; font-size: 15px; color: rgba(255,255,255,.85);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .compare-table td.ours {
+      color: #fff; font-weight: 700; font-size: 17px;
+    }
+    .compare-table tr:hover td { background: rgba(255,255,255,.04); }
+    .save-badge {
+      display: inline-block; background: var(--lime); color: var(--blue-deep);
+      font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 100px;
+    }
+
+    /* ─── CERTIFICATIONS ─── */
+    .cert-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+    .cert-chip {
+      display: flex; align-items: center; gap: 10px;
+      background: #fff; border: 1.5px solid var(--border);
+      padding: 14px 20px; border-radius: 12px; font-weight: 700;
+      font-size: 14px; color: var(--blue-deep); transition: all .2s;
+    }
+    .cert-chip:hover { border-color: var(--blue-bright); box-shadow: 0 4px 16px rgba(37,99,235,.12); }
+    .cert-dot { width: 10px; height: 10px; background: var(--lime); border-radius: 50%; flex-shrink: 0; }
+
+    /* ─── CONTACT ─── */
+    .contact-bg { background: var(--gray-light); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-info h3 { font-size: 26px; font-weight: 800; color: var(--blue-deep); margin-bottom: 16px; }
+    .contact-info p { font-size: 15px; color: var(--gray-mid); line-height: 1.7; margin-bottom: 28px; }
+    .contact-item { display: flex; gap: 12px; margin-bottom: 16px; align-items: center; }
+    .contact-icon { font-size: 20px; }
+    .contact-text { font-size: 14px; color: var(--gray-dark); font-weight: 500; }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      width: 100%; padding: 13px 16px; border: 1.5px solid var(--border);
+      border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 14px;
+      color: var(--gray-dark); margin-bottom: 14px; outline: none;
+      transition: border-color .2s; background: #fff;
+    }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+      border-color: var(--blue-bright); box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+    }
+    .contact-form textarea { height: 100px; resize: vertical; }
+    .btn-submit {
+      width: 100%; padding: 14px; background: var(--blue-bright); color: #fff;
+      border: none; border-radius: 10px; font-family: 'Inter', sans-serif;
+      font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s;
+    }
+    .btn-submit:hover { background: var(--blue-mid); }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--blue-deep); padding: 56px 48px 28px; color: rgba(255,255,255,.6); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 12px; max-width: 260px; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase;
+                     letter-spacing: .8px; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,.5);
+                    text-decoration: none; margin-bottom: 8px; transition: color .2s; }
+    .footer-col a:hover { color: var(--lime); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px;
+    }
+    .footer-bottom span { color: rgba(255,255,255,.3); }
+
+    /* ─── SVG LOGO ─── */
+    .logo-svg { display: flex; align-items: center; gap: 8px; }
+
+    /* ─── HERO DIAGRAM ─── */
+    .hero-diagram {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px; padding: 28px; backdrop-filter: blur(8px);
+    }
+    .hero-diagram-title { font-size: 11px; font-weight: 700; color: rgba(255,255,255,.4);
+                          text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+    .price-row { display: flex; align-items: center; justify-content: space-between;
+                 margin-bottom: 14px; }
+    .price-label { font-size: 13px; color: rgba(255,255,255,.6); font-weight: 500; }
+    .price-bar-wrap { flex: 1; margin: 0 12px; height: 8px; background: rgba(255,255,255,.08);
+                      border-radius: 100px; overflow: hidden; }
+    .price-bar { height: 100%; border-radius: 100px; }
+    .bar-elentek { background: #EF4444; width: 100%; }
+    .bar-fourgroup { background: #F97316; width: 48%; }
+    .bar-roiv { background: var(--lime); width: 28%; }
+    .price-val { font-size: 13px; font-weight: 700; color: #fff; min-width: 70px; text-align: right; }
+    .bar-roiv-label { color: var(--lime); }
+    .roiv-badge {
+      margin-top: 18px; padding: 10px 14px; background: rgba(132,204,22,.12);
+      border: 1px solid rgba(132,204,22,.25); border-radius: 10px;
+      font-size: 12px; color: var(--lime); font-weight: 600; text-align: center;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; padding: 64px 24px; }
+      .hero-visual { display: none; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      nav { padding: 0 24px; }
+      section { padding: 64px 24px; }
+      .stats { flex-wrap: wrap; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ░░░ PREVIEW BANNER ░░░ -->
+<div class="preview-banner">
+  ⚠️ ANTEPRIMA DESIGN — Da validare prima dello sviluppo completo
+</div>
+
+<!-- ░░░ NAVIGATION ░░░ -->
+<nav>
+  <a href="#" class="nav-logo logo-svg">
+    <!-- SVG LOGO -->
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Circuit board background circle -->
+      <circle cx="18" cy="18" r="18" fill="#0D1F3C"/>
+      <!-- Bridge arc -->
+      <path d="M6 22 Q18 8 30 22" stroke="#2563EB" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <!-- Bridge pillars -->
+      <line x1="10" y1="22" x2="10" y2="27" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+      <line x1="26" y1="22" x2="26" y2="27" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+      <!-- Base line -->
+      <line x1="6" y1="27" x2="30" y2="27" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+      <!-- Circuit traces (horizontal PCB lines) -->
+      <line x1="6" y1="27" x2="6" y2="27" stroke="#84CC16" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- PCB nodes on arch -->
+      <circle cx="18" cy="10" r="2" fill="#84CC16"/>
+      <circle cx="12" cy="17" r="1.5" fill="#84CC16" opacity=".7"/>
+      <circle cx="24" cy="17" r="1.5" fill="#84CC16" opacity=".7"/>
+      <!-- Lightning bolt - center -->
+      <path d="M19.5 11.5 L17 17 L19 17 L16.5 22.5" stroke="#84CC16" stroke-width="1.5"
+            fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- PCB corner dots -->
+      <circle cx="8" cy="31" r="1" fill="#84CC16" opacity=".4"/>
+      <circle cx="28" cy="31" r="1" fill="#84CC16" opacity=".4"/>
+      <circle cx="8" cy="5" r="1" fill="#2563EB" opacity=".4"/>
+      <circle cx="28" cy="5" r="1" fill="#2563EB" opacity=".4"/>
+    </svg>
+    <span>Electro<em>Bridge</em></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#prodotti">Prodotti</a></li>
+    <li><a href="#perche">Perché Noi</a></li>
+    <li><a href="#prezzi">Prezzi</a></li>
+    <li><a href="#certificazioni">Certificazioni</a></li>
+    <li><a href="#contatti">Contatti</a></li>
+  </ul>
+  <a href="#contatti" class="nav-cta">Richiedi Preventivo →</a>
+</nav>
+
+<!-- ░░░ HERO ░░░ -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">
+      <span>●</span>
+      Conformi EN 12845 · Consegna in 8 giorni
+    </div>
+    <h1>Quadri Elettrici<br>Antincendio<br><span>Professionali.</span></h1>
+    <p>
+      Qualità costruttiva superiore, prezzi fino al <strong style="color:var(--lime)">63% più bassi</strong>
+      della concorrenza, test funzionali completi su ogni quadro. Il partner ideale per impianti EN 12845.
+    </p>
+    <div class="hero-btns">
+      <a href="#prodotti" class="btn-primary">Scopri i Prodotti</a>
+      <a href="#contatti" class="btn-outline">Richiedi Preventivo</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-diagram">
+      <div class="hero-diagram-title">Confronto Prezzi — Avviamento Diretto 15 kW</div>
+      <div class="price-row">
+        <span class="price-label">Elentek</span>
+        <div class="price-bar-wrap"><div class="price-bar bar-elentek"></div></div>
+        <span class="price-val">~1.300 €</span>
+      </div>
+      <div class="price-row">
+        <span class="price-label">Fourgroup</span>
+        <div class="price-bar-wrap"><div class="price-bar bar-fourgroup"></div></div>
+        <span class="price-val">1.060 €</span>
+      </div>
+      <div class="price-row">
+        <span class="price-label bar-roiv-label"><strong>ROIV</strong></span>
+        <div class="price-bar-wrap"><div class="price-bar bar-roiv"></div></div>
+        <span class="price-val" style="color:var(--lime)"><strong>508 €</strong></span>
+      </div>
+      <div class="roiv-badge">
+        ✓ Fino al 52% di risparmio rispetto ai concorrenti
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ STATS ░░░ -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">8</div>
+    <div class="stat-label">Giorni Lavorativi di Consegna</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">−63%</div>
+    <div class="stat-label">Prezzo vs Concorrenza</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Test Funzionali su Ogni Quadro</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">EN 12845</div>
+    <div class="stat-label">Certificazione Europea</div>
+  </div>
+</div>
+
+<!-- ░░░ PRODOTTI ░░░ -->
+<section class="products-bg" id="prodotti">
+  <div class="section-inner">
+    <span class="section-label">Gamma Prodotti</span>
+    <h2>Quadri per Ogni Esigenza</h2>
+    <p class="subtitle">
+      Quattro famiglie di prodotto per coprire qualsiasi configurazione di impianto antincendio a norma EN 12845.
+    </p>
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="product-img">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect x="12" y="16" width="40" height="32" rx="4" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+            <line x1="20" y1="26" x2="44" y2="26" stroke="#84CC16" stroke-width="1.5"/>
+            <line x1="20" y1="32" x2="44" y2="32" stroke="#84CC16" stroke-width="1.5" opacity=".6"/>
+            <line x1="20" y1="38" x2="36" y2="38" stroke="#84CC16" stroke-width="1.5" opacity=".4"/>
+            <circle cx="40" cy="38" r="4" fill="none" stroke="#2563EB" stroke-width="1.5"/>
+            <circle cx="40" cy="38" r="1.5" fill="#84CC16"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <span class="product-tag">Avviamento Diretto</span>
+          <div class="product-name">Directo-EN</div>
+          <div class="product-power">0,75 – 22 kW · Monofase / Trifase</div>
+          <div class="product-price">Da <strong>a partire da 380 €</strong> <small>IVA esclusa</small></div>
+          <a href="#contatti" class="product-link">Richiedi Scheda Tecnica</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background:linear-gradient(135deg,#1a3a6a,#1E40AF);">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <polygon points="32,16 48,44 16,44" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+            <circle cx="32" cy="30" r="6" fill="none" stroke="#84CC16" stroke-width="1.5"/>
+            <circle cx="32" cy="30" r="2" fill="#84CC16"/>
+            <line x1="22" y1="44" x2="42" y2="44" stroke="#2563EB" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <span class="product-tag">Stella-Triangolo</span>
+          <div class="product-name">Stardelta-EN</div>
+          <div class="product-power">4 – 132 kW · Alta Potenza</div>
+          <div class="product-price">Da <strong>a richiesta</strong></div>
+          <a href="#contatti" class="product-link">Richiedi Scheda Tecnica</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background:linear-gradient(135deg,#0f2744,#163d7a);">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <path d="M20 44 L20 28 Q20 20 28 20 L36 20 Q44 20 44 28 L44 44" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+            <ellipse cx="32" cy="30" rx="6" ry="4" fill="none" stroke="#84CC16" stroke-width="1.5"/>
+            <line x1="26" y1="38" x2="38" y2="38" stroke="#2563EB" stroke-width="1.5" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <span class="product-tag">Ad Impedenza</span>
+          <div class="product-name">Reacto-EN</div>
+          <div class="product-power">4 – 132 kW · Avviamento Soft</div>
+          <div class="product-price">Da <strong>a richiesta</strong></div>
+          <a href="#contatti" class="product-link">Richiedi Scheda Tecnica</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background:linear-gradient(135deg,#1c2c12,#2a4519);">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect x="18" y="20" width="28" height="24" rx="3" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+            <path d="M28 32 L36 26 L36 38 Z" fill="#84CC16" opacity=".8"/>
+            <line x1="22" y1="44" x2="42" y2="44" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
+            <circle cx="32" cy="48" r="2.5" fill="#F97316" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <span class="product-tag">Motopompa Diesel</span>
+          <div class="product-name">Diesel-EN</div>
+          <div class="product-power">Potenze su richiesta</div>
+          <div class="product-price">Da <strong>a richiesta</strong></div>
+          <a href="#contatti" class="product-link">Richiedi Scheda Tecnica</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ PERCHÉ NOI ░░░ -->
+<section id="perche">
+  <div class="section-inner">
+    <span class="section-label">Perché ElectroBridge</span>
+    <h2>Il Vantaggio che Fa la Differenza</h2>
+    <p class="subtitle">Ogni quadro esce dalla produzione solo dopo aver superato test funzionali completi.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <div class="why-title">Prezzi Imbattibili</div>
+        <div class="why-text">Fino al 63% più competitivi rispetto a Elentek, 52% rispetto a Fourgroup. Stesso livello di qualità, prezzo reale di mercato.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔬</div>
+        <div class="why-title">Test 100% su Ogni Unità</div>
+        <div class="why-text">Calibrazione, prova motore, test di isolamento. Ogni quadro viene collaudato prima della spedizione. Garanzia reale.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🚀</div>
+        <div class="why-title">Consegna in 8 Giorni</div>
+        <div class="why-text">Tempi certi e rispettati. Nessun assemblaggio su richiesta. Stock disponibile per i modelli standard.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⭐</div>
+        <div class="why-title">Materiali Premium</div>
+        <div class="why-text">Componenti selezionati di qualità superiore alla media del settore. Affidabilità nel tempo certificata.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔧</div>
+        <div class="why-title">Personalizzazioni Rapide</div>
+        <div class="why-text">Lotti piccoli e soluzioni custom senza costi aggiuntivi eccessivi. Flessibilità che i big non offrono.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📞</div>
+        <div class="why-title">Assistenza Diretta</div>
+        <div class="why-text">Nessun intermediario. Il tecnico che ha costruito il tuo quadro risponde al telefono. Supporto reale.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ CONFRONTO PREZZI ░░░ -->
+<section class="compare-bg" id="prezzi">
+  <div class="section-inner">
+    <span class="section-label">Confronto Prezzi</span>
+    <h2>Trasparenza Totale</h2>
+    <p class="subtitle">Pubblichiamo i nostri prezzi perché siamo sicuri di essere i più competitivi.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Modello</th>
+          <th>Tipo</th>
+          <th>Potenza</th>
+          <th>Elentek</th>
+          <th>Fourgroup</th>
+          <th class="ours">ElectroBridge (ROIV)</th>
+          <th>Risparmio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Directo-EN / 7,5</td>
+          <td>Avv. Diretto</td>
+          <td>7,5 kW</td>
+          <td>~900 €</td>
+          <td>~820 €</td>
+          <td class="ours">da 380 €</td>
+          <td><span class="save-badge">−54%</span></td>
+        </tr>
+        <tr>
+          <td>Directo-EN / 15</td>
+          <td>Avv. Diretto</td>
+          <td>15 kW</td>
+          <td>~1.300 €</td>
+          <td>1.060 €</td>
+          <td class="ours">508,82 €</td>
+          <td><span class="save-badge">−52%</span></td>
+        </tr>
+        <tr>
+          <td>Directo-EN / 22</td>
+          <td>Avv. Diretto</td>
+          <td>22 kW</td>
+          <td>~1.600 €</td>
+          <td>1.183 €</td>
+          <td class="ours">da 620 €</td>
+          <td><span class="save-badge">−47%</span></td>
+        </tr>
+        <tr>
+          <td>Stardelta-EN</td>
+          <td>Stella-Triangolo</td>
+          <td>4–132 kW</td>
+          <td>su richiesta</td>
+          <td>~1.400 €+</td>
+          <td class="ours">su richiesta</td>
+          <td><span class="save-badge">−40/60%</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:16px;">
+      * Prezzi IVA esclusa. Prezzi concorrenza rilevati online. Prezzi ROIV indicativi: richiedi preventivo personalizzato.
+    </p>
+  </div>
+</section>
+
+<!-- ░░░ CERTIFICAZIONI ░░░ -->
+<section id="certificazioni">
+  <div class="section-inner">
+    <span class="section-label">Normative e Certificazioni</span>
+    <h2>Conformità Totale</h2>
+    <p class="subtitle">Ogni quadro è progettato e collaudato nel rispetto degli standard europei e nazionali di riferimento.</p>
+    <div class="cert-grid">
+      <div class="cert-chip"><div class="cert-dot"></div> EN 12845</div>
+      <div class="cert-chip"><div class="cert-dot"></div> UNI 11292</div>
+      <div class="cert-chip"><div class="cert-dot"></div> UNI 10779</div>
+      <div class="cert-chip"><div class="cert-dot"></div> EN 17451</div>
+      <div class="cert-chip"><div class="cert-dot"></div> NFPA 20 (riferimento)</div>
+      <div class="cert-chip" style="border-color:var(--blue-bright);">⚡ Test Funzionali 100%</div>
+      <div class="cert-chip" style="border-color:var(--blue-bright);">🚚 Consegna 8 gg lavorativi</div>
+      <div class="cert-chip" style="border-color:var(--blue-bright);">🔧 Assistenza Diretta</div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ CONTATTI ░░░ -->
+<section class="contact-bg" id="contatti">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="section-label">Contatti</span>
+        <h3>Richiedi un Preventivo Gratuito</h3>
+        <p>Descrivi il tuo progetto e riceverai un preventivo personalizzato entro 24 ore lavorative. Nessun intermediario, risposta diretta dal nostro team tecnico.</p>
+        <div class="contact-item"><span class="contact-icon">📧</span><span class="contact-text">info@electrobridge.it</span></div>
+        <div class="contact-item"><span class="contact-icon">📞</span><span class="contact-text">+39 — — — (da inserire)</span></div>
+        <div class="contact-item"><span class="contact-icon">📍</span><span class="contact-text">Italia</span></div>
+        <div class="contact-item"><span class="contact-icon">🕐</span><span class="contact-text">Lun–Ven 08:00 – 17:30</span></div>
+      </div>
+      <div class="contact-form">
+        <input type="text" placeholder="Nome e Cognome *">
+        <input type="text" placeholder="Azienda">
+        <input type="email" placeholder="Email *">
+        <input type="tel" placeholder="Telefono">
+        <select>
+          <option>Prodotto di interesse...</option>
+          <option>Directo-EN — Avviamento Diretto</option>
+          <option>Stardelta-EN — Stella-Triangolo</option>
+          <option>Reacto-EN — Avviamento ad Impedenza</option>
+          <option>Diesel-EN — Motopompa Diesel</option>
+          <option>Altro / Personalizzato</option>
+        </select>
+        <textarea placeholder="Descrivi il progetto o la specifica tecnica richiesta..."></textarea>
+        <button class="btn-submit">Invia Richiesta →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ FOOTER ░░░ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo logo-svg" style="margin-bottom:0">
+        <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="18" fill="#1E40AF"/>
+          <path d="M6 22 Q18 8 30 22" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <line x1="10" y1="22" x2="10" y2="27" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <line x1="26" y1="22" x2="26" y2="27" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6" y1="27" x2="30" y2="27" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="18" cy="10" r="2" fill="#84CC16"/>
+          <path d="M19.5 11.5 L17 17 L19 17 L16.5 22.5" stroke="#84CC16" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span style="color:#fff;font-weight:800;font-size:17px;letter-spacing:-0.5px">Electro<em style="color:var(--lime);font-style:normal">Bridge</em></span>
+      </a>
+      <p>Quadri elettrici di comando per impianti antincendio conformi EN 12845. Qualità superiore al giusto prezzo.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Prodotti</h4>
+      <a href="#">Directo-EN</a>
+      <a href="#">Stardelta-EN</a>
+      <a href="#">Reacto-EN</a>
+      <a href="#">Diesel-EN</a>
+      <a href="#">Quadri Jockey</a>
+    </div>
+    <div class="footer-col">
+      <h4>Azienda</h4>
+      <a href="#">Chi Siamo</a>
+      <a href="#">Certificazioni</a>
+      <a href="#">Contatti</a>
+      <a href="#">Preventivo</a>
+    </div>
+    <div class="footer-col">
+      <h4>Normative</h4>
+      <a href="#">EN 12845</a>
+      <a href="#">UNI 11292</a>
+      <a href="#">UNI 10779</a>
+      <a href="#">EN 17451</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ElectroBridge / ROIV S.r.l. — P.IVA da inserire — Italia</span>
+    <span>Privacy Policy · Cookie Policy</span>
+  </div>
+</footer>
+
+</body>
+</html>
