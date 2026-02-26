@@ -32,6 +32,10 @@
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--muted); font-size: 13.5px; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--ink); }
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .nav-link-action { display: flex; align-items: center; gap: 6px; text-decoration: none; color: var(--muted); font-size: 13px; font-weight: 500; padding: 9px 14px; border-radius: 8px; border: 1px solid var(--border); transition: all .2s; }
+    .nav-link-action:hover { color: var(--ink); border-color: #c0c0c8; background: var(--surface); }
+    .nav-link-action svg { flex-shrink: 0; }
     .nav-cta { background: var(--ink); color: #fff; padding: 9px 20px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; transition: background .2s; }
     .nav-cta:hover { background: var(--accent); }
 
@@ -84,7 +88,7 @@
     .stat-num b { color: var(--accent); font-weight: 900; }
     .stat-lbl { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 7px; }
 
-    .zoom-wrapper { position: relative; height: 300vh; background: #0B0F1A; }
+    .zoom-wrapper { position: relative; height: 300vh; background: #18243A; }
     .zoom-sticky {
       position: sticky; top: 0; height: 100vh;
       display: flex; align-items: center; justify-content: center; overflow: hidden;
@@ -129,10 +133,10 @@
     .why-t { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: -1px; margin-bottom: 10px; }
     .why-d { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 360px; }
 
-    .pricing-section { background: var(--ink); }
+    .pricing-section { background: #18243A; }
     .pricing-section h2 { color: #fff; }
-    .pricing-section .lead { color: rgba(255,255,255,.4); }
-    .pricing-section .eyebrow { color: rgba(255,255,255,.28); }
+    .pricing-section .lead { color: rgba(255,255,255,.5); }
+    .pricing-section .eyebrow { color: rgba(255,255,255,.35); }
     .ptable { width: 100%; border-collapse: collapse; }
     .ptable thead tr { border-bottom: 1px solid rgba(255,255,255,.07); }
     .ptable th { padding: 14px 20px; text-align: left; font-size: 11px; font-weight: 700; color: rgba(255,255,255,.28); letter-spacing: 1px; text-transform: uppercase; }
@@ -167,7 +171,7 @@
     .btn-sub { width: 100%; padding: 15px; background: var(--ink); color: #fff; border: none; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: background .2s; }
     .btn-sub:hover { background: var(--accent); }
 
-    footer { background: var(--ink); padding: 64px 56px 32px; }
+    footer { background: #18243A; padding: 64px 56px 32px; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1180px; margin: 0 auto 56px; }
     .fbrand-txt { font-size: 13px; color: rgba(255,255,255,.3); line-height: 1.7; margin-top: 14px; max-width: 240px; }
     .fcol h4 { font-size: 11px; font-weight: 700; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; }
@@ -226,12 +230,22 @@
     <li><a href="#cert">Certificazioni</a></li>
     <li><a href="#contatti">Contatti</a></li>
   </ul>
-  <a href="#contatti" class="nav-cta">Preventivo gratuito &#8594;</a>
+  <div class="nav-actions">
+    <a href="mailto:info@electrobridge.it" class="nav-link-action">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M2 8l10 7 10-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      Contattaci
+    </a>
+    <a href="tel:+390000000000" class="nav-link-action">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 011.05-.24 11.47 11.47 0 003.6.6 1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1 11.47 11.47 0 00.6 3.6 1 1 0 01-.25 1.05l-2.25 2.15z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Chiamaci
+    </a>
+    <a href="#contatti" class="nav-cta">Preventivo &#8594;</a>
+  </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-eyebrow"><i></i> Conformi EN 12845 &nbsp;&middot;&nbsp; Consegna in 8 giorni lavorativi</div>
-  <h1>Quadri Elettrici<br>Antincendio<br><em>Professionali.</em></h1>
+  <div class="hero-eyebrow"><i></i> Consegna rapida &nbsp;&middot;&nbsp; EN 12845</div>
+  <h1>Quadri Elettrici<br><em>Professionali.</em></h1>
   <p class="hero-sub">Qualit&#224; costruttiva superiore. Prezzi fino al <strong style="color:#fff;font-weight:700">63% pi&#249; bassi</strong> della concorrenza. Test funzionali completi su ogni unit&#224;.</p>
   <div class="hero-btns">
     <a href="#prodotti" class="btn-primary">Scopri i Prodotti</a>
@@ -520,12 +534,12 @@
     <h2 class="fade-in">Trasparenza totale.</h2>
     <p class="lead fade-in">Pubblichiamo i prezzi perch&#233; siamo certi di essere i pi&#249; competitivi sul mercato.</p>
     <table class="ptable fade-in">
-      <thead><tr><th>Modello</th><th>Tipo</th><th>Potenza</th><th>Elentek</th><th>Fourgroup</th><th class="ours">ElectroBridge</th><th>Risparmio</th></tr></thead>
+      <thead><tr><th>Modello</th><th>Tipo</th><th>Potenza</th><th class="ours">Prezzo ElectroBridge</th><th>Risparmio vs mercato</th></tr></thead>
       <tbody>
-        <tr><td>Directo-EN / 7,5</td><td>Avv. Diretto</td><td>7,5 kW</td><td>~900 &#8364;</td><td>~820 &#8364;</td><td class="ours">da 380 &#8364;</td><td><span class="spill">&#8722;54%</span></td></tr>
-        <tr><td>Directo-EN / 15</td><td>Avv. Diretto</td><td>15 kW</td><td>~1.300 &#8364;</td><td>1.060 &#8364;</td><td class="ours">508,82 &#8364;</td><td><span class="spill">&#8722;52%</span></td></tr>
-        <tr><td>Directo-EN / 22</td><td>Avv. Diretto</td><td>22 kW</td><td>~1.600 &#8364;</td><td>1.183 &#8364;</td><td class="ours">da 620 &#8364;</td><td><span class="spill">&#8722;47%</span></td></tr>
-        <tr><td>Stardelta-EN</td><td>Stella-Triangolo</td><td>4&ndash;132 kW</td><td>su richiesta</td><td>~1.400 &#8364;+</td><td class="ours">su richiesta</td><td><span class="spill">&#8722;40/60%</span></td></tr>
+        <tr><td>Directo-EN / 7,5</td><td>Avv. Diretto</td><td>7,5 kW</td><td class="ours">a partire da 380 &#8364;</td><td><span class="spill">fino a &#8722;54%</span></td></tr>
+        <tr><td>Directo-EN / 15</td><td>Avv. Diretto</td><td>15 kW</td><td class="ours">a partire da 508 &#8364;</td><td><span class="spill">fino a &#8722;52%</span></td></tr>
+        <tr><td>Directo-EN / 22</td><td>Avv. Diretto</td><td>22 kW</td><td class="ours">a partire da 620 &#8364;</td><td><span class="spill">fino a &#8722;47%</span></td></tr>
+        <tr><td>Stardelta-EN</td><td>Stella-Triangolo</td><td>4&ndash;132 kW</td><td class="ours">su richiesta</td><td><span class="spill">fino a &#8722;60%</span></td></tr>
       </tbody>
     </table>
     <p style="font-size:11px;color:rgba(255,255,255,.18);margin-top:20px">* Prezzi IVA esclusa. Prezzi concorrenza rilevati online. Prezzi ROIV indicativi &mdash; richiedi preventivo personalizzato.</p>
