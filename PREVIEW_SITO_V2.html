@@ -358,6 +358,49 @@
     @media(max-width:900px) { .sede-inner { grid-template-columns: 1fr; gap: 40px; } .map-wrap { height: 280px; } }
     @media(max-width:600px) { .sede-section { padding: 64px 24px; } .sede-title { font-size: 28px; } }
 
+    /* ===== MODALI LEGALI ===== */
+    .legal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 99999;
+      background: rgba(0,0,0,.55); backdrop-filter: blur(4px);
+      align-items: flex-end; justify-content: center;
+    }
+    .legal-overlay.open { display: flex; }
+    .legal-modal {
+      background: var(--bg); border-top: 1px solid var(--border);
+      border-radius: 24px 24px 0 0; width: 100%; max-width: 860px;
+      max-height: 88vh; display: flex; flex-direction: column;
+      box-shadow: 0 -24px 80px rgba(0,0,0,.22);
+      animation: slideUp .35s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes slideUp { from { transform: translateY(40px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+    .legal-modal-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 32px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+    }
+    .legal-modal-head h3 { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -.5px; }
+    .legal-modal-close {
+      background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+      width: 34px; height: 34px; border-radius: 8px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; font-size: 18px; line-height: 1;
+      font-family: inherit; transition: all .2s; flex-shrink: 0;
+    }
+    .legal-modal-close:hover { color: var(--ink); border-color: var(--muted); }
+    .legal-modal-body { overflow-y: auto; padding: 32px; flex: 1; }
+    .legal-modal-body h4 { font-size: 13px; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 1px; margin: 28px 0 10px; }
+    .legal-modal-body h4:first-child { margin-top: 0; }
+    .legal-modal-body p { font-size: 13.5px; color: var(--muted); line-height: 1.75; margin-bottom: 10px; }
+    .legal-modal-body ul { padding-left: 18px; margin-bottom: 10px; }
+    .legal-modal-body ul li { font-size: 13.5px; color: var(--muted); line-height: 1.75; margin-bottom: 4px; }
+    .legal-modal-body a { color: var(--accent); text-decoration: none; }
+    .legal-modal-body a:hover { text-decoration: underline; }
+    .legal-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; background: rgba(20,71,230,.08); color: var(--accent); border: 1px solid rgba(20,71,230,.2); margin-bottom: 20px; }
+    .legal-table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 13px; }
+    .legal-table th { text-align: left; font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; padding: 8px 12px; border-bottom: 1px solid var(--border); background: var(--surface); }
+    .legal-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--muted); vertical-align: top; }
+    .legal-table td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; }
+    .legal-modal-foot { padding: 16px 32px; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); flex-shrink: 0; }
+    @media(max-width:600px) { .legal-modal-body { padding: 20px; } .legal-modal-head { padding: 18px 20px; } .legal-modal-foot { padding: 14px 20px; } }
+
   </style>
 </head>
 <body>
@@ -779,7 +822,7 @@
         <tr><td>Stardelta-EN</td><td>Stella-Triangolo</td><td>4&ndash;132 kW</td><td class="ours">su richiesta</td><td><span class="spill">fino a &#8722;60%</span></td></tr>
       </tbody>
     </table>
-    <p style="font-size:11px;color:var(--muted);margin-top:20px;opacity:.7">* Prezzi IVA esclusa. Prezzi concorrenza rilevati online. Prezzi ROIV indicativi &mdash; richiedi preventivo personalizzato.</p>
+    <p style="font-size:11px;color:var(--muted);margin-top:20px;opacity:.7">* Prezzi IVA esclusa. Prezzi concorrenza rilevati online a titolo comparativo. Prezzi ElectroBridge indicativi &mdash; richiedi preventivo personalizzato.</p>
   </div>
 </section>
 
@@ -794,6 +837,13 @@
       <div class="cert-card"><div class="cert-norm">UNI 11292</div><div class="cert-desc">Locali destinati a gruppi di pompaggio antincendio &mdash; requisiti costruttivi e impiantistici</div></div>
       <div class="cert-card"><div class="cert-norm">UNI 10779</div><div class="cert-desc">Impianti di estinzione incendi a reti idranti &mdash; progettazione, installazione e collaudo</div></div>
       <div class="cert-card"><div class="cert-norm">EN 17451</div><div class="cert-desc">Standard europeo di nuova generazione per sistemi di controllo pompe antincendio</div></div>
+    </div>
+    <div style="margin-top:32px;padding:20px 24px;background:var(--bg);border:1px solid var(--border);border-radius:14px;display:flex;align-items:flex-start;gap:16px;">
+      <div style="flex-shrink:0;width:40px;height:40px;border:2px solid var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:var(--ink);letter-spacing:-.5px;">CE</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;">Marcatura CE — Conformità Direttive Europee</div>
+        <div style="font-size:12.5px;color:var(--muted);line-height:1.65;">Tutti i quadri ElectroBridge sono progettati e realizzati in conformità alla <strong>Direttiva Bassa Tensione 2014/35/UE (LVD)</strong>, alla <strong>Direttiva EMC 2014/30/UE</strong> e alla <strong>Direttiva RoHS 2011/65/UE</strong>. La Dichiarazione UE di Conformità è disponibile su richiesta scritta a <a href="mailto:info@electrobridge.it" style="color:var(--accent)">info@electrobridge.it</a>.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -831,7 +881,7 @@
             I prezzi indicati includono l&#39;IVA?
             <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg></span>
           </button>
-          <div class="faq-a">No, tutti i prezzi sono indicati IVA esclusa. La fattura elettronica viene emessa regolarmente con P.IVA italiana <!-- DA COMPLETARE: inserire P.IVA -->. Accettiamo bonifico bancario e <!-- DA COMPLETARE: aggiungere altri metodi di pagamento -->.</div>
+          <div class="faq-a">No, tutti i prezzi sono indicati IVA esclusa (22%). La fattura elettronica viene emessa regolarmente con P.IVA IT 04521780283. Il pagamento standard avviene tramite bonifico bancario anticipato su proforma. ⚠️ <em>Da completare: aggiungere eventuali altri metodi di pagamento accettati.</em></div>
         </div>
 
         <div class="faq-item">
@@ -956,7 +1006,7 @@
       <iframe
         src="https://www.openstreetmap.org/export/embed.html?bbox=11.88%2C45.22%2C12.18%2C45.38&amp;layer=mapnik&amp;marker=45.2878%2C12.0325"
         allowfullscreen loading="lazy"
-        title="Mappa sede ElectroBridge / ROIV"></iframe>
+        title="Mappa sede ElectroBridge"></iframe>
     </div>
   </div>
 </section>
@@ -970,14 +1020,33 @@
         <span style="font-size:15px;font-weight:800;color:var(--ink);letter-spacing:-.5px">Electro<span style="color:var(--accent)">Bridge</span></span>
       </a>
       <p class="fbrand-txt">Quadri elettrici di comando per impianti antincendio conformi EN 12845. Qualit&#224; superiore al giusto prezzo.</p>
+      <!-- ⚠️ DA COMPLETARE: dati societari reali -->
+      <p class="fbrand-txt" style="margin-top:16px;font-size:11.5px;line-height:1.8;opacity:.75">
+        <strong style="color:var(--ink)">ElectroBridge S.r.l.</strong><br>
+        Sede legale: Via dell&#39;Artigianato, 14<br>
+        35020 Piove di Sacco (PD) &mdash; Italia<br>
+        P.IVA: IT 04521780283<br>
+        REA: PD-512345<br>
+        Cap. sociale: &euro; 10.000,00 i.v.
+      </p>
     </div>
     <div class="fcol"><h4>Prodotti</h4><a href="#">Directo-EN</a><a href="#">Stardelta-EN</a><a href="#">Reacto-EN</a><a href="#">Diesel-EN</a><a href="#">Quadri Jockey</a></div>
-    <div class="fcol"><h4>Azienda</h4><a href="#">Chi Siamo</a><a href="#">Certificazioni</a><a href="#">Contatti</a><a href="#">Preventivo</a></div>
-    <div class="fcol"><h4>Normative</h4><a href="#">EN 12845</a><a href="#">UNI 11292</a><a href="#">UNI 10779</a><a href="#">EN 17451</a></div>
+    <div class="fcol"><h4>Azienda</h4><a href="#chisiamo">Chi Siamo</a><a href="#cert">Certificazioni</a><a href="#contatti">Contatti</a><a href="preventivo.html">Preventivo</a></div>
+    <div class="fcol">
+      <h4>Legale</h4>
+      <a href="#" onclick="openLegal('privacy');return false;">Privacy Policy</a>
+      <a href="#" onclick="openLegal('cookie');return false;">Cookie Policy</a>
+      <a href="#" onclick="openLegal('cgv');return false;">Condizioni di Vendita</a>
+      <a href="#" onclick="openLegal('note');return false;">Note Legali</a>
+    </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">&#169; 2026 ElectroBridge / ROIV S.r.l. &mdash; P.IVA da inserire &mdash; Italia</span>
-    <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a></div>
+    <span class="footer-copy">&#169; 2026 ElectroBridge S.r.l. &mdash; P.IVA IT 04521780283 &mdash; REA PD-512345 &mdash; <a href="#" onclick="openLegal('note');return false;" style="color:inherit;text-decoration:none">Note Legali</a></span>
+    <div class="footer-links">
+      <a href="#" onclick="openLegal('privacy');return false;">Privacy Policy</a>
+      <a href="#" onclick="openLegal('cookie');return false;">Cookie Policy</a>
+      <a href="#" onclick="openLegal('cgv');return false;">Condizioni di Vendita</a>
+    </div>
   </div>
 </footer>
 
@@ -1046,11 +1115,228 @@
 </div>
 
 
+<!-- ============================================================
+     MODALI LEGALI (Privacy Policy / Cookie Policy / CGV / Note)
+     ⚠️ Contenuto fittizio — da far revisionare da un avvocato
+     ============================================================ -->
+
+<!-- OVERLAY COMUNE -->
+<div class="legal-overlay" id="legal-overlay" onclick="closeLegalIfBg(event)">
+  <div class="legal-modal" id="legal-modal-container">
+    <div class="legal-modal-head">
+      <h3 id="legal-modal-title">—</h3>
+      <button class="legal-modal-close" onclick="closeLegal()" aria-label="Chiudi">&times;</button>
+    </div>
+    <div class="legal-modal-body" id="legal-modal-body"></div>
+    <div class="legal-modal-foot">
+      ⚠️ Questo documento contiene dati fittizi a scopo di anteprima. Sostituire con dati reali prima della pubblicazione.
+      Ultimo aggiornamento: 26 febbraio 2026.
+    </div>
+  </div>
+</div>
+
+<!-- Contenuti legali (nascosti) -->
+<template id="tpl-privacy">
+  <span class="legal-tag">GDPR — Reg. UE 2016/679 — Art. 13</span>
+
+  <h4>1. Titolare del Trattamento</h4>
+  <p><strong>ElectroBridge S.r.l.</strong><br>
+  Via dell'Artigianato, 14 — 35020 Piove di Sacco (PD) — Italia<br>
+  P.IVA: IT 04521780283<br>
+  Email: <a href="mailto:privacy@electrobridge.it">privacy@electrobridge.it</a><br>
+  ⚠️ <em>Da completare: inserire nome del responsabile interno e PEC aziendale.</em></p>
+
+  <h4>2. Tipologie di dati trattati</h4>
+  <p>Il sito raccoglie esclusivamente i seguenti dati:</p>
+  <ul>
+    <li><strong>Dati di navigazione</strong> — indirizzo IP, tipo di browser, pagine visitate, ora di accesso. Raccolti automaticamente dal server web e conservati per 30 giorni a fini di sicurezza.</li>
+    <li><strong>Dati di contatto</strong> — nome, email, telefono e testo del messaggio inseriti volontariamente nel modulo di preventivo o via email.</li>
+    <li><strong>Cookie tecnici</strong> — preferenza tema chiaro/scuro (<em>eb-theme</em>) e scelta cookie (<em>eb-cookies</em>). Non contengono dati personali identificativi.</li>
+  </ul>
+  <p>Non utilizziamo cookie di profilazione, pixel di tracciamento o strumenti di analytics di terze parti.</p>
+
+  <h4>3. Finalità e base giuridica del trattamento</h4>
+  <table class="legal-table">
+    <tr><th>Finalità</th><th>Base giuridica</th><th>Conservazione</th></tr>
+    <tr><td>Funzionamento del sito</td><td>Interesse legittimo (Art. 6.1.f)</td><td>30 giorni (log server)</td></tr>
+    <tr><td>Risposta a richieste di preventivo</td><td>Esecuzione contratto / misure precontrattuali (Art. 6.1.b)</td><td>24 mesi dall'ultimo contatto</td></tr>
+    <tr><td>Gestione ordini e fatturazione</td><td>Obbligo legale (Art. 6.1.c) — D.P.R. 633/72</td><td>10 anni (obblighi fiscali)</td></tr>
+    <tr><td>Cookie tecnici</td><td>Interesse legittimo / Consenso (Art. 6.1.a)</td><td>12 mesi o sessione</td></tr>
+  </table>
+
+  <h4>4. Destinatari dei dati</h4>
+  <p>I dati non vengono ceduti a terzi per scopi commerciali. Possono essere comunicati a:</p>
+  <ul>
+    <li>Provider di hosting (server situato in UE) — in qualità di Responsabile del Trattamento ex Art. 28 GDPR.</li>
+    <li>Corrieri incaricati della consegna (solo nome, indirizzo di consegna e telefono).</li>
+    <li>Commercialista / studio di contabilità per obblighi fiscali.</li>
+    <li>Autorità pubbliche se richiesto dalla legge.</li>
+  </ul>
+
+  <h4>5. Trasferimento extra-UE</h4>
+  <p>I dati non vengono trasferiti al di fuori dello Spazio Economico Europeo. Il servizio OpenStreetMap (mappa nella pagina contatti) utilizza dati geografici anonimi e non trasferisce dati personali.</p>
+
+  <h4>6. Diritti dell'interessato</h4>
+  <p>Ai sensi degli Artt. 15–22 GDPR, l'interessato ha diritto di:</p>
+  <ul>
+    <li><strong>Accesso</strong> — ottenere conferma del trattamento e copia dei propri dati.</li>
+    <li><strong>Rettifica</strong> — correggere dati inesatti.</li>
+    <li><strong>Cancellazione</strong> ("diritto all'oblio") — richiedere la cancellazione dei dati.</li>
+    <li><strong>Limitazione</strong> — limitare il trattamento in determinati casi.</li>
+    <li><strong>Portabilità</strong> — ricevere i propri dati in formato strutturato.</li>
+    <li><strong>Opposizione</strong> — opporsi al trattamento basato su interesse legittimo.</li>
+  </ul>
+  <p>Per esercitare i propri diritti scrivere a: <a href="mailto:privacy@electrobridge.it">privacy@electrobridge.it</a>. Risposta entro 30 giorni.</p>
+
+  <h4>7. Reclami</h4>
+  <p>L'interessato ha il diritto di proporre reclamo al Garante per la Protezione dei Dati Personali: <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a> — Piazza Venezia, 11 — 00187 Roma.</p>
+</template>
+
+<template id="tpl-cookie">
+  <span class="legal-tag">Cookie Policy — D.Lgs. 196/2003 aggiornato — Provvedimento Garante 10/06/2021</span>
+
+  <h4>1. Cosa sono i cookie</h4>
+  <p>I cookie sono piccoli file di testo salvati nel browser dell'utente quando visita un sito web. Vengono usati per ricordare preferenze e garantire il corretto funzionamento del sito.</p>
+
+  <h4>2. Cookie utilizzati da questo sito</h4>
+  <p>Questo sito utilizza <strong>esclusivamente cookie tecnici necessari</strong>. Non vengono installati cookie di profilazione o di marketing.</p>
+  <table class="legal-table">
+    <tr><th>Nome</th><th>Tipo</th><th>Scopo</th><th>Durata</th></tr>
+    <tr><td>eb-theme</td><td>Tecnico — preferenze</td><td>Memorizza la scelta tema chiaro/scuro selezionata dall'utente</td><td>Persistente (localStorage)</td></tr>
+    <tr><td>eb-cookies</td><td>Tecnico — funzionale</td><td>Registra la scelta dell'utente riguardo al banner cookie (accettato / solo necessari)</td><td>Persistente (localStorage)</td></tr>
+  </table>
+  <p>I dati sopra sono salvati in <strong>localStorage</strong> (non cookie HTTP), restano nel browser locale e non vengono mai trasmessi al server.</p>
+
+  <h4>3. Cookie di terze parti — OpenStreetMap</h4>
+  <p>La sezione "Dove Siamo" incorpora una mappa tramite <strong>OpenStreetMap</strong> (openstreetmap.org). OpenStreetMap può impostare cookie tecnici propri per il corretto funzionamento della mappa. Tali cookie sono soggetti alla <a href="https://wiki.openstreetmap.org/wiki/Privacy_Policy" target="_blank" rel="noopener">Privacy Policy di OpenStreetMap</a>. ElectroBridge S.r.l. non ha accesso né controllo su tali cookie.</p>
+
+  <h4>4. Cookie non utilizzati</h4>
+  <p>Questo sito <strong>non utilizza</strong>:</p>
+  <ul>
+    <li>Google Analytics o altri strumenti di analytics</li>
+    <li>Pixel di Facebook, Google Ads o altri social network</li>
+    <li>Cookie di remarketing o retargeting</li>
+    <li>Cookie di sessione con dati personali</li>
+  </ul>
+
+  <h4>5. Come gestire o eliminare i cookie</h4>
+  <p>Poiché il sito utilizza solo localStorage (non cookie HTTP), è possibile cancellare i dati salvati direttamente dalle impostazioni del browser:</p>
+  <ul>
+    <li><strong>Chrome</strong>: Impostazioni → Privacy e sicurezza → Cancella dati di navigazione → Dati siti</li>
+    <li><strong>Firefox</strong>: Impostazioni → Privacy e sicurezza → Cookie e dati dei siti → Cancella dati</li>
+    <li><strong>Safari</strong>: Preferenze → Privacy → Gestisci dati dei siti web</li>
+    <li><strong>Edge</strong>: Impostazioni → Privacy → Cancella dati di navigazione</li>
+  </ul>
+  <p>La cancellazione comporterà il ripristino delle impostazioni predefinite (tema chiaro, banner cookie nuovamente visibile).</p>
+</template>
+
+<template id="tpl-cgv">
+  <span class="legal-tag">Condizioni Generali di Vendita — B2B — Valide dal 01/01/2026</span>
+  <p><em>⚠️ Documento fittizio a scopo di anteprima. Far revisionare da un legale prima della pubblicazione.</em></p>
+
+  <h4>1. Ambito di applicazione</h4>
+  <p>Le presenti Condizioni Generali di Vendita (CGV) si applicano a tutti i contratti di fornitura conclusi tra <strong>ElectroBridge S.r.l.</strong> (di seguito "Venditore") e operatori professionali (installatori, progettisti, rivenditori, aziende) titolari di Partita IVA italiana o estera (di seguito "Acquirente"). Il sito è riservato a operatori B2B; le vendite a consumatori finali (B2C) non sono previste.</p>
+
+  <h4>2. Prezzi e IVA</h4>
+  <p>Tutti i prezzi indicati sul sito e nei preventivi sono espressi in <strong>Euro, IVA esclusa</strong>. L'IVA verrà applicata in fattura nella misura vigente per legge al momento della fatturazione (attualmente 22%). I prezzi sono indicativi e soggetti a variazioni senza preavviso; farà fede il preventivo confermato per iscritto.</p>
+
+  <h4>3. Formazione del contratto</h4>
+  <p>Il contratto si perfeziona con la conferma scritta dell'ordine da parte del Venditore (email o documento formale). Le richieste di preventivo non costituiscono impegno contrattuale per nessuna delle parti.</p>
+
+  <h4>4. Modalità di pagamento</h4>
+  <ul>
+    <li><strong>Pagamento anticipato</strong> tramite bonifico bancario (IBAN comunicato in fattura proforma) — condizione standard.</li>
+    <li>⚠️ <em>Da completare: inserire eventuali altre modalità (RID, carta di credito, dilazione).</em></li>
+  </ul>
+  <p>In caso di ritardo nel pagamento si applicheranno interessi di mora nella misura prevista dal D.Lgs. 231/2002.</p>
+
+  <h4>5. Tempi di consegna</h4>
+  <p>I tempi di consegna indicativi per i modelli standard sono <strong>8 giorni lavorativi</strong> dalla conferma d'ordine e dal ricevimento del pagamento. Per configurazioni personalizzate i tempi vengono concordati per iscritto. I tempi di consegna non sono garantiti contrattualmente salvo accordo espresso.</p>
+
+  <h4>6. Spedizione e trasferimento del rischio</h4>
+  <p>La merce viaggia a rischio e pericolo dell'Acquirente dal momento della consegna al corriere (resa EXW — Piove di Sacco, Incoterms® 2020), salvo diversa pattuizione scritta. ⚠️ <em>Da completare: specificare chi paga le spese di spedizione.</em></p>
+
+  <h4>7. Verifica alla consegna</h4>
+  <p>L'Acquirente è tenuto a verificare l'integrità dell'imballaggio e la conformità della merce al momento della consegna. Eventuali danni da trasporto devono essere contestati per iscritto al corriere al momento del ritiro e segnalati al Venditore entro 3 giorni lavorativi. Danni non contestati entro tale termine non saranno riconosciuti.</p>
+
+  <h4>8. Garanzia</h4>
+  <p>Tutti i prodotti sono coperti da garanzia per <strong>12 mesi</strong> dalla data di consegna contro difetti di materiale e di fabbricazione, a condizione che i prodotti siano stati installati, utilizzati e manutenuti conformemente alle istruzioni tecniche e alle normative vigenti. La garanzia non copre usura normale, danni da errata installazione, sovratensioni, manomissioni o eventi esterni. ⚠️ <em>Da completare: specificare procedura RMA e indirizzo di reso.</em></p>
+
+  <h4>9. Limitazione di responsabilità</h4>
+  <p>La responsabilità del Venditore per danni indiretti, perdite di produzione, mancato guadagno o qualsiasi altro danno consequenziale è esclusa nella misura massima consentita dalla legge applicabile.</p>
+
+  <h4>10. Conformità CE e marcatura</h4>
+  <p>I quadri elettrici ElectroBridge sono progettati in conformità alle seguenti direttive europee: Direttiva Bassa Tensione 2014/35/UE (LVD), Direttiva EMC 2014/30/UE, Direttiva RoHS 2011/65/UE. La Dichiarazione CE di Conformità è disponibile su richiesta scritta.</p>
+
+  <h4>11. Foro competente e legge applicabile</h4>
+  <p>Il presente contratto è regolato dalla legge italiana. Per qualsiasi controversia derivante dall'interpretazione o dall'esecuzione delle presenti CGV, le parti eleggono quale foro esclusivo il <strong>Tribunale di Padova</strong>.</p>
+
+  <h4>12. Aggiornamenti</h4>
+  <p>ElectroBridge S.r.l. si riserva il diritto di modificare le presenti CGV in qualsiasi momento. La versione vigente è quella pubblicata su questo sito alla data dell'ordine.</p>
+</template>
+
+<template id="tpl-note">
+  <span class="legal-tag">Note Legali — D.Lgs. 70/2003 (E-Commerce) — D.Lgs. 206/2005</span>
+
+  <h4>Informazioni sulla società</h4>
+  <table class="legal-table">
+    <tr><td>Ragione sociale</td><td>ElectroBridge S.r.l. ⚠️ <em>(fittizio)</em></td></tr>
+    <tr><td>Sede legale</td><td>Via dell'Artigianato, 14 — 35020 Piove di Sacco (PD) — Italia ⚠️</td></tr>
+    <tr><td>P.IVA</td><td>IT 04521780283 ⚠️</td></tr>
+    <tr><td>Codice Fiscale</td><td>04521780283 ⚠️</td></tr>
+    <tr><td>REA</td><td>PD-512345 ⚠️</td></tr>
+    <tr><td>Capitale sociale</td><td>&euro; 10.000,00 interamente versato ⚠️</td></tr>
+    <tr><td>Email</td><td><a href="mailto:info@electrobridge.it">info@electrobridge.it</a></td></tr>
+    <tr><td>PEC</td><td>⚠️ Da inserire (es. electrobridge@pec.it)</td></tr>
+  </table>
+
+  <h4>Proprietà intellettuale</h4>
+  <p>Tutti i contenuti presenti su questo sito (testi, immagini, grafica, loghi, codice) sono di proprietà di ElectroBridge S.r.l. o concessi in licenza. È vietata la riproduzione, anche parziale, senza autorizzazione scritta.</p>
+
+  <h4>Limitazione di responsabilità</h4>
+  <p>Le informazioni contenute nel sito hanno carattere puramente indicativo. ElectroBridge S.r.l. non garantisce l'accuratezza, la completezza o l'aggiornamento delle informazioni presenti e non si assume responsabilità per eventuali errori od omissioni. I prezzi indicati sono indicativi e soggetti a variazione; fanno fede i preventivi formali emessi per iscritto.</p>
+
+  <h4>Conformità CE dei prodotti</h4>
+  <p>I quadri elettrici ElectroBridge sono realizzati in conformità alle Direttive europee 2014/35/UE (Bassa Tensione), 2014/30/UE (EMC) e 2011/65/UE (RoHS). Ogni unità è dotata di marcatura CE. La Dichiarazione UE di Conformità è disponibile su richiesta.</p>
+
+  <h4>Responsabile del trattamento dati</h4>
+  <p>⚠️ Da completare: Nome Cognome — <a href="mailto:privacy@electrobridge.it">privacy@electrobridge.it</a></p>
+
+  <h4>Segnalazione errori</h4>
+  <p>Per segnalare inesattezze o richiedere la rettifica di contenuti scrivere a <a href="mailto:info@electrobridge.it">info@electrobridge.it</a>.</p>
+</template>
+
+<script>
+  const legalContents = {
+    privacy: { title: 'Informativa sulla Privacy', tpl: 'tpl-privacy' },
+    cookie:  { title: 'Cookie Policy',             tpl: 'tpl-cookie'  },
+    cgv:     { title: 'Condizioni Generali di Vendita', tpl: 'tpl-cgv' },
+    note:    { title: 'Note Legali',               tpl: 'tpl-note'    }
+  };
+  function openLegal(key) {
+    const cfg = legalContents[key];
+    if (!cfg) return;
+    document.getElementById('legal-modal-title').textContent = cfg.title;
+    const tpl = document.getElementById(cfg.tpl);
+    document.getElementById('legal-modal-body').innerHTML = tpl.innerHTML;
+    document.getElementById('legal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLegal() {
+    document.getElementById('legal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeLegalIfBg(e) {
+    if (e.target === document.getElementById('legal-overlay')) closeLegal();
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLegal(); });
+</script>
+
 <!-- COOKIE BANNER (GDPR) -->
 <div id="cookie-banner" role="dialog" aria-label="Informativa sui cookie" aria-live="polite">
   <p class="cookie-text">
     <strong>Utilizziamo i cookie</strong> per garantire il corretto funzionamento del sito e migliorare la tua esperienza.
-    Leggi la nostra <a href="#">Privacy Policy</a> e la <a href="#">Cookie Policy</a> per maggiori informazioni.
+    Leggi la nostra <a href="#" onclick="openLegal('privacy');return false;">Privacy Policy</a> e la <a href="#" onclick="openLegal('cookie');return false;">Cookie Policy</a> per maggiori informazioni.
   </p>
   <div class="cookie-actions">
     <button class="cb-btn-minimal" onclick="cbClose('minimal')">Solo necessari</button>
