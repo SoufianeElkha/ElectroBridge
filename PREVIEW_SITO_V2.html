@@ -51,7 +51,7 @@
     .nav-links a:hover { color: var(--ink); }
     .nav-actions { display: flex; align-items: center; gap: 8px; }
     .nav-link-action { display: flex; align-items: center; gap: 6px; text-decoration: none; color: var(--muted); font-size: 13px; font-weight: 500; padding: 9px 14px; border-radius: 8px; border: 1px solid var(--border); transition: all .2s; }
-    .nav-link-action:hover { color: var(--ink); border-color: #c0c0c8; background: var(--surface); }
+    .nav-link-action:hover { color: var(--ink); border-color: var(--muted); background: var(--surface); }
     .nav-link-action svg { flex-shrink: 0; }
     .nav-cta { background: var(--ink); color: #fff; padding: 9px 20px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; transition: background .2s; }
     .nav-cta:hover { background: var(--accent); }
@@ -111,6 +111,7 @@
     .stat-lbl { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 7px; }
 
     .zoom-wrapper { position: relative; height: 300vh; background: #18243A; }
+    [data-theme="dark"] .zoom-wrapper { background: #0D1117; }
     .zoom-sticky {
       position: sticky; top: 0; height: 100vh;
       display: flex; align-items: center; justify-content: center; overflow: hidden;
@@ -134,8 +135,8 @@
 
     .products-section { background: var(--surface); }
     .products-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
-    .product-card { background: #fff; padding: 32px 28px; transition: background .2s; cursor: default; }
-    .product-card:hover { background: #F0F4FF; }
+    .product-card { background: var(--bg); padding: 32px 28px; transition: background .2s; cursor: default; }
+    .product-card:hover { background: var(--surface); }
     .picon { width: 46px; height: 46px; border-radius: 11px; background: var(--ink); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
     .ptag { font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 8px; display: block; }
     .pname { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: -1px; margin-bottom: 6px; }
@@ -167,17 +168,19 @@
     .ptable td.ours { color: var(--ink); font-weight: 800; font-size: 18px; letter-spacing: -.5px; }
     .ptable tr:last-child td { border-bottom: none; }
     .ptable tr:hover td { background: var(--surface); }
-    .spill { display: inline-block; background: rgba(20,71,230,.08); border: 1px solid rgba(20,71,230,.2); color: var(--accent); font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 100px; }
+    [data-theme="dark"] .ptable thead tr { background: rgba(255,255,255,.03); }
+    .spill { display: inline-block; background: rgba(20,71,230,.1); border: 1px solid rgba(20,71,230,.25); color: var(--accent); font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 100px; }
+    [data-theme="dark"] .spill { background: rgba(91,140,255,.15); border-color: rgba(91,140,255,.3); }
 
     .cert-section { background: var(--surface); }
     .cert-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
-    .cert-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; transition: all .2s; }
+    .cert-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; transition: all .2s; }
     .cert-card:hover { border-color: var(--accent); box-shadow: 0 4px 24px rgba(20,71,230,.08); }
     .cert-norm { font-size: 20px; font-weight: 900; color: var(--ink); letter-spacing: -1px; margin-bottom: 8px; }
     .cert-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
     .cta-section { background: var(--surface); }
-    .cta-box { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 24px; padding: 56px; }
+    .cta-box { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 24px; padding: 56px; transition: background .3s; }
     .cta-left h2 { margin-bottom: 14px; }
     .cta-left p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
     .cta-contacts { display: flex; flex-direction: column; gap: 10px; }
@@ -268,7 +271,7 @@
     .wa-float:hover .wa-tooltip { opacity: 1; }
 
     /* ── MOBILE STICKY CTA ── */
-    .mobile-cta-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg); border-top: 1px solid var(--border); padding: 12px 20px; z-index: 150; box-shadow: 0 -4px 20px rgba(0,0,0,.08); }
+    .mobile-cta-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg); border-top: 1px solid var(--border); padding: 12px 20px; z-index: 150; box-shadow: 0 -4px 20px rgba(0,0,0,.12); }
     .mobile-cta-bar a { display: block; text-align: center; background: var(--ink); color: #fff; padding: 14px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; }
 
     /* ── STATS COUNTER ── */
@@ -359,7 +362,7 @@
 
 <section class="hero">
   <div class="hero-eyebrow"><i></i> Consegna rapida &nbsp;&middot;&nbsp; EN 12845</div>
-  <h1>Quadri Elettrici<br><em>Professionali.</em></h1>
+  <h1>Quadri Elettrici<br><em>Professionali</em></h1>
   <p class="hero-sub">Qualit&#224; costruttiva superiore. Prezzi fino al <strong style="color:var(--accent);font-weight:700">63% pi&#249; bassi</strong> della concorrenza. Test funzionali completi su ogni unit&#224;.</p>
   <div class="hero-btns">
     <a href="#prodotti" class="btn-primary">Scopri i Prodotti</a>
@@ -382,7 +385,7 @@
 <div class="zoom-wrapper" id="zoom-section">
   <div class="zoom-sticky">
     <div class="zoom-text-over" id="zoom-text">
-      <h2>Costruito per<br>resistere.</h2>
+      <h2>Costruito per<br>resistere</h2>
       <p>Ogni componente scelto per durare. Ogni connessione testata due volte.</p>
     </div>
     <svg class="zoom-panel-svg" id="zoom-panel" width="600" height="760" viewBox="0 0 600 760">
@@ -587,7 +590,7 @@
       </div>
       <div class="chisiamo-text fade-in">
         <span class="eyebrow">Chi Siamo</span>
-        <h2>Tecnici specializzati,<br>non rivenditori.</h2>
+        <h2>Tecnici specializzati,<br>non rivenditori</h2>
         <p>
           <!-- DA COMPLETARE: inserire qui la storia dell'azienda, anno di fondazione, background dei fondatori -->
           ElectroBridge nasce dall'esperienza diretta nel campo degli impianti elettrici industriali e antincendio. Progettiamo e assembliamo ogni quadro internamente, senza intermediari, con componenti selezionati e testati.
@@ -610,7 +613,7 @@
 <section class="products-section" id="prodotti">
   <div class="inner">
     <span class="eyebrow fade-in">Gamma Prodotti</span>
-    <h2 class="fade-in">Quadri per ogni esigenza.</h2>
+    <h2 class="fade-in">Quadri per ogni esigenza</h2>
     <p class="lead fade-in">Quattro famiglie di prodotto per qualsiasi configurazione di impianto antincendio a norma EN 12845.</p>
     <div class="products-grid fade-in">
       <div class="product-card">
@@ -661,7 +664,7 @@
 <section class="why-section" id="perche">
   <div class="inner">
     <span class="eyebrow fade-in">Perch&#233; ElectroBridge</span>
-    <h2 class="fade-in">Il vantaggio che fa<br>la differenza.</h2>
+    <h2 class="fade-in">Il vantaggio che fa<br>la differenza</h2>
     <div class="why-grid fade-in">
       <div class="why-item"><span class="why-n">01</span><div class="why-t">Prezzi imbattibili</div><div class="why-d">Fino al 63% pi&#249; competitivi rispetto a Elentek, 52% rispetto a Fourgroup. Stesso livello di qualit&#224;, prezzo reale.</div></div>
       <div class="why-item"><span class="why-n">02</span><div class="why-t">Test 100% su ogni unit&#224;</div><div class="why-d">Calibrazione, prova motore, test di isolamento. Ogni quadro viene collaudato prima della spedizione. Garanzia reale.</div></div>
@@ -677,7 +680,7 @@
 <section class="timeline-section">
   <div class="inner">
     <span class="eyebrow fade-in">Come Funziona</span>
-    <h2 class="fade-in">Dall&#39;ordine alla consegna<br>in 8 giorni.</h2>
+    <h2 class="fade-in">Dall&#39;ordine alla consegna<br>in 8 giorni</h2>
     <div class="timeline-track fade-in">
       <div class="tl-step active">
         <div class="tl-dot">1</div>
@@ -711,7 +714,7 @@
 <section class="pricing-section" id="prezzi">
   <div class="inner">
     <span class="eyebrow fade-in">Confronto Prezzi</span>
-    <h2 class="fade-in">Trasparenza totale.</h2>
+    <h2 class="fade-in">Trasparenza totale</h2>
     <p class="lead fade-in">Pubblichiamo i prezzi perch&#233; siamo certi di essere i pi&#249; competitivi sul mercato.</p>
     <table class="ptable fade-in">
       <thead><tr><th>Modello</th><th>Tipo</th><th>Potenza</th><th class="ours">Prezzo ElectroBridge</th><th>Risparmio vs mercato</th></tr></thead>
@@ -730,7 +733,7 @@
 <section class="cert-section" id="cert">
   <div class="inner">
     <span class="eyebrow fade-in">Normative</span>
-    <h2 class="fade-in">Conformit&#224; totale.</h2>
+    <h2 class="fade-in">Conformit&#224; totale</h2>
     <p class="lead fade-in">Ogni quadro progettato e collaudato nel rispetto degli standard europei e nazionali.</p>
     <div class="cert-grid fade-in">
       <div class="cert-card"><div class="cert-norm">EN 12845</div><div class="cert-desc">Standard europeo principale per impianti sprinkler e gruppi di pressurizzazione antincendio</div></div>
@@ -747,7 +750,7 @@
     <div class="faq-layout">
       <div class="faq-sidebar fade-in">
         <span class="eyebrow">FAQ</span>
-        <h2>Domande<br>frequenti.</h2>
+        <h2>Domande<br>frequenti</h2>
         <p>Non trovi la risposta? Scrivici direttamente, risponderemo entro poche ore.</p>
         <a href="mailto:info@electrobridge.it" class="faq-contact-link">Contattaci &#8594;</a>
       </div>
@@ -812,7 +815,7 @@
     <div class="cta-box fade-in">
       <div class="cta-left">
         <span class="eyebrow">Pronto a iniziare?</span>
-        <h2>Richiedi il tuo preventivo<br>in pochi minuti.</h2>
+        <h2>Richiedi il tuo preventivo<br>in pochi minuti</h2>
         <p>Configura la targa personalizzata del tuo quadro, scegli il modello e invia la richiesta. Risposta entro 24 ore lavorative.</p>
         <div class="cta-contacts">
           <a href="mailto:info@electrobridge.it" class="cta-contact-item">
