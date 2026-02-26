@@ -170,23 +170,19 @@
     .cert-norm { font-size: 20px; font-weight: 900; color: var(--ink); letter-spacing: -1px; margin-bottom: 8px; }
     .cert-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-    .contact-section { background: var(--bg); }
-    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .contact-left p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 36px; margin-top: 16px; }
-    .cdetail { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-    .cicon { width: 34px; height: 34px; border-radius: 8px; background: var(--surface); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
-    .ctext { font-size: 14px; color: var(--ink2); font-weight: 500; }
-    .fg { margin-bottom: 13px; }
-    .fg input, .fg textarea, .fg select {
-      width: 100%; padding: 13px 16px; border: 1.5px solid var(--border); border-radius: 10px;
-      font-family: 'Inter', sans-serif; font-size: 14px; color: var(--ink);
-      outline: none; transition: border-color .2s; background: #fff; appearance: none;
-    }
-    .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(20,71,230,.07); }
-    .fg textarea { height: 110px; resize: vertical; }
-    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
-    .btn-sub { width: 100%; padding: 15px; background: var(--ink); color: #fff; border: none; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: background .2s; }
-    .btn-sub:hover { background: var(--accent); }
+    .cta-section { background: var(--surface); }
+    .cta-box { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 24px; padding: 56px; }
+    .cta-left h2 { margin-bottom: 14px; }
+    .cta-left p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
+    .cta-contacts { display: flex; flex-direction: column; gap: 10px; }
+    .cta-contact-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color .2s; }
+    .cta-contact-item:hover { color: var(--accent); }
+    .cta-right { display: flex; flex-direction: column; gap: 12px; }
+    .cta-btn-main { display: block; text-align: center; background: var(--ink); color: #fff; padding: 18px 28px; border-radius: 12px; text-decoration: none; font-size: 15px; font-weight: 700; transition: background .2s; letter-spacing: -.2px; }
+    .cta-btn-main:hover { background: var(--accent); }
+    .cta-note { font-size: 12px; color: var(--muted); text-align: center; }
+    .cta-btn-sec { display: block; text-align: center; border: 1.5px solid var(--border); color: var(--ink2); padding: 14px 28px; border-radius: 12px; text-decoration: none; font-size: 14px; font-weight: 500; transition: all .2s; }
+    .cta-btn-sec:hover { border-color: var(--ink); color: var(--ink); }
 
     footer { background: var(--surface); border-top: 1px solid var(--border); padding: 64px 56px 32px; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1180px; margin: 0 auto 56px; }
@@ -579,25 +575,37 @@
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact-section" id="contatti">
+<!-- CTA PREVENTIVO -->
+<section class="cta-section" id="contatti">
   <div class="inner">
-    <div class="contact-layout">
-      <div class="contact-left fade-in">
-        <span class="eyebrow">Contatti</span>
-        <h2>Preventivo<br>gratuito.</h2>
-        <p>Descrivi il tuo progetto e riceverai un preventivo entro 24 ore lavorative. Risposta diretta dal team tecnico, senza intermediari.</p>
-        <div class="cdetail"><div class="cicon">&#9993;</div><span class="ctext">info@electrobridge.it</span></div>
-        <div class="cdetail"><div class="cicon">&#9742;</div><span class="ctext">+39 &mdash; (da inserire)</span></div>
-        <div class="cdetail"><div class="cicon">&#9675;</div><span class="ctext">Italia</span></div>
-        <div class="cdetail"><div class="cicon">&#9719;</div><span class="ctext">Lun&ndash;Ven 08:00 &ndash; 17:30</span></div>
+    <div class="cta-box fade-in">
+      <div class="cta-left">
+        <span class="eyebrow">Pronto a iniziare?</span>
+        <h2>Richiedi il tuo preventivo<br>in pochi minuti.</h2>
+        <p>Configura la targa personalizzata del tuo quadro, scegli il modello e invia la richiesta. Risposta entro 24 ore lavorative.</p>
+        <div class="cta-contacts">
+          <a href="mailto:info@electrobridge.it" class="cta-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M2 8l10 7 10-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            info@electrobridge.it
+          </a>
+          <a href="tel:+390000000000" class="cta-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 011.05-.24 11.47 11.47 0 003.6.6 1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1 11.47 11.47 0 00.6 3.6 1 1 0 01-.25 1.05l-2.25 2.15z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            +39 &mdash; (da inserire)
+          </a>
+          <span class="cta-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Lun&ndash;Ven 08:00&ndash;17:30
+          </span>
+        </div>
       </div>
-      <div class="fade-in">
-        <div class="frow"><div class="fg"><input type="text" placeholder="Nome e Cognome *"></div><div class="fg"><input type="text" placeholder="Azienda"></div></div>
-        <div class="frow"><div class="fg"><input type="email" placeholder="Email *"></div><div class="fg"><input type="tel" placeholder="Telefono"></div></div>
-        <div class="fg"><select><option>Prodotto di interesse...</option><option>Directo-EN</option><option>Stardelta-EN</option><option>Reacto-EN</option><option>Diesel-EN</option><option>Altro</option></select></div>
-        <div class="fg"><textarea placeholder="Descrivi il progetto o la specifica tecnica richiesta..."></textarea></div>
-        <button class="btn-sub">Invia Richiesta &#8594;</button>
+      <div class="cta-right">
+        <a href="preventivo.html" class="cta-btn-main">
+          Configura e Richiedi Preventivo &#8594;
+        </a>
+        <p class="cta-note">Puoi personalizzare la targa del quadro con il tuo logo aziendale</p>
+        <a href="mailto:info@electrobridge.it" class="cta-btn-sec">
+          Oppure scrivici direttamente &#8594;
+        </a>
       </div>
     </div>
   </div>
