@@ -265,6 +265,12 @@
           </div>
         </div>
         <input type="file" id="logo-input" accept="image/*">
+        <div style="text-align:center;margin-bottom:8px;">
+          <button onclick="downloadPreview()" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:9px 18px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .2s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Scarica anteprima targa
+          </button>
+        </div>
 
         <!-- CONTROLS -->
         <div class="controls-section">
@@ -359,7 +365,8 @@
           <label>Quantit&#224; e specifiche</label>
           <textarea placeholder="Es: 2x Directo-EN / 15 kW trifase, alimentazione 400V, con quadro jockey. Cantiere: Milano.&#10;Specifiche particolari o normative aggiuntive..."></textarea>
         </div>
-        <button class="btn-submit">
+        <div id="form-error" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:12px 14px;font-size:13px;color:#DC2626;margin-bottom:12px;"></div>
+        <button class="btn-submit" id="submit-btn" onclick="submitForm(event)">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Invia Richiesta con Targa
         </button>
@@ -465,6 +472,65 @@
     };
     reader.readAsDataURL(file);
   });
+  // Form validation + submit
+  function submitForm(e) {
+    e.preventDefault();
+    const errEl = document.getElementById('form-error');
+    errEl.style.display = 'none';
+    const fields = [
+      { el: document.querySelector('input[type="text"]'), label: 'Nome' },
+      { el: document.querySelectorAll('input[type="text"]')[1], label: 'Cognome' },
+      { el: document.querySelector('input[type="email"]'), label: 'Email' },
+    ];
+    for (const f of fields) {
+      if (!f.el || !f.el.value.trim()) {
+        errEl.textContent = 'Il campo "' + f.label + '" è obbligatorio.';
+        errEl.style.display = 'block';
+        f.el && f.el.focus();
+        return;
+      }
+    }
+    const email = document.querySelector('input[type="email"]').value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errEl.textContent = 'Inserisci un indirizzo email valido.';
+      errEl.style.display = 'block';
+      return;
+    }
+    // Simula invio → mostra success
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Invio in corso...';
+    btn.disabled = true;
+    setTimeout(() => {
+      document.querySelector('.form-card .card-body').innerHTML = `
+        <div style="text-align:center;padding:40px 20px">
+          <div style="width:56px;height:56px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 style="font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-0.5px;margin-bottom:10px">Richiesta inviata!</h3>
+          <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:300px;margin:0 auto 24px">Riceverai un preventivo personalizzato entro <strong>24 ore lavorative</strong>. Controlla anche la cartella spam.</p>
+          <a href="PREVIEW_SITO_V2.html" style="display:inline-block;background:var(--ink);color:#fff;padding:12px 24px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700">Torna al sito &#8594;</a>
+        </div>`;
+    }, 1200);
+  }
+
+  // Download PNG anteprima targa
+  function downloadPreview() {
+    const np = document.getElementById('nameplate');
+    const canvas = document.createElement('canvas');
+    const scale = 3;
+    canvas.width  = np.offsetWidth  * scale;
+    canvas.height = np.offsetHeight * scale;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(scale, scale);
+    // Usa html2canvas se disponibile, altrimenti fallback svg
+    const svgData = '<svg xmlns="http://www.w3.org/2000/svg" width="' + np.offsetWidth + '" height="' + np.offsetHeight + '"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml">' + np.outerHTML + '</div></foreignObject></svg>';
+    const blob = new Blob([svgData], {type:'image/svg+xml'});
+    const url  = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'targa-electrobridge.svg';
+    a.click(); URL.revokeObjectURL(url);
+  }
+
 </script>
 </body>
 </html>

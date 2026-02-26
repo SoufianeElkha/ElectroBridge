@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ElectroBridge — Quadri Antincendio EN 12845</title>
+  <title>ElectroBridge — Quadri Elettrici per Impianti Antincendio EN 12845</title>
+  <meta name="description" content="Quadri elettrici di comando per impianti antincendio conformi EN 12845. Qualità premium, prezzi fino al 63% più bassi della concorrenza, consegna in 8 giorni. Italia.">
+  <meta property="og:title" content="ElectroBridge — Quadri Elettrici Antincendio">
+  <meta property="og:description" content="Qualità premium, prezzi fino al 63% più bassi. Conformi EN 12845. Consegna rapida in tutta Italia.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#1447E6">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><rect width='36' height='36' rx='9' fill='%230B0F1A'/><line x1='9' y1='10' x2='9' y2='26' stroke='white' stroke-width='2' stroke-linecap='round'/><line x1='9' y1='10' x2='16' y2='10' stroke='white' stroke-width='2' stroke-linecap='round'/><line x1='9' y1='18' x2='15' y2='18' stroke='white' stroke-width='2' stroke-linecap='round'/><line x1='9' y1='26' x2='16' y2='26' stroke='white' stroke-width='2' stroke-linecap='round'/><line x1='20' y1='10' x2='20' y2='26' stroke='white' stroke-width='2' stroke-linecap='round'/><path d='M20 10 Q28 10 28 14 Q28 18 20 18' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/><path d='M20 18 Q29 18 29 22 Q29 26 20 26' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/><path d='M22 8 L17 18 L21 18 L14 28' stroke='%231447E6' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -196,11 +202,92 @@
     .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: var(--ink); }
 
+
+    /* ── MOBILE MENU ── */
+    .hamburger { display: none; background: none; border: 1px solid var(--border); border-radius: 8px; width: 36px; height: 36px; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; transition: all .2s; }
+    .hamburger span { display: block; width: 16px; height: 1.5px; background: var(--ink); border-radius: 2px; transition: all .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-nav { display: none; position: fixed; top: 101px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 16px 24px 20px; z-index: 99; box-shadow: 0 8px 32px rgba(0,0,0,.08); }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; padding: 12px 0; font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav .mobile-cta { margin-top: 12px; display: block; text-align: center; background: var(--ink); color: #fff; padding: 14px; border-radius: 10px; font-weight: 700; text-decoration: none; }
+
+    /* ── CHI SIAMO ── */
+    .chisiamo-section { background: var(--bg); }
+    .chisiamo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .chisiamo-img { background: var(--surface); border-radius: 20px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); overflow: hidden; position: relative; }
+    .chisiamo-img-placeholder { text-align: center; color: var(--muted); }
+    .chisiamo-img-placeholder svg { display: block; margin: 0 auto 12px; }
+    .chisiamo-img-placeholder p { font-size: 13px; font-weight: 500; }
+    .chisiamo-img-placeholder small { font-size: 11px; opacity: .6; }
+    .chisiamo-text h2 { margin-bottom: 16px; }
+    .chisiamo-text p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
+    .chisiamo-values { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+    .cvalue { display: flex; align-items: flex-start; gap: 12px; }
+    .cvalue-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 7px; flex-shrink: 0; }
+    .cvalue-text { font-size: 14px; color: var(--ink2); font-weight: 500; line-height: 1.5; }
+
+    /* ── TIMELINE CONSEGNA ── */
+    .timeline-section { background: var(--surface); }
+    .timeline-track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 48px; position: relative; }
+    .timeline-track::before { content: ''; position: absolute; top: 20px; left: calc(12.5% + 4px); right: calc(12.5% + 4px); height: 2px; background: var(--border); z-index: 0; }
+    .tl-step { text-align: center; position: relative; z-index: 1; }
+    .tl-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--bg); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 13px; font-weight: 800; color: var(--muted); transition: all .3s; }
+    .tl-step.active .tl-dot { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .tl-day { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .tl-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+    .tl-desc { font-size: 12px; color: var(--muted); line-height: 1.5; max-width: 140px; margin: 0 auto; }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--bg); }
+    .faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+    .faq-sidebar h2 { margin-bottom: 14px; }
+    .faq-sidebar p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+    .faq-contact-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; }
+    .faq-contact-link:hover { text-decoration: underline; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q { width: 100%; background: none; border: none; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: var(--ink); text-align: left; gap: 16px; transition: color .2s; }
+    .faq-q:hover { color: var(--accent); }
+    .faq-icon { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .3s; }
+    .faq-icon svg { transition: transform .3s; }
+    .faq-item.open .faq-icon { background: var(--accent); border-color: var(--accent); }
+    .faq-item.open .faq-icon svg { transform: rotate(45deg); stroke: white; }
+    .faq-a { display: none; padding: 0 0 20px; font-size: 14px; color: var(--muted); line-height: 1.75; max-width: 580px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-placeholder { font-style: italic; color: var(--border); }
+
+    /* ── WHATSAPP FLOATING ── */
+    .wa-float { position: fixed; bottom: 28px; right: 28px; width: 52px; height: 52px; border-radius: 50%; background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,.35); display: flex; align-items: center; justify-content: center; text-decoration: none; z-index: 200; transition: transform .2s, box-shadow .2s; }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,.45); }
+    .wa-tooltip { position: absolute; right: 60px; background: var(--ink); color: #fff; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 8px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .2s; }
+    .wa-float:hover .wa-tooltip { opacity: 1; }
+
+    /* ── MOBILE STICKY CTA ── */
+    .mobile-cta-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg); border-top: 1px solid var(--border); padding: 12px 20px; z-index: 150; box-shadow: 0 -4px 20px rgba(0,0,0,.08); }
+    .mobile-cta-bar a { display: block; text-align: center; background: var(--ink); color: #fff; padding: 14px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; }
+
+    /* ── STATS COUNTER ── */
+    .stat-num[data-count] { transition: none; }
+
     .fade-in { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 900px) {
-      nav { padding: 0 24px; } .nav-links { display: none; }
+      nav { padding: 0 20px; } .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .chisiamo-grid { grid-template-columns: 1fr; gap: 32px; }
+      .chisiamo-img { aspect-ratio: 16/9; }
+      .timeline-track { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .timeline-track::before { display: none; }
+      .faq-layout { grid-template-columns: 1fr; gap: 32px; }
+      .cta-box { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
+      .wa-float { bottom: 80px; }
+      .mobile-cta-bar { display: block; }
       section { padding: 72px 24px; } .hero { padding: 64px 24px; }
       .stats-strip { grid-template-columns: repeat(2,1fr); padding: 32px 24px; }
       .stat-item:nth-child(2) { border-right: none; }
@@ -236,8 +323,12 @@
     </svg>
     <span class="nav-wordmark">Electro<span>Bridge</span></span>
   </a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="#prodotti">Prodotti</a></li>
+    <li><a href="#chisiamo">Chi Siamo</a></li>
     <li><a href="#perche">Perch&#233; Noi</a></li>
     <li><a href="#prezzi">Prezzi</a></li>
     <li><a href="#cert">Certificazioni</a></li>
@@ -256,6 +347,15 @@
     <a href="preventivo.html" class="nav-cta">Preventivo &#8594;</a>
   </div>
 </nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#prodotti" onclick="closeMenu()">Prodotti</a>
+  <a href="#chisiamo" onclick="closeMenu()">Chi Siamo</a>
+  <a href="#perche" onclick="closeMenu()">Perch&#233; Noi</a>
+  <a href="#prezzi" onclick="closeMenu()">Prezzi</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#cert" onclick="closeMenu()">Certificazioni</a>
+  <a href="preventivo.html" class="mobile-cta">Richiedi Preventivo &#8594;</a>
+</div>
 
 <section class="hero">
   <div class="hero-eyebrow"><i></i> Consegna rapida &nbsp;&middot;&nbsp; EN 12845</div>
@@ -272,9 +372,9 @@
 </section>
 
 <div class="stats-strip fade-in">
-  <div class="stat-item"><div class="stat-num">8</div><div class="stat-lbl">Giorni lavorativi di consegna</div></div>
-  <div class="stat-item"><div class="stat-num"><b>&#8722;</b>63<b>%</b></div><div class="stat-lbl">vs concorrenza (Elentek)</div></div>
-  <div class="stat-item"><div class="stat-num">100<b>%</b></div><div class="stat-lbl">Test funzionali su ogni quadro</div></div>
+  <div class="stat-item"><div class="stat-num" data-count="8" data-suffix="">8</div><div class="stat-lbl">Giorni lavorativi di consegna</div></div>
+  <div class="stat-item"><div class="stat-num" data-count="63" data-prefix="−" data-suffix="%">−63%</div><div class="stat-lbl">vs concorrenza (Elentek)</div></div>
+  <div class="stat-item"><div class="stat-num" data-count="100" data-suffix="%">100%</div><div class="stat-lbl">Test funzionali su ogni quadro</div></div>
   <div class="stat-item"><div class="stat-num" style="font-size:28px;letter-spacing:-1px">EN 12845</div><div class="stat-lbl">Certificazione europea</div></div>
 </div>
 
@@ -474,6 +574,38 @@
   </div>
 </div>
 
+<!-- CHI SIAMO -->
+<section class="chisiamo-section" id="chisiamo">
+  <div class="inner">
+    <div class="chisiamo-grid">
+      <div class="chisiamo-img fade-in">
+        <div class="chisiamo-img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5" opacity=".3"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" opacity=".3"/><path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".3"/></svg>
+          <p>Foto laboratorio / team</p>
+          <small>Da aggiungere</small>
+        </div>
+      </div>
+      <div class="chisiamo-text fade-in">
+        <span class="eyebrow">Chi Siamo</span>
+        <h2>Tecnici specializzati,<br>non rivenditori.</h2>
+        <p>
+          <!-- DA COMPLETARE: inserire qui la storia dell'azienda, anno di fondazione, background dei fondatori -->
+          ElectroBridge nasce dall'esperienza diretta nel campo degli impianti elettrici industriali e antincendio. Progettiamo e assembliamo ogni quadro internamente, senza intermediari, con componenti selezionati e testati.
+        </p>
+        <p>
+          <!-- DA COMPLETARE: sede, numero dipendenti, anni di esperienza -->
+          La nostra struttura snella ci permette di mantenere costi bassi e qualit&#224; alta — e di rispondere direttamente a ogni cliente, senza call center.
+        </p>
+        <div class="chisiamo-values">
+          <div class="cvalue"><div class="cvalue-dot"></div><span class="cvalue-text">Produzione diretta in Italia — nessun assemblaggio conto terzi</span></div>
+          <div class="cvalue"><div class="cvalue-dot"></div><span class="cvalue-text">Test funzionale al 100% su ogni quadro prima della spedizione</span></div>
+          <div class="cvalue"><div class="cvalue-dot"></div><span class="cvalue-text"><!-- DA COMPLETARE: aggiungere terzo punto forza aziendale --></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRODUCTS -->
 <section class="products-section" id="prodotti">
   <div class="inner">
@@ -541,6 +673,40 @@
   </div>
 </section>
 
+<!-- TIMELINE CONSEGNA -->
+<section class="timeline-section">
+  <div class="inner">
+    <span class="eyebrow fade-in">Come Funziona</span>
+    <h2 class="fade-in">Dall&#39;ordine alla consegna<br>in 8 giorni.</h2>
+    <div class="timeline-track fade-in">
+      <div class="tl-step active">
+        <div class="tl-dot">1</div>
+        <div class="tl-day">Giorno 1</div>
+        <div class="tl-title">Conferma ordine</div>
+        <div class="tl-desc">Ricevi conferma e specifiche tecniche entro poche ore</div>
+      </div>
+      <div class="tl-step active">
+        <div class="tl-dot">2</div>
+        <div class="tl-day">Giorno 2&ndash;3</div>
+        <div class="tl-title">Assemblaggio</div>
+        <div class="tl-desc">Il quadro viene assemblato con i componenti selezionati</div>
+      </div>
+      <div class="tl-step active">
+        <div class="tl-dot">3</div>
+        <div class="tl-day">Giorno 4&ndash;6</div>
+        <div class="tl-title">Test funzionali</div>
+        <div class="tl-desc">Calibrazione, prova motore e test isolamento completi</div>
+      </div>
+      <div class="tl-step active">
+        <div class="tl-dot">4</div>
+        <div class="tl-day">Giorno 7&ndash;8</div>
+        <div class="tl-title">Consegna</div>
+        <div class="tl-desc">Spedizione con corriere tracciato. Imballaggio rinforzato.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section class="pricing-section" id="prezzi">
   <div class="inner">
@@ -571,6 +737,71 @@
       <div class="cert-card"><div class="cert-norm">UNI 11292</div><div class="cert-desc">Locali destinati a gruppi di pompaggio antincendio &mdash; requisiti costruttivi e impiantistici</div></div>
       <div class="cert-card"><div class="cert-norm">UNI 10779</div><div class="cert-desc">Impianti di estinzione incendi a reti idranti &mdash; progettazione, installazione e collaudo</div></div>
       <div class="cert-card"><div class="cert-norm">EN 17451</div><div class="cert-desc">Standard europeo di nuova generazione per sistemi di controllo pompe antincendio</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="inner">
+    <div class="faq-layout">
+      <div class="faq-sidebar fade-in">
+        <span class="eyebrow">FAQ</span>
+        <h2>Domande<br>frequenti.</h2>
+        <p>Non trovi la risposta? Scrivici direttamente, risponderemo entro poche ore.</p>
+        <a href="mailto:info@electrobridge.it" class="faq-contact-link">Contattaci &#8594;</a>
+      </div>
+      <div class="faq-list fade-in">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            I quadri vengono davvero testati prima della spedizione?
+            <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg></span>
+          </button>
+          <div class="faq-a">S&#236;, ogni quadro viene sottoposto a test funzionali completi prima dell&#39;imballo: calibrazione del sistema di controllo, prova motore sotto carico, verifica dell&#39;isolamento elettrico. Solo dopo aver superato tutti i controlli il quadro viene spedito. Forniamo il verbale di collaudo su richiesta.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Qual &#232; il tempo di consegna effettivo?
+            <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg></span>
+          </button>
+          <div class="faq-a">Per i modelli standard (Directo-EN, Stardelta-EN, Reacto-EN, Diesel-EN) il termine &#232; 8 giorni lavorativi dalla conferma dell&#39;ordine. Per configurazioni personalizzate o lotti multipli i tempi vengono concordati caso per caso in fase di preventivo.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            I prezzi indicati includono l&#39;IVA?
+            <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg></span>
+          </button>
+          <div class="faq-a">No, tutti i prezzi sono indicati IVA esclusa. La fattura elettronica viene emessa regolarmente con P.IVA italiana <!-- DA COMPLETARE: inserire P.IVA -->. Accettiamo bonifico bancario e <!-- DA COMPLETARE: aggiungere altri metodi di pagamento -->.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Consegnate in tutta Italia?
+            <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg></span>
+          </button>
+          <div class="faq-a">S&#236;, consegniamo su tutto il territorio nazionale tramite corriere espresso tracciato. <!-- DA COMPLETARE: aggiungere informazioni su costi di spedizione, eventuali consegne all'estero, se il ritiro in sede è possibile --></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            &#200; possibile richiedere configurazioni personalizzate?
+            <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg></span>
+          </button>
+          <div class="faq-a">S&#236;, gestiamo lotti piccoli e personalizzazioni senza costi eccessivi. &#200; possibile richiedere varianti su: tensione di alimentazione, tipologia di protezioni, accessori GSM/LAN, targa personalizzata con logo aziendale. Usa il configuratore preventivo per impostare le tue preferenze.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <!-- DA COMPLETARE: aggiungere domanda frequente ricevuta dai clienti -->
+            <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg></span>
+          </button>
+          <div class="faq-a faq-placeholder"><!-- DA COMPLETARE: inserire risposta --></div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
@@ -684,5 +915,16 @@
     else { nav.style.background = dark ? 'rgba(13,17,23,0.92)' : 'rgba(255,255,255,0.88)'; nav.style.boxShadow = 'none'; }
   }, { passive: true });
 </script>
+<!-- WHATSAPP FLOATING -->
+<a href="https://wa.me/39XXXXXXXXXX?text=Salve%2C+vorrei+un+preventivo+per+un+quadro+elettrico+EN+12845" class="wa-float" target="_blank" rel="noopener" title="Scrivici su WhatsApp">
+  <div class="wa-tooltip">Scrivici su WhatsApp</div>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.532 5.856L.057 23.032a.75.75 0 00.91.91l5.174-1.474A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.713 9.713 0 01-4.95-1.355l-.355-.211-3.673 1.047 1.047-3.674-.211-.355A9.712 9.712 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z" fill-rule="evenodd"/></svg>
+</a>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta-bar">
+  <a href="preventivo.html">Richiedi Preventivo Gratuito &#8594;</a>
+</div>
+
 </body>
 </html>
