@@ -1,0 +1,3 @@
+- Modficare la foto che si ingrandisce con una foto di un quadro Elettrico, quello di Potenza media.
+- Aggiungere le stede tecniche in formato excel dentor il sito, con le dimensioni e scheda tencica con le infomazioni minime per ogni quadro Elettrico
+- Aggiungere il fatto della possibilita di vedere tutte i modelli ee mettere due foto, parte elettrica et diesel
