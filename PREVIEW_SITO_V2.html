@@ -11,9 +11,19 @@
     :root {
       --ink: #0B0F1A; --ink2: #2D3142; --accent: #1447E6;
       --muted: #717179; --bg: #FFFFFF; --surface: #F7F7F8; --border: #E4E4E8;
+      --section-dark-bg: #F7F7F8; --section-dark-text: #0B0F1A;
+      --section-dark-muted: #717179; --section-dark-border: rgba(0,0,0,.07);
+      --section-dark-eyebrow: #1447E6;
+    }
+    [data-theme="dark"] {
+      --ink: #F0F2F8; --ink2: #C0C5D8; --accent: #5B8CFF;
+      --muted: #8890A8; --bg: #0D1117; --surface: #151B27; --border: #222A3A;
+      --section-dark-bg: #111827; --section-dark-text: #F0F2F8;
+      --section-dark-muted: #8890A8; --section-dark-border: rgba(255,255,255,.06);
+      --section-dark-eyebrow: #5B8CFF;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--bg); overflow-x: hidden; }
+    body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--bg); overflow-x: hidden; transition: background .3s, color .3s; }
 
     .preview-banner {
       background: #FEF3C7; border-bottom: 1px solid #F59E0B;
