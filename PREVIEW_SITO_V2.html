@@ -34,8 +34,9 @@
       background: rgba(255,255,255,0.88); backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(0,0,0,.06); padding: 0 56px; height: 64px;
       display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 37px; z-index: 100; transition: all .3s;
+      position: sticky; top: 37px; z-index: 100; transition: background .3s, border-color .3s, box-shadow .3s;
     }
+    [data-theme="dark"] nav { background: rgba(13,17,23,0.92); border-bottom-color: rgba(255,255,255,.06); }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-wordmark { font-size: 17px; font-weight: 800; color: var(--ink); letter-spacing: -.5px; }
     .nav-wordmark span { color: var(--accent); }
@@ -48,6 +49,8 @@
     .nav-link-action svg { flex-shrink: 0; }
     .nav-cta { background: var(--ink); color: #fff; padding: 9px 20px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; transition: background .2s; }
     .nav-cta:hover { background: var(--accent); }
+    .dm-toggle { background: var(--surface); border: 1px solid var(--border); color: var(--muted); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; flex-shrink: 0; }
+    .dm-toggle:hover { color: var(--ink); border-color: var(--muted); }
 
     .hero {
       min-height: 100vh; background: var(--ink);
@@ -143,18 +146,19 @@
     .why-t { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: -1px; margin-bottom: 10px; }
     .why-d { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 360px; }
 
-    .pricing-section { background: #18243A; }
-    .pricing-section h2 { color: #fff; }
-    .pricing-section .lead { color: rgba(255,255,255,.5); }
-    .pricing-section .eyebrow { color: rgba(255,255,255,.35); }
-    .ptable { width: 100%; border-collapse: collapse; }
-    .ptable thead tr { border-bottom: 1px solid rgba(255,255,255,.07); }
-    .ptable th { padding: 14px 20px; text-align: left; font-size: 11px; font-weight: 700; color: rgba(255,255,255,.28); letter-spacing: 1px; text-transform: uppercase; }
-    .ptable th.ours { color: rgba(255,255,255,.75); }
-    .ptable td { padding: 18px 20px; font-size: 14px; color: rgba(255,255,255,.5); border-bottom: 1px solid rgba(255,255,255,.04); }
-    .ptable td.ours { color: #fff; font-weight: 800; font-size: 18px; letter-spacing: -.5px; }
-    .ptable tr:hover td { background: rgba(255,255,255,.02); }
-    .spill { display: inline-block; background: rgba(20,71,230,.18); border: 1px solid rgba(20,71,230,.35); color: #7ca2ff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 100px; }
+    .pricing-section { background: var(--bg); }
+    .pricing-section h2 { color: var(--ink); }
+    .pricing-section .lead { color: var(--muted); }
+    .pricing-section .eyebrow { color: var(--accent); }
+    .ptable { width: 100%; border-collapse: collapse; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .ptable thead tr { border-bottom: 1px solid var(--border); background: var(--surface); }
+    .ptable th { padding: 14px 20px; text-align: left; font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+    .ptable th.ours { color: var(--accent); }
+    .ptable td { padding: 18px 20px; font-size: 14px; color: var(--muted); border-bottom: 1px solid var(--border); background: var(--bg); }
+    .ptable td.ours { color: var(--ink); font-weight: 800; font-size: 18px; letter-spacing: -.5px; }
+    .ptable tr:last-child td { border-bottom: none; }
+    .ptable tr:hover td { background: var(--surface); }
+    .spill { display: inline-block; background: rgba(20,71,230,.08); border: 1px solid rgba(20,71,230,.2); color: var(--accent); font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 100px; }
 
     .cert-section { background: var(--surface); }
     .cert-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
@@ -181,17 +185,17 @@
     .btn-sub { width: 100%; padding: 15px; background: var(--ink); color: #fff; border: none; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: background .2s; }
     .btn-sub:hover { background: var(--accent); }
 
-    footer { background: #18243A; padding: 64px 56px 32px; }
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 64px 56px 32px; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1180px; margin: 0 auto 56px; }
-    .fbrand-txt { font-size: 13px; color: rgba(255,255,255,.3); line-height: 1.7; margin-top: 14px; max-width: 240px; }
-    .fcol h4 { font-size: 11px; font-weight: 700; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; }
-    .fcol a { display: block; font-size: 13px; color: rgba(255,255,255,.3); text-decoration: none; margin-bottom: 10px; transition: color .2s; }
-    .fcol a:hover { color: #fff; }
-    .footer-bottom { max-width: 1180px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,.05); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-size: 12px; color: rgba(255,255,255,.2); }
+    .fbrand-txt { font-size: 13px; color: var(--muted); line-height: 1.7; margin-top: 14px; max-width: 240px; }
+    .fcol h4 { font-size: 11px; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; }
+    .fcol a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 10px; transition: color .2s; }
+    .fcol a:hover { color: var(--ink); }
+    .footer-bottom { max-width: 1180px; margin: 0 auto; border-top: 1px solid var(--border); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 12px; color: var(--muted); }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 12px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: rgba(255,255,255,.5); }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--ink); }
 
     .fade-in { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -249,7 +253,8 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 011.05-.24 11.47 11.47 0 003.6.6 1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1 11.47 11.47 0 00.6 3.6 1 1 0 01-.25 1.05l-2.25 2.15z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Chiamaci
     </a>
-    <a href="#contatti" class="nav-cta">Preventivo &#8594;</a>
+    <button class="dm-toggle" id="dm-toggle" title="Cambia tema" onclick="toggleDark()"><svg id="dm-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <a href="preventivo.html" class="nav-cta">Preventivo &#8594;</a>
   </div>
 </nav>
 
@@ -259,7 +264,7 @@
   <p class="hero-sub">Qualit&#224; costruttiva superiore. Prezzi fino al <strong style="color:#fff;font-weight:700">63% pi&#249; bassi</strong> della concorrenza. Test funzionali completi su ogni unit&#224;.</p>
   <div class="hero-btns">
     <a href="#prodotti" class="btn-primary">Scopri i Prodotti</a>
-    <a href="#contatti" class="btn-ghost">Richiedi Preventivo</a>
+    <a href="preventivo.html" class="btn-ghost">Richiedi Preventivo</a>
   </div>
   <div class="hero-scroll">
     <span>Scroll</span>
@@ -552,7 +557,7 @@
         <tr><td>Stardelta-EN</td><td>Stella-Triangolo</td><td>4&ndash;132 kW</td><td class="ours">su richiesta</td><td><span class="spill">fino a &#8722;60%</span></td></tr>
       </tbody>
     </table>
-    <p style="font-size:11px;color:rgba(255,255,255,.18);margin-top:20px">* Prezzi IVA esclusa. Prezzi concorrenza rilevati online. Prezzi ROIV indicativi &mdash; richiedi preventivo personalizzato.</p>
+    <p style="font-size:11px;color:var(--muted);margin-top:20px;opacity:.7">* Prezzi IVA esclusa. Prezzi concorrenza rilevati online. Prezzi ROIV indicativi &mdash; richiedi preventivo personalizzato.</p>
   </div>
 </section>
 
@@ -601,7 +606,7 @@
     <div>
       <a href="#" class="nav-logo" style="text-decoration:none">
         <svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="9" fill="#1D2230"/><line x1="9" y1="10" x2="9" y2="26" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".6"/><line x1="9" y1="10" x2="16" y2="10" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".6"/><line x1="9" y1="18" x2="15" y2="18" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".6"/><line x1="9" y1="26" x2="16" y2="26" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".6"/><line x1="20" y1="10" x2="20" y2="26" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".6"/><path d="M20 10 Q28 10 28 14 Q28 18 20 18" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/><path d="M20 18 Q29 18 29 22 Q29 26 20 26" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/><path d="M22 8 L17 18 L21 18 L14 28" stroke="#1447E6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size:15px;font-weight:800;color:rgba(255,255,255,.65);letter-spacing:-.5px">Electro<span style="color:#1447E6">Bridge</span></span>
+        <span style="font-size:15px;font-weight:800;color:var(--ink);letter-spacing:-.5px">Electro<span style="color:var(--accent)">Bridge</span></span>
       </a>
       <p class="fbrand-txt">Quadri elettrici di comando per impianti antincendio conformi EN 12845. Qualit&#224; superiore al giusto prezzo.</p>
     </div>
@@ -640,10 +645,32 @@
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
 
+
+  function toggleDark() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('eb-theme', isDark ? 'light' : 'dark');
+    const icon = document.getElementById('dm-icon');
+    if (!isDark) {
+      icon.innerHTML = '<circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>';
+    } else {
+      icon.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>';
+    }
+  }
+  // Ripristina tema salvato
+  (function() {
+    const saved = localStorage.getItem('eb-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.getElementById('dm-icon').innerHTML = '<circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>';
+    }
+  })();
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) { nav.style.background = 'rgba(255,255,255,0.97)'; nav.style.boxShadow = '0 1px 0 rgba(0,0,0,.07)'; }
-    else { nav.style.background = 'rgba(255,255,255,0.88)'; nav.style.boxShadow = 'none'; }
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (window.scrollY > 60) { nav.style.background = dark ? 'rgba(13,17,23,0.97)' : 'rgba(255,255,255,0.97)'; nav.style.boxShadow = '0 1px 0 ' + (dark ? 'rgba(255,255,255,.05)' : 'rgba(0,0,0,.07)'); }
+    else { nav.style.background = dark ? 'rgba(13,17,23,0.92)' : 'rgba(255,255,255,0.88)'; nav.style.boxShadow = 'none'; }
   }, { passive: true });
 </script>
 </body>
