@@ -29,24 +29,32 @@
 
     /* PREVIEW BANNER */
 
-    /* NAV */
-    nav { position: sticky; top: 32px; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); height: var(--nav-h); display: flex; align-items: center; transition: background .3s, border-color .3s; }
-    .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; gap: 32px; }
-    .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-    .nav-logo img { height: 44px; width: auto; display: block; }
-    [data-theme="dark"] .nav-logo img { filter: brightness(0) invert(1); }
-    .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; }
-    .nav-links a { color: var(--ink2); text-decoration: none; font-size: .875rem; font-weight: 500; padding: 6px 10px; border-radius: 6px; transition: color .15s, background .15s; white-space: nowrap; }
-    .nav-links a:hover { color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
-    .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-    .nav-action-link { color: var(--muted); text-decoration: none; font-size: .8rem; display: flex; align-items: center; gap: 4px; padding: 6px 8px; border-radius: 6px; transition: color .15s; white-space: nowrap; }
-    .nav-action-link:hover { color: var(--accent); }
-    .btn-nav { background: var(--accent); color: white; border: none; padding: 8px 18px; border-radius: 8px; font-size: .875rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: background .15s, transform .1s; white-space: nowrap; }
-    .btn-nav:hover { background: var(--accent-dark); transform: translateY(-1px); }
-    .dark-toggle { background: none; border: 1px solid var(--border); color: var(--ink2); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: border-color .15s, color .15s; }
-    .dark-toggle:hover { border-color: var(--accent); color: var(--accent); }
-    .hamburger { display: none; background: none; border: 1px solid var(--border); color: var(--ink2); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; padding: 8px; }
-    .hamburger span { display: block; width: 18px; height: 2px; background: var(--ink2); border-radius: 2px; transition: all .2s; }
+    /* HEADER */
+    header { position: sticky; top: 0; z-index: 100; }
+
+    /* TOPBAR — banda arancione con link di navigazione */
+    .topbar { background: var(--accent); }
+    .topbar-inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; gap: 8px; height: 48px; }
+    .topbar-links { display: flex; align-items: center; gap: 2px; flex: 1; }
+    .topbar-links a { color: rgba(255,255,255,.93); text-decoration: none; font-size: .875rem; font-weight: 500; padding: 5px 10px; border-radius: 6px; transition: background .15s; white-space: nowrap; }
+    .topbar-links a:hover { background: rgba(255,255,255,.18); color: white; }
+    .topbar-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .topbar-action-link { color: rgba(255,255,255,.85); text-decoration: none; font-size: .8rem; display: flex; align-items: center; gap: 4px; padding: 5px 8px; border-radius: 6px; transition: background .15s; white-space: nowrap; }
+    .topbar-action-link:hover { background: rgba(255,255,255,.18); color: white; }
+    .btn-topbar { background: white; color: var(--accent); border: none; padding: 7px 18px; border-radius: 7px; font-size: .875rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background .15s; white-space: nowrap; }
+    .btn-topbar:hover { background: rgba(255,255,255,.88); }
+    .dark-toggle { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); color: white; width: 32px; height: 32px; border-radius: 7px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .9rem; transition: background .15s; }
+    .dark-toggle:hover { background: rgba(255,255,255,.28); }
+    .hamburger { display: none; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.35); color: white; width: 36px; height: 36px; border-radius: 8px; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; padding: 8px; }
+    .hamburger span { display: block; width: 18px; height: 2px; background: white; border-radius: 2px; transition: all .2s; }
+
+    /* LOGOBAR — banda bianca con logo grande */
+    .logobar { background: #ffffff; border-bottom: 1px solid #E8E8E8; }
+    [data-theme="dark"] .logobar { background: var(--bg); border-bottom-color: var(--border); }
+    .logobar-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; }
+    .logobar-logo { text-decoration: none; display: flex; align-items: center; }
+    .logobar-logo img { height: 76px; width: auto; display: block; }
+    [data-theme="dark"] .logobar-logo img { filter: brightness(0) invert(1); }
 
     /* MOBILE NAV */
     .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 80px 24px 24px; flex-direction: column; gap: 8px; overflow-y: auto; }
@@ -72,10 +80,10 @@
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
     /* SCROLL ZOOM PANEL */
-    .scroll-zoom-section { position: relative; height: min(78vh, 760px); min-height: 560px; overflow: hidden; background: #0F172A; }
+    .scroll-zoom-section { position: relative; height: min(78vh, 760px); min-height: 560px; overflow: hidden; background: var(--accent); }
     .scroll-zoom-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; will-change: transform; }
     .scroll-zoom-img { width: 100%; height: 100%; object-fit: cover; transform-origin: center center; transition: transform .05s linear; }
-    .scroll-zoom-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(15,23,42,.35) 0%, rgba(15,23,42,.1) 50%, rgba(15,23,42,.65) 100%); pointer-events: none; }
+    .scroll-zoom-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(234,88,12,.25) 0%, rgba(234,88,12,.05) 40%, rgba(180,60,0,.55) 100%); pointer-events: none; }
     .scroll-zoom-caption { position: absolute; bottom: 40px; left: 0; right: 0; text-align: center; color: white; pointer-events: none; }
     .scroll-zoom-caption h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 6px; text-shadow: 0 2px 12px rgba(0,0,0,.4); }
     .scroll-zoom-caption p { font-size: .9rem; color: rgba(255,255,255,.75); text-shadow: 0 1px 6px rgba(0,0,0,.4); }
@@ -295,8 +303,8 @@
 
     /* RESPONSIVE */
     @media (max-width: 960px) {
-      .nav-links { display: none; }
-      .nav-action-link { display: none; }
+      .topbar-links { display: none; }
+      .topbar-action-link { display: none; }
       .hamburger { display: flex; }
       .chi-siamo-grid { grid-template-columns: 1fr; }
       .chi-siamo-visual { aspect-ratio: 16/7; }
@@ -394,31 +402,42 @@
 <body>
 
 
-<!-- NAV -->
-<nav id="main-nav">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo" aria-label="BEK Electric Systems">
-      <img src="assets/BE_Electric_06_minimal_line_bek_PRINCIPALE.svg" alt="BEK Electric Systems — Quadri Elettrici e Automazione">
-    </a>
-    <div class="nav-links">
-      <a href="#prodotti">Prodotti</a>
-      <a href="#chi-siamo">Chi Siamo</a>
-      <a href="#perche-noi">Perché Noi</a>
-      <a href="#certificazioni">Certificazioni</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contatti">Contatti</a>
-    </div>
-    <div class="nav-actions">
-      <a href="mailto:info@bekelectric.com" class="nav-action-link">✉ info@bekelectric.com</a>
-      <a href="tel:+390412345678" class="nav-action-link">📞 +39 041 234 5678</a>
-      <button class="dark-toggle" id="darkToggle" aria-label="Modalità scura">🌙</button>
-      <a href="PREVENTIVO.html" class="btn-nav">Preventivo</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+<!-- HEADER -->
+<header id="main-header">
+
+  <!-- BANDA ARANCIONE: navigazione + azioni -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-links">
+        <a href="#prodotti">Prodotti</a>
+        <a href="#chi-siamo">Chi Siamo</a>
+        <a href="#perche-noi">Perché Noi</a>
+        <a href="#certificazioni">Certificazioni</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contatti">Contatti</a>
+      </div>
+      <div class="topbar-actions">
+        <a href="mailto:info@bekelectric.com" class="topbar-action-link">✉ info@bekelectric.com</a>
+        <a href="tel:+390412345678" class="topbar-action-link">📞 +39 041 234 5678</a>
+        <button class="dark-toggle" id="darkToggle" aria-label="Modalità scura">🌙</button>
+        <a href="PREVENTIVO.html" class="btn-topbar">Preventivo</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </div>
-</nav>
+
+  <!-- BANDA BIANCA: logo ufficiale grande -->
+  <div class="logobar">
+    <div class="logobar-inner">
+      <a href="#" class="logobar-logo" aria-label="BEK Electric Systems — Home">
+        <img src="assets/BE_Electric_06_minimal_line_bek_PRINCIPALE.svg" alt="BEK Electric Systems">
+      </a>
+    </div>
+  </div>
+
+</header>
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
@@ -1205,7 +1224,7 @@ hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
 mobileNavClose.addEventListener('click', closeMobileNav);
 document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', closeMobileNav));
 
-document.getElementById('main-nav').style.top = '0';
+// header già sticky top:0
 
 /* ─── PRODUCTS DATA (embedded — no server required) ─── */
 const _PRODUCTS_DATA=[{"code":"6003011","name":"EGE SMART 3","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":3,"hp":5,"currentMax":7,"box":{"h":500,"l":400,"w":200},"weight":16.8},{"code":"6005511","name":"EGE SMART 5,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":5.5,"hp":7.5,"currentMax":12,"box":{"h":500,"l":400,"w":200},"weight":16.8},{"code":"6007511","name":"EGE SMART 7,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":7.5,"hp":10,"currentMax":16,"box":{"h":500,"l":400,"w":200},"weight":17},{"code":"6011011","name":"EGE SMART 11","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":11,"hp":15,"currentMax":24,"box":{"h":500,"l":400,"w":200},"weight":17.6},{"code":"6011021","name":"EGE SMART 11 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":11,"hp":15,"currentMax":24,"box":{"h":500,"l":400,"w":200},"weight":18.3},{"code":"6015011","name":"EGE SMART 15","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":15,"hp":20,"currentMax":32,"box":{"h":500,"l":400,"w":200},"weight":17.8},{"code":"6015021","name":"EGE SMART 15 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":15,"hp":20,"currentMax":32,"box":{"h":500,"l":400,"w":200},"weight":18},{"code":"6018511","name":"EGE SMART 18,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":18.5,"hp":25,"currentMax":36,"box":{"h":500,"l":400,"w":200},"weight":18.5},{"code":"6018521","name":"EGE SMART 18,5 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":18.5,"hp":25,"currentMax":36,"box":{"h":500,"l":400,"w":200},"weight":18.5},{"code":"6022011","name":"EGE SMART 22","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":22,"hp":30,"currentMax":40,"box":{"h":500,"l":400,"w":200},"weight":19},{"code":"6022021","name":"EGE SMART 22 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":22,"hp":30,"currentMax":40,"box":{"h":500,"l":400,"w":200},"weight":19.2},{"code":"6030021","name":"EGE SMART 30 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":30,"hp":40,"currentMax":60,"box":{"h":500,"l":400,"w":200},"weight":20.1},{"code":"6037022","name":"EGE SMART 37 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":37,"hp":50,"currentMax":70,"box":{"h":700,"l":500,"w":250},"weight":33.6},{"code":"6045022","name":"EGE SMART 45 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":45,"hp":60,"currentMax":80,"box":{"h":700,"l":500,"w":250},"weight":34},{"code":"6055022","name":"EGE SMART 55 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":55,"hp":75,"currentMax":100,"box":{"h":700,"l":500,"w":250},"weight":38.5},{"code":"6075023","name":"EGE SMART 75 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":75,"hp":100,"currentMax":132,"box":{"h":800,"l":600,"w":250},"weight":54.5},{"code":"6090023","name":"EGE SMART 90 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":90,"hp":125,"currentMax":160,"box":{"h":800,"l":600,"w":250},"weight":64},{"code":"6110023","name":"EGE SMART 110 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":110,"hp":150,"currentMax":200,"box":{"h":800,"l":600,"w":250},"weight":85},{"code":"6132024","name":"EGE SMART 132 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":132,"hp":200,"currentMax":240,"box":{"h":1000,"l":800,"w":300},"weight":95},{"code":"6160024","name":"EGE SMART 160 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":160,"hp":200,"currentMax":296,"box":{"h":1000,"l":800,"w":300},"weight":100}];
