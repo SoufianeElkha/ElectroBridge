@@ -256,6 +256,77 @@
       section { padding: 56px 20px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
     }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fireShift {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+    .hero-fire {
+      background: linear-gradient(90deg, #F97316 0%, #EF4444 30%, #FBBF24 55%, #EF4444 75%, #F97316 100%);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fireShift 2.8s linear infinite;
+    }
+    /* hero word entrance */
+    .hw {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(52px) skewY(4deg);
+      transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+    }
+    /* hero subtitle + ctas entrance */
+    .hero-sub-enter {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    /* scroll reveal */
+    .rv {
+      opacity: 0;
+      transform: translateY(44px);
+      transition: opacity .75s cubic-bezier(.22,1,.36,1), transform .75s cubic-bezier(.22,1,.36,1);
+    }
+    .rv.rvl { transform: translateX(-44px); }
+    .rv.rvr { transform: translateX(44px); }
+    .rv.vis { opacity: 1 !important; transform: none !important; }
+    /* hero animated bg */
+    .hero { position: relative; overflow: hidden; }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, color-mix(in srgb, var(--accent) 14%, transparent) 0%, transparent 70%);
+      animation: heroGlow 6s ease-in-out infinite alternate;
+    }
+    @keyframes heroGlow {
+      from { opacity: .6; transform: scaleX(1); }
+      to   { opacity: 1;  transform: scaleX(1.15); }
+    }
+    /* stat counter glow */
+    .stat-val { display: inline-block; }
+    /* section entrance: highlight bar */
+    .section-title.vis::after {
+      content: '';
+      display: block; width: 52px; height: 3px;
+      background: var(--accent); border-radius: 2px;
+      margin: 10px auto 0;
+      animation: barGrow .5s cubic-bezier(.22,1,.36,1) .4s both;
+    }
+    @keyframes barGrow { from { width: 0; } to { width: 52px; } }
+    /* card hover lift (stronger) */
+    .product-card:hover, .feature-card:hover, .cert-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 12px 40px rgba(0,0,0,.13);
+    }
+    /* btn pulse on first load */
+    @keyframes btnPulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(249,115,22,.45); }
+      50%      { box-shadow: 0 0 0 12px rgba(249,115,22,0); }
+    }
+    .btn-primary { animation: btnPulse 2.4s ease-in-out 1.6s 3; }
+
   </style>
 </head>
 <body>
@@ -311,8 +382,7 @@
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <div class="hero-badge">⚡ Quadri Elettrici Smart · EN 12845</div>
-    <h1>Quadri Elettrici per<br>Impianti <span>Antincendio</span></h1>
+    <h1 id="heroTitle">Quadri Elettrici per<br>Impianti <span>Antincendio</span></h1>
     <div class="hero-subtitle-tag">Conformi EN 12845 · Qualità certificata · Consegna rapida</div>
     <p>BEK Electric System progetta e produce quadri di comando per elettropompe antincendio. Materiali premium, test funzionali completi su ogni unità, assistenza diretta senza intermediari.</p>
     <div class="hero-ctas">
@@ -987,6 +1057,146 @@ document.getElementById('cookieDecline').addEventListener('click', () => { local
 
 /* ─── INIT ─── */
 if (document.getElementById('productsGrid')) loadProducts();
+
+/* ════════════════════════════════════
+   HERO TITLE — word-by-word reveal
+   ════════════════════════════════════ */
+(function() {
+  const h1 = document.getElementById('heroTitle');
+  if (!h1) return;
+
+  // Re-build inner HTML with .hw spans per word
+  h1.innerHTML =
+    '<span class="hw">Quadri</span> ' +
+    '<span class="hw">Elettrici</span> ' +
+    '<span class="hw">per</span><br>' +
+    '<span class="hw">Impianti</span> ' +
+    '<span class="hw hero-fire">Antincendio</span>';
+
+  // Staggered entrance
+  h1.querySelectorAll('.hw').forEach(function(el, i) {
+    setTimeout(function() {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0) skewY(0)';
+    }, 120 + i * 130);
+  });
+
+  // Sub-elements (subtitle tag, paragraph, CTAs)
+  document.querySelectorAll('.hero-subtitle-tag, .hero p, .hero-ctas').forEach(function(el, i) {
+    el.classList.add('hero-sub-enter');
+    setTimeout(function() {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 700 + i * 160);
+  });
+})();
+
+/* ════════════════════════════════════
+   SCROLL REVEAL — IntersectionObserver
+   ════════════════════════════════════ */
+(function() {
+  // Elements to reveal
+  var selectors = [
+    '.section-tag', '.section-title', '.section-desc',
+    '.feature-card', '.cert-card', '.why-item',
+    '.faq-item', '.contact-card',
+    '.stat-item'
+  ];
+  selectors.forEach(function(sel) {
+    document.querySelectorAll(sel).forEach(function(el, i) {
+      el.classList.add('rv');
+      el.style.transitionDelay = (i % 6) * 80 + 'ms';
+    });
+  });
+
+  // Product/category cards in homepage
+  document.querySelectorAll('#prodotti a[href*="catalogo"]').forEach(function(el, i) {
+    el.classList.add('rv');
+    el.style.transitionDelay = i * 120 + 'ms';
+  });
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('vis');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.rv').forEach(function(el) { obs.observe(el); });
+})();
+
+/* ════════════════════════════════════
+   STATS STRIP — animated counters
+   ════════════════════════════════════ */
+(function() {
+  var counters = [
+    { sel: '.stats-strip', targets: [] }
+  ];
+  // Find all stat values
+  var strip = document.querySelector('.stats-strip');
+  if (!strip) return;
+
+  // Map data to each stat-val we can find
+  var vals = strip.querySelectorAll('.stat-val, [class*="stat"] strong, [class*="stat"] .val');
+  // Fallback: query by text pattern — grab the big numbers
+  var bigEls = Array.from(strip.querySelectorAll('*')).filter(function(el) {
+    return el.children.length === 0 && /^\d[\d+\-\.]*\+?$/.test(el.textContent.trim());
+  });
+
+  bigEls.forEach(function(el) {
+    var raw = el.textContent.trim();
+    var suffix = raw.replace(/[\d\.]/g,'');
+    var num = parseFloat(raw);
+    if (isNaN(num)) return;
+    el.dataset.target = num;
+    el.dataset.suffix = suffix;
+    el.textContent = '0' + suffix;
+  });
+
+  var statsObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      statsObs.unobserve(e.target);
+      e.target.querySelectorAll('[data-target]').forEach(function(el) {
+        var target = parseFloat(el.dataset.target);
+        var suffix = el.dataset.suffix || '';
+        var start = null;
+        var dur = 1400;
+        function step(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var ease = 1 - Math.pow(1 - p, 3);
+          var val = target % 1 !== 0 ? (ease * target).toFixed(1) : Math.round(ease * target);
+          el.textContent = val + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    });
+  }, { threshold: 0.5 });
+  if (strip) statsObs.observe(strip);
+})();
+
+/* ════════════════════════════════════
+   CURSOR GLOW on hero
+   ════════════════════════════════════ */
+(function() {
+  var hero = document.querySelector('.hero');
+  if (!hero) return;
+  var glow = document.createElement('div');
+  glow.style.cssText = 'position:absolute;width:320px;height:320px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(249,115,22,.12) 0%,transparent 70%);transform:translate(-50%,-50%);transition:left .08s ease,top .08s ease;z-index:0;';
+  hero.appendChild(glow);
+  hero.addEventListener('mousemove', function(e) {
+    var r = hero.getBoundingClientRect();
+    glow.style.left = (e.clientX - r.left) + 'px';
+    glow.style.top  = (e.clientY - r.top)  + 'px';
+  });
+  hero.addEventListener('mouseleave', function() {
+    glow.style.left = '50%'; glow.style.top = '40%';
+  });
+})();
 </script>
 
 <!-- ─── FLOATING CONTACT WIDGET ─── -->
