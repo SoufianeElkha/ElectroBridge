@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 157" role="img" aria-label="BEK Electric Systems">
+  <!-- BEK -->
+  <text x="0" y="108" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="116" fill="#F26522">BEK</text>
+
+  <!-- Barra verticale arancio -->
+  <rect x="238" y="8" width="4" height="110" fill="#F26522"/>
+
+  <!-- Electric -->
+  <text x="254" y="62" font-family="Arial, sans-serif" font-weight="700" font-size="52" fill="#231F20">Electric</text>
+
+  <!-- Systems (grigio, spaziato) -->
+  <text x="257" y="110" font-family="Arial, sans-serif" font-weight="400" font-size="43" fill="#7A7A7A" letter-spacing="6">Systems</text>
+
+  <!-- Linea orizzontale arancio -->
+  <rect x="0" y="125" width="500" height="3.5" fill="#F26522"/>
+
+  <!-- Tagline -->
+  <text x="1" y="150" font-family="Arial, sans-serif" font-weight="400" font-size="12.5" fill="#7A7A7A" letter-spacing="7.5">QUADRI ELETTRICI • AUTOMAZIONE</text>
+</svg>
