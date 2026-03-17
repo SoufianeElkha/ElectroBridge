@@ -32,13 +32,11 @@
     .preview-banner span { opacity: .7; }
 
     /* NAV */
-    nav { position: sticky; top: 32px; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); height: var(--nav-h); display: flex; align-items: center; transition: background .3s, border-color .3s, backdrop-filter .3s; }
-    nav.scrolled { background: rgba(255,255,255,.82); backdrop-filter: blur(16px); }
-    [data-theme="dark"] nav.scrolled { background: rgba(15,23,42,.82); }
+    nav { position: sticky; top: 32px; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); height: var(--nav-h); display: flex; align-items: center; transition: background .3s, border-color .3s; }
     .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; gap: 32px; }
     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
-    .nav-logo-icon { width: 36px; height: 36px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-    .nav-logo-icon svg { width: 20px; height: 20px; fill: white; }
+    .nav-logo-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .nav-logo-icon img { width: 36px; height: 36px; display: block; }
     .nav-logo-text { font-size: 1.1rem; font-weight: 800; color: var(--ink); letter-spacing: -.02em; }
     .nav-logo-text span { color: var(--accent); }
     .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; }
@@ -77,7 +75,7 @@
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
     /* SCROLL ZOOM PANEL */
-    .scroll-zoom-section { position: relative; height: 680px; overflow: hidden; background: #0F172A; }
+    .scroll-zoom-section { position: relative; height: 520px; overflow: hidden; background: #0F172A; }
     .scroll-zoom-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; will-change: transform; }
     .scroll-zoom-img { width: 100%; height: 100%; object-fit: cover; transform-origin: center center; transition: transform .05s linear; }
     .scroll-zoom-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(15,23,42,.35) 0%, rgba(15,23,42,.1) 50%, rgba(15,23,42,.65) 100%); pointer-events: none; }
@@ -125,24 +123,6 @@
     .product-cta { display: block; width: 100%; text-align: center; background: color-mix(in srgb, var(--accent) 8%, transparent); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); padding: 9px; border-radius: 8px; font-size: .875rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background .15s, color .15s; margin-top: 14px; }
     .product-cta:hover { background: var(--accent); color: white; }
     .products-loading { text-align: center; padding: 60px; color: var(--muted); font-size: .95rem; }
-
-    /* SERVICES GRID */
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .service-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 32px 28px; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 16px; position: relative; overflow: hidden; transition: border-color .2s, box-shadow .2s, transform .2s; }
-    .service-card:hover { border-color: var(--accent); box-shadow: 0 8px 32px color-mix(in srgb, var(--accent) 15%, transparent); transform: translateY(-4px); }
-    .service-card--primary { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 4%, var(--bg)); }
-    .service-card--primary:hover { background: color-mix(in srgb, var(--accent) 8%, var(--bg)); }
-    .service-icon { font-size: 2.4rem; }
-    .service-content h3 { font-size: 1.1rem; font-weight: 800; color: var(--ink); margin-bottom: 8px; letter-spacing: -.02em; }
-    .service-content p { font-size: .875rem; color: var(--muted); line-height: 1.65; }
-    .service-cta { font-size: .875rem; font-weight: 700; color: var(--accent); margin-top: 8px; display: block; }
-    .service-badge { position: absolute; top: 20px; right: 20px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-dark); font-size: .7rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; }
-    @media (max-width: 960px) { .services-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 640px) { .services-grid { grid-template-columns: 1fr; } }
-
-    /* REVEAL ANIMATION */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* CHI SIAMO */
     .chi-siamo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
@@ -202,8 +182,8 @@
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
     .footer-brand { }
     .footer-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
-    .footer-logo-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
-    .footer-logo-icon svg { width: 17px; height: 17px; fill: white; }
+    .footer-logo-icon { width: 32px; height: 32px; border-radius: 7px; overflow: hidden; }
+    .footer-logo-icon img { width: 32px; height: 32px; display: block; }
     .footer-logo-text { font-size: 1rem; font-weight: 800; color: white; }
     .footer-tagline { font-size: .8rem; line-height: 1.6; max-width: 240px; }
     .footer-col h5 { color: white; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px; }
@@ -266,7 +246,6 @@
       .perche-grid { grid-template-columns: 1fr 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .contatti-grid { grid-template-columns: 1fr; }
-      .servizi-grid { grid-template-columns: 1fr; gap: 20px; }
     }
     @media (max-width: 640px) {
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
@@ -291,7 +270,7 @@
   <div class="nav-inner">
     <a href="#" class="nav-logo" aria-label="BEK Electric System">
       <div class="nav-logo-icon">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L4.5 13.5H11L9 22L19.5 10H13L13 2Z"/></svg>
+        <img src="assets/logo.svg" alt="BEK Electric logo">
       </div>
       <span class="nav-logo-text"><span>BEK</span> Electric</span>
     </a>
@@ -304,7 +283,7 @@
       <a href="#contatti">Contatti</a>
     </div>
     <div class="nav-actions">
-      <a href="mailto:info@bekelectric.com" class="nav-action-link">✉ info@bekelectric.com</a>
+      <a href="mailto:info@bekelectric.it" class="nav-action-link">✉ info@bekelectric.it</a>
       <a href="tel:+390412345678" class="nav-action-link">📞 +39 041 234 5678</a>
       <button class="dark-toggle" id="darkToggle" aria-label="Modalità scura">🌙</button>
       <a href="#" class="btn-nav" onclick="openModal('preventivo'); return false;">Preventivo</a>
@@ -324,7 +303,7 @@
   <a href="#certificazioni" class="mobile-link">Certificazioni</a>
   <a href="#faq" class="mobile-link">FAQ</a>
   <a href="#contatti" class="mobile-link">Contatti</a>
-  <a href="mailto:info@bekelectric.com" class="mobile-link">✉ info@bekelectric.com</a>
+  <a href="mailto:info@bekelectric.it" class="mobile-link">✉ info@bekelectric.it</a>
   <a href="tel:+390412345678" class="mobile-link">📞 +39 041 234 5678</a>
   <a href="#" class="btn-primary mobile-nav-cta" onclick="openModal('preventivo'); closeMobileNav(); return false;">Richiedi Preventivo</a>
 </div>
@@ -347,19 +326,19 @@
 <div class="stats-strip">
   <div class="stats-inner">
     <div class="stat-item">
-      <div class="stat-number" data-counter="20" data-suffix="+">20+</div>
+      <div class="stat-number">20+</div>
       <div class="stat-label">Modelli disponibili</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number" data-static="3–160 kW">3–160 kW</div>
+      <div class="stat-number">3–160 kW</div>
       <div class="stat-label">Gamma di potenza</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number" data-static="EN 12845">EN 12845</div>
+      <div class="stat-number">EN 12845</div>
       <div class="stat-label">Standard certificato</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number" data-counter="8" data-suffix=" gg">8 gg</div>
+      <div class="stat-number">8 gg</div>
       <div class="stat-label">Consegna rapida</div>
     </div>
   </div>
@@ -368,127 +347,8 @@
 <!-- SCROLL ZOOM PANEL -->
 <div class="scroll-zoom-section" id="scrollZoomSection">
   <div class="scroll-zoom-wrap" id="scrollZoomWrap">
-    <!-- Placeholder SVG quadro elettrico — sostituire con immagine reale -->
-    <svg class="scroll-zoom-img" id="scrollZoomImg" viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <!-- Background -->
-      <rect width="900" height="520" fill="#1E293B"/>
-      <!-- Cabinet outer body -->
-      <rect x="250" y="30" width="400" height="460" rx="8" fill="#334155" stroke="#475569" stroke-width="2"/>
-      <!-- Cabinet door frame -->
-      <rect x="265" y="44" width="370" height="432" rx="6" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
-      <!-- Top section - header panel -->
-      <rect x="275" y="54" width="350" height="60" rx="4" fill="#0F172A" stroke="#334155" stroke-width="1"/>
-      <text x="450" y="82" text-anchor="middle" font-family="monospace" font-size="13" font-weight="bold" fill="#F97316">BEK Electric System</text>
-      <text x="450" y="100" text-anchor="middle" font-family="monospace" font-size="9" fill="#94A3B8">QUADRO DI COMANDO ANTINCENDIO · EN 12845</text>
-      <!-- Main display area -->
-      <rect x="275" y="125" width="220" height="140" rx="4" fill="#0F172A" stroke="#334155" stroke-width="1"/>
-      <!-- Display screen -->
-      <rect x="285" y="133" width="200" height="100" rx="3" fill="#0A0F1E" stroke="#1E40AF" stroke-width="1.5"/>
-      <!-- Screen content -->
-      <text x="385" y="158" text-anchor="middle" font-family="monospace" font-size="8" fill="#22D3EE">SISTEMA ATTIVO</text>
-      <rect x="295" y="165" width="180" height="1" fill="#1E3A5F" opacity="0.6"/>
-      <text x="295" y="180" font-family="monospace" font-size="7" fill="#64748B">POMPA 1:</text>
-      <text x="380" y="180" font-family="monospace" font-size="7" fill="#22C55E">■ PRONTA</text>
-      <text x="295" y="193" font-family="monospace" font-size="7" fill="#64748B">POMPA 2:</text>
-      <text x="380" y="193" font-family="monospace" font-size="7" fill="#22C55E">■ PRONTA</text>
-      <text x="295" y="206" font-family="monospace" font-size="7" fill="#64748B">JOCKEY:</text>
-      <text x="380" y="206" font-family="monospace" font-size="7" fill="#F97316">■ IN SERVIZIO</text>
-      <text x="295" y="222" font-family="monospace" font-size="7" fill="#64748B">PRESSIONE: </text>
-      <text x="365" y="222" font-family="monospace" font-size="7" fill="#CBD5E1">8.4 bar</text>
-      <!-- Indicator lights row -->
-      <circle cx="295" cy="248" r="6" fill="#22C55E" filter="url(#glow-green)"/>
-      <circle cx="315" cy="248" r="6" fill="#22C55E"/>
-      <circle cx="335" cy="248" r="6" fill="#EF4444" opacity="0.3"/>
-      <circle cx="355" cy="248" r="6" fill="#F97316" filter="url(#glow-orange)"/>
-      <circle cx="375" cy="248" r="6" fill="#22C55E"/>
-      <circle cx="395" cy="248" r="6" fill="#64748B" opacity="0.5"/>
-      <circle cx="415" cy="248" r="6" fill="#22C55E"/>
-      <circle cx="435" cy="248" r="6" fill="#64748B" opacity="0.5"/>
-      <circle cx="455" cy="248" r="6" fill="#22C55E"/>
-      <!-- Right panel - switches/controls -->
-      <rect x="510" y="125" width="125" height="140" rx="4" fill="#0F172A" stroke="#334155" stroke-width="1"/>
-      <!-- Main switch large -->
-      <rect x="530" y="138" width="44" height="60" rx="6" fill="#1E293B" stroke="#F97316" stroke-width="2"/>
-      <rect x="538" y="145" width="28" height="20" rx="3" fill="#F97316"/>
-      <text x="552" y="158" text-anchor="middle" font-family="monospace" font-size="6" font-weight="bold" fill="white">ON</text>
-      <rect x="538" y="170" width="28" height="20" rx="3" fill="#334155"/>
-      <text x="552" y="183" text-anchor="middle" font-family="monospace" font-size="6" fill="#94A3B8">OFF</text>
-      <text x="552" y="210" text-anchor="middle" font-family="monospace" font-size="7" fill="#64748B">GENERALE</text>
-      <!-- Small switches -->
-      <rect x="585" y="138" width="36" height="28" rx="4" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-      <rect x="590" y="143" width="12" height="18" rx="2" fill="#22C55E"/>
-      <text x="603" y="172" text-anchor="middle" font-family="monospace" font-size="6" fill="#64748B">P1</text>
-      <rect x="585" y="180" width="36" height="28" rx="4" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-      <rect x="590" y="185" width="12" height="18" rx="2" fill="#22C55E"/>
-      <text x="603" y="214" text-anchor="middle" font-family="monospace" font-size="6" fill="#64748B">P2</text>
-      <!-- Bottom section - terminals and wiring area -->
-      <rect x="275" y="280" width="360" height="180" rx="4" fill="#0A0F1A" stroke="#334155" stroke-width="1"/>
-      <!-- Terminal rows -->
-      <g fill="#334155">
-        <rect x="285" y="292" width="340" height="12" rx="2" fill="#1E293B"/>
-        <text x="290" y="302" font-family="monospace" font-size="7" fill="#64748B">MORSETTIERA PRINCIPALE</text>
-      </g>
-      <!-- Terminal blocks -->
-      <g transform="translate(285, 310)">
-        <rect x="0" y="0" width="16" height="28" rx="2" fill="#1E40AF" stroke="#3B82F6" stroke-width=".8"/>
-        <rect x="18" y="0" width="16" height="28" rx="2" fill="#1E40AF" stroke="#3B82F6" stroke-width=".8"/>
-        <rect x="36" y="0" width="16" height="28" rx="2" fill="#15803D" stroke="#22C55E" stroke-width=".8"/>
-        <rect x="54" y="0" width="16" height="28" rx="2" fill="#1E40AF" stroke="#3B82F6" stroke-width=".8"/>
-        <rect x="72" y="0" width="16" height="28" rx="2" fill="#7F1D1D" stroke="#EF4444" stroke-width=".8"/>
-        <rect x="90" y="0" width="16" height="28" rx="2" fill="#1E40AF" stroke="#3B82F6" stroke-width=".8"/>
-        <rect x="108" y="0" width="16" height="28" rx="2" fill="#1E40AF" stroke="#3B82F6" stroke-width=".8"/>
-        <rect x="126" y="0" width="16" height="28" rx="2" fill="#15803D" stroke="#22C55E" stroke-width=".8"/>
-        <rect x="144" y="0" width="16" height="28" rx="2" fill="#7F1D1D" stroke="#EF4444" stroke-width=".8"/>
-        <rect x="162" y="0" width="16" height="28" rx="2" fill="#1E40AF" stroke="#3B82F6" stroke-width=".8"/>
-        <rect x="180" y="0" width="16" height="28" rx="2" fill="#1E40AF" stroke="#3B82F6" stroke-width=".8"/>
-        <rect x="198" y="0" width="16" height="28" rx="2" fill="#15803D" stroke="#22C55E" stroke-width=".8"/>
-        <rect x="216" y="0" width="16" height="28" rx="2" fill="#1E40AF" stroke="#3B82F6" stroke-width=".8"/>
-        <rect x="234" y="0" width="16" height="28" rx="2" fill="#7F1D1D" stroke="#EF4444" stroke-width=".8"/>
-        <rect x="252" y="0" width="16" height="28" rx="2" fill="#1E40AF" stroke="#3B82F6" stroke-width=".8"/>
-        <rect x="270" y="0" width="16" height="28" rx="2" fill="#1E40AF" stroke="#3B82F6" stroke-width=".8"/>
-        <rect x="288" y="0" width="16" height="28" rx="2" fill="#15803D" stroke="#22C55E" stroke-width=".8"/>
-        <rect x="306" y="0" width="16" height="28" rx="2" fill="#7F1D1D" stroke="#EF4444" stroke-width=".8"/>
-        <rect x="324" y="0" width="16" height="28" rx="2" fill="#1E40AF" stroke="#3B82F6" stroke-width=".8"/>
-      </g>
-      <!-- Wiring cables -->
-      <g stroke-width="2.5" fill="none" opacity="0.7">
-        <path d="M295 340 Q295 370 310 390 Q330 420 350 430" stroke="#3B82F6"/>
-        <path d="M315 340 Q320 375 340 395 Q360 415 375 430" stroke="#EF4444"/>
-        <path d="M335 340 Q335 380 320 400 Q300 420 290 440" stroke="#22C55E"/>
-        <path d="M360 340 Q365 380 380 400 Q400 420 415 440" stroke="#3B82F6"/>
-        <path d="M385 340 Q390 365 405 385 Q430 410 450 430" stroke="#EF4444"/>
-        <path d="M412 340 Q415 370 430 390 Q455 415 470 440" stroke="#F97316"/>
-        <path d="M445 340 Q448 375 460 395 Q475 415 490 440" stroke="#3B82F6"/>
-        <path d="M475 340 Q478 368 490 388 Q510 415 525 430" stroke="#22C55E"/>
-        <path d="M510 340 Q512 372 520 392 Q535 418 545 440" stroke="#EF4444"/>
-        <path d="M540 340 Q545 378 555 398 Q568 420 575 440" stroke="#94A3B8"/>
-        <path d="M562 340 Q567 372 572 392 Q578 415 580 440" stroke="#3B82F6"/>
-        <path d="M588 340 Q590 376 592 396 Q594 416 595 440" stroke="#F97316"/>
-      </g>
-      <!-- Din rail bottom -->
-      <rect x="285" y="456" width="340" height="6" rx="2" fill="#475569"/>
-      <!-- Certification label bottom right -->
-      <rect x="560" y="430" width="65" height="32" rx="3" fill="#0F172A" stroke="#F97316" stroke-width="1"/>
-      <text x="592" y="444" text-anchor="middle" font-family="monospace" font-size="6.5" fill="#F97316" font-weight="bold">EN 12845</text>
-      <text x="592" y="455" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#64748B">CERTIFIED</text>
-      <!-- Handle/latch -->
-      <rect x="441" y="240" width="18" height="40" rx="9" fill="#475569" stroke="#64748B" stroke-width="1"/>
-      <rect x="445" y="255" width="10" height="12" rx="5" fill="#64748B"/>
-      <!-- Shadow effect sides -->
-      <rect x="250" y="30" width="15" height="460" rx="8 0 0 8" fill="rgba(0,0,0,0.3)"/>
-      <rect x="635" y="30" width="15" height="460" rx="0 8 8 0" fill="rgba(0,0,0,0.3)"/>
-      <!-- Glow filters -->
-      <defs>
-        <filter id="glow-green" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-        <filter id="glow-orange" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-    </svg>
+    <!-- Immagine quadro: sostituire assets/panel.svg con la foto reale (panel.jpg) -->
+    <img src="assets/panel.svg" class="scroll-zoom-img" id="scrollZoomImg" alt="Quadro elettrico BEK Smart">
   </div>
   <div class="scroll-zoom-overlay"></div>
   <div class="scroll-zoom-caption">
@@ -498,48 +358,27 @@
   </div>
 </div>
 
-<!-- SERVIZI / CATALOGO TEASER -->
+<!-- PRODOTTI -->
 <section id="prodotti">
   <div class="section-inner">
-    <div class="section-header centered">
-      <div class="section-tag">Catalogo &amp; Servizi</div>
-      <h2 class="section-title">Tutto quello che ti serve</h2>
-      <p class="section-desc">Dal catalogo tecnico alla targa personalizzata: scegli il tuo percorso.</p>
+    <div class="section-header">
+      <div class="section-tag">Catalogo Prodotti</div>
+      <h2 class="section-title">Linea Smart BEK</h2>
+      <p class="section-desc">Quadri di comando per elettropompe antincendio conformi EN 12845. Disponibili in versione avviamento diretto (DOL) e stella-triangolo (Y/Δ).</p>
     </div>
-    <div class="services-grid">
-      <a href="catalogo.html" class="service-card service-card--primary reveal">
-        <div class="service-icon">⚡</div>
-        <div class="service-content">
-          <h3>Catalogo Prodotti</h3>
-          <p>20+ modelli, da 3 a 160 kW. Avviamento diretto (DOL) e stella-triangolo (Y/Δ). Conformi EN 12845.</p>
-          <span class="service-cta">Sfoglia il catalogo →</span>
-        </div>
-        <div class="service-badge">20+ modelli</div>
-      </a>
-      <a href="PREVENTIVO.html" class="service-card reveal" style="transition-delay:.1s">
-        <div class="service-icon">🏷️</div>
-        <div class="service-content">
-          <h3>Targa Personalizzata</h3>
-          <p>Progetta la targa di identificazione del quadro con il tuo logo, i tuoi dati tecnici e le tue specifiche.</p>
-          <span class="service-cta">Crea la tua targa →</span>
-        </div>
-        <div class="service-badge">Design tool</div>
-      </a>
-      <div class="service-card reveal" style="cursor:pointer;transition-delay:.2s" onclick="openModal('preventivo')">
-        <div class="service-icon">📋</div>
-        <div class="service-content">
-          <h3>Richiedi Preventivo</h3>
-          <p>Indica il modello e la potenza. Risposta entro 24 ore lavorative. Nessun impegno.</p>
-          <span class="service-cta">Ottieni il tuo preventivo →</span>
-        </div>
-        <div class="service-badge">Risposta 24h</div>
-      </div>
+    <div class="tabs" id="productTabs">
+      <button class="tab-btn active" data-cat="all">Tutti</button>
+      <button class="tab-btn" data-cat="direct">Avviamento Diretto (DOL)</button>
+      <button class="tab-btn" data-cat="star-delta">Stella-Triangolo (Y/Δ)</button>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <div class="products-loading">Caricamento prodotti...</div>
     </div>
   </div>
 </section>
 
 <!-- CHI SIAMO -->
-<section id="chi-siamo" class="section-alt reveal">
+<section id="chi-siamo" class="section-alt">
   <div class="section-inner">
     <div class="chi-siamo-grid">
       <div>
@@ -582,7 +421,7 @@
 </section>
 
 <!-- PERCHE NOI -->
-<section id="perche-noi" class="reveal">
+<section id="perche-noi">
   <div class="section-inner">
     <div class="section-header centered">
       <div class="section-tag">Perché Sceglierci</div>
@@ -625,7 +464,7 @@
 </section>
 
 <!-- CERTIFICAZIONI -->
-<section id="certificazioni" class="section-alt reveal">
+<section id="certificazioni" class="section-alt">
   <div class="section-inner">
     <div class="section-header centered">
       <div class="section-tag">Normative</div>
@@ -663,7 +502,7 @@
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="reveal">
+<section id="faq">
   <div class="section-inner">
     <div class="section-header centered">
       <div class="section-tag">FAQ</div>
@@ -727,8 +566,8 @@
           <div class="contatto-icon">✉️</div>
           <div>
             <h4>Email <span style="font-size:.7rem;color:var(--muted)">⚠️ dato fittizio</span></h4>
-            <a href="mailto:info@bekelectric.com">info@bekelectric.com</a><br>
-            
+            <a href="mailto:info@bekelectric.it">info@bekelectric.it</a><br>
+            <a href="mailto:tecnico@bekelectric.it">tecnico@bekelectric.it</a>
           </div>
         </div>
         <div class="contatto-item">
@@ -745,7 +584,7 @@
       </div>
       <div class="map-placeholder">
         <iframe
-          src="https://www.openstreetmap.org/export/embed.html?bbox=11.83%2C45.37%2C11.93%2C45.44&amp;layer=mapnik&amp;marker=45.4065%2C11.8768"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=11.98%2C45.28%2C12.08%2C45.38&amp;layer=mapnik&amp;marker=45.33%2C12.03"
           title="Mappa sede BEK Electric System"
           loading="lazy"
           allowfullscreen>
@@ -762,7 +601,7 @@
       <div class="footer-brand">
         <div class="footer-logo">
           <div class="footer-logo-icon">
-            <svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L9 22L19.5 10H13L13 2Z"/></svg>
+            <img src="assets/logo.svg" alt="BEK Electric logo">
           </div>
           <span class="footer-logo-text">BEK Electric System</span>
         </div>
@@ -790,7 +629,7 @@
       <div class="footer-col">
         <h5>Contatti</h5>
         <ul>
-          <li><a href="mailto:info@bekelectric.com">info@bekelectric.com</a></li>
+          <li><a href="mailto:info@bekelectric.it">info@bekelectric.it</a></li>
           <li><a href="tel:+390412345678">+39 041 234 5678</a></li>
           <li><a href="#">Padova (PD)</a></li>
         </ul>
@@ -894,7 +733,7 @@
     <div class="modal-body">
       <div class="modal-warning">⚠️ Documento fittizio a scopo illustrativo. Non ha valore legale.</div>
       <h4>1. Titolare del Trattamento</h4>
-      <p>BEK Electric System S.r.l. (dato fittizio), Via dell'Industria 42, 35121 Padova (PD) — email: privacy@bekelectric.com</p>
+      <p>BEK Electric System S.r.l. (dato fittizio), Via dell'Industria 42, 35121 Padova (PD) — email: privacy@bekelectric.it</p>
       <h4>2. Dati raccolti</h4>
       <p>Raccogliamo i dati che ci fornisci volontariamente tramite il modulo di contatto/preventivo: nome, cognome, email, telefono, ragione sociale. Raccogliamo inoltre dati di navigazione anonimi tramite cookie tecnici.</p>
       <h4>3. Finalità e base giuridica</h4>
@@ -906,7 +745,7 @@
       <h4>4. Conservazione dei dati</h4>
       <p>I dati relativi alle richieste commerciali sono conservati per 5 anni. I dati di navigazione anonimi vengono eliminati dopo 26 mesi.</p>
       <h4>5. Diritti dell'interessato</h4>
-      <p>Hai diritto di accesso, rettifica, cancellazione, portabilità e opposizione al trattamento. Contatta: privacy@bekelectric.com</p>
+      <p>Hai diritto di accesso, rettifica, cancellazione, portabilità e opposizione al trattamento. Contatta: privacy@bekelectric.it</p>
       <h4>6. Cookie</h4>
       <p>Per informazioni sui cookie utilizzati consulta la nostra Cookie Policy.</p>
     </div>
@@ -1022,9 +861,63 @@ function updateNavTop() {
 updateNavTop();
 window.addEventListener('resize', updateNavTop);
 
+/* ─── PRODUCTS LOAD ─── */
+async function loadProducts() {
+  const grid = document.getElementById('productsGrid');
+  try {
+    const resp = await fetch('./products.json');
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    window._productsData = data;
+    renderProducts('all', data.products);
+  } catch (e) {
+    grid.innerHTML = '<div class="products-loading">Impossibile caricare il catalogo. <a href="#contatti" style="color:var(--accent)">Contattaci</a> per ricevere la scheda tecnica.</div>';
+  }
+}
 
+function renderProducts(cat, products) {
+  const grid = document.getElementById('productsGrid');
+  const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
+  if (!filtered.length) { grid.innerHTML = '<div class="products-loading">Nessun prodotto trovato.</div>'; return; }
+  grid.innerHTML = filtered.map(p => {
+    const catLabel = p.category === 'direct' ? 'DOL' : 'Y/Δ';
+    return `
+    <div class="product-card">
+      <div class="product-card-header">
+        <div class="product-name">${p.name.replace('EGE SMART', 'BEK Smart')}</div>
+        <span class="product-badge">${catLabel}</span>
+      </div>
+      <div class="product-code">Cod. ${p.code}</div>
+      <div class="product-specs">
+        <div class="spec-row"><span class="spec-label">Potenza</span><span class="spec-value">${p.kw} kW / ${p.hp} HP</span></div>
+        <div class="spec-row"><span class="spec-label">Corrente max</span><span class="spec-value">${p.currentMax} A</span></div>
+        <div class="spec-row"><span class="spec-label">Tensione</span><span class="spec-value">${p.voltage}</span></div>
+        <div class="spec-row"><span class="spec-label">Frequenza</span><span class="spec-value">${p.frequency} Hz</span></div>
+        <div class="spec-row"><span class="spec-label">Peso</span><span class="spec-value">${p.weight} kg</span></div>
+      </div>
+      <div class="product-dims">📦 ${p.box.h}×${p.box.l}×${p.box.w} mm (H×L×P)</div>
+      <button class="product-cta" onclick="openPreventivoForProduct('${p.name}')">Richiedi Preventivo</button>
+    </div>`;
+  }).join('');
+}
 
+/* ─── PRODUCT TABS ─── */
+document.getElementById('productTabs').addEventListener('click', e => {
+  const btn = e.target.closest('.tab-btn');
+  if (!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (window._productsData) renderProducts(btn.dataset.cat, window._productsData.products);
+});
 
+function openPreventivoForProduct(name) {
+  const sel = document.querySelector('#modal-preventivo select');
+  if (sel) {
+    const kw = name.replace('EGE SMART ', 'BEK ').replace(' Y/D', ' Y/D').trim() + ' kW';
+    for (let opt of sel.options) { if (opt.value === kw) { sel.value = kw; break; } }
+  }
+  openModal('preventivo');
+}
 
 /* ─── FAQ ACCORDION ─── */
 document.querySelectorAll('.faq-q').forEach(btn => {
@@ -1068,46 +961,6 @@ if (localStorage.getItem('bek-cookie-consent')) banner.classList.add('hidden');
 document.getElementById('cookieAccept').addEventListener('click', () => { localStorage.setItem('bek-cookie-consent', 'all'); banner.classList.add('hidden'); });
 document.getElementById('cookieDecline').addEventListener('click', () => { localStorage.setItem('bek-cookie-consent', 'essential'); banner.classList.add('hidden'); });
 
-/* ─── NAV SCROLL EFFECT ─── */
-window.addEventListener('scroll', () => {
-  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
-
-/* ─── SCROLL REVEAL ─── */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-/* ─── STAT COUNTERS ─── */
-function animateCounter(el, target, suffix, prefix) {
-  let start = 0; const dur = 1800; const startTime = performance.now();
-  function step(now) {
-    const p = Math.min((now - startTime) / dur, 1);
-    const ease = 1 - Math.pow(1 - p, 3);
-    const val = Math.round(ease * target);
-    el.textContent = (prefix||'') + (target === val ? target : val) + (suffix||'');
-    if (p < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-const statsObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    statsObserver.unobserve(e.target);
-    const nums = e.target.querySelectorAll('.stat-number');
-    const defs = [
-      { target: 20, suffix: '+' },
-      { target: 160, prefix: '3–', suffix: ' kW' },
-      { target: 12845, prefix: 'EN ', suffix: '' },
-      { target: 8, suffix: ' gg' }
-    ];
-    nums.forEach((el, i) => { if (defs[i]) animateCounter(el, defs[i].target, defs[i].suffix, defs[i].prefix); });
-  });
-}, { threshold: 0.5 });
-const statsStrip = document.querySelector('.stats-strip');
-if (statsStrip) statsObserver.observe(statsStrip);
-
 /* ─── SCROLL ZOOM ─── */
 (function() {
   const section = document.getElementById('scrollZoomSection');
@@ -1119,7 +972,7 @@ if (statsStrip) statsObserver.observe(statsStrip);
     // progress: 0 when section top hits bottom of viewport, 1 when section bottom hits top
     const progress = Math.min(1, Math.max(0, 1 - (rect.bottom / (wh + rect.height))));
     // scale from 1.0 (far) to 1.22 (zoomed in as you scroll past)
-    const scale = 1 + progress * 0.38;
+    const scale = 1 + progress * 0.22;
     img.style.transform = 'scale(' + scale + ')';
   }
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -1127,61 +980,7 @@ if (statsStrip) statsObserver.observe(statsStrip);
 })();
 
 /* ─── INIT ─── */
-
-/* ─── NAV BLUR ON SCROLL ─── */
-(function() {
-  const nav = document.getElementById('main-nav');
-  function onScroll() {
-    if (window.scrollY > 40) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-
-/* ─── SCROLL REVEAL (IntersectionObserver) ─── */
-(function() {
-  const revealEls = document.querySelectorAll('.reveal');
-  if (!revealEls.length) return;
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(function(el) { observer.observe(el); });
-})();
-
-/* ─── COUNTER ANIMATION ─── */
-(function() {
-  const counters = document.querySelectorAll('[data-counter]');
-  if (!counters.length) return;
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = parseInt(el.getAttribute('data-counter'), 10);
-      const suffix = el.getAttribute('data-suffix') || '';
-      const duration = 1200;
-      const start = performance.now();
-      function step(now) {
-        const progress = Math.min(1, (now - start) / duration);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(eased * target) + suffix;
-        if (progress < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-      observer.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(function(el) { observer.observe(el); });
-})();
-
+loadProducts();
 </script>
 </body>
 </html>
