@@ -1151,11 +1151,59 @@ function handlePreventivoSubmit(e) {
   setTimeout(() => { closeModal('preventivo'); btn.textContent = 'Invia Richiesta Preventivo'; btn.disabled = false; btn.style.background = ''; e.target.reset(); }, 2000);
 }
 
-/* ─── COOKIE BANNER ─── */
-const banner = document.getElementById('cookieBanner');
-if (localStorage.getItem('bek-cookie-consent')) banner.classList.add('hidden');
-document.getElementById('cookieAccept').addEventListener('click', () => { localStorage.setItem('bek-cookie-consent', 'all'); banner.classList.add('hidden'); });
-document.getElementById('cookieDecline').addEventListener('click', () => { localStorage.setItem('bek-cookie-consent', 'essential'); banner.classList.add('hidden'); });
+/* ─── COOKIE CONSENT ─── */
+(function() {
+  var GA_ID = 'G-XXXXXXXXXX'; // ← sostituisci con il tuo Google Analytics ID
+
+  function setCookie(name, value, days) {
+    var expires = '';
+    if (days) {
+      var d = new Date();
+      d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = '; expires=' + d.toUTCString();
+    }
+    document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/; SameSite=Lax';
+  }
+
+  function getCookie(name) {
+    var match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1') + '=([^;]*)'));
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+
+  function loadAnalytics() {
+    if (typeof window.gtag === 'function') return; // già caricato
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function() { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  var banner = document.getElementById('cookieBanner');
+  var consent = getCookie('bek_cookie_consent');
+
+  // Se consenso già dato, nascondi il banner e carica analytics se accettato
+  if (consent) {
+    banner.classList.add('hidden');
+    if (consent === 'all') loadAnalytics();
+  }
+
+  document.getElementById('cookieAccept').addEventListener('click', function() {
+    setCookie('bek_cookie_consent', 'all', 365);
+    setCookie('bek_analytics', '1', 365);
+    banner.classList.add('hidden');
+    loadAnalytics();
+  });
+
+  document.getElementById('cookieDecline').addEventListener('click', function() {
+    setCookie('bek_cookie_consent', 'essential', 365);
+    setCookie('bek_analytics', '0', 365);
+    banner.classList.add('hidden');
+  });
+})();
 
 /* ─── SCROLL ZOOM ─── */
 (function() {
