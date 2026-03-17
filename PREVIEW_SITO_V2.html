@@ -283,10 +283,10 @@
       <a href="#contatti">Contatti</a>
     </div>
     <div class="nav-actions">
-      <a href="mailto:info@bekelectric.it" class="nav-action-link">✉ info@bekelectric.it</a>
+      <a href="mailto:info@bekelectric.com" class="nav-action-link">✉ info@bekelectric.com</a>
       <a href="tel:+390412345678" class="nav-action-link">📞 +39 041 234 5678</a>
       <button class="dark-toggle" id="darkToggle" aria-label="Modalità scura">🌙</button>
-      <a href="#" class="btn-nav" onclick="openModal('preventivo'); return false;">Preventivo</a>
+      <a href="PREVENTIVO.html" class="btn-nav">Preventivo</a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -303,9 +303,9 @@
   <a href="#certificazioni" class="mobile-link">Certificazioni</a>
   <a href="#faq" class="mobile-link">FAQ</a>
   <a href="#contatti" class="mobile-link">Contatti</a>
-  <a href="mailto:info@bekelectric.it" class="mobile-link">✉ info@bekelectric.it</a>
+  <a href="mailto:info@bekelectric.com" class="mobile-link">✉ info@bekelectric.com</a>
   <a href="tel:+390412345678" class="mobile-link">📞 +39 041 234 5678</a>
-  <a href="#" class="btn-primary mobile-nav-cta" onclick="openModal('preventivo'); closeMobileNav(); return false;">Richiedi Preventivo</a>
+  <a href="PREVENTIVO.html" class="btn-primary mobile-nav-cta">Richiedi Preventivo</a>
 </div>
 
 <!-- HERO -->
@@ -317,7 +317,7 @@
     <p>BEK Electric System progetta e produce quadri di comando per elettropompe antincendio. Materiali premium, test funzionali completi su ogni unità, assistenza diretta senza intermediari.</p>
     <div class="hero-ctas">
       <a href="#prodotti" class="btn-primary">⚡ Scopri i Prodotti</a>
-      <a href="#" class="btn-outline" onclick="openModal('preventivo'); return false;">📋 Richiedi Preventivo</a>
+      <a class="btn-outline" href="PREVENTIVO.html">📋 Richiedi Preventivo</a>
     </div>
   </div>
 </section>
@@ -373,6 +373,11 @@
     </div>
     <div class="products-grid" id="productsGrid">
       <div class="products-loading">Caricamento prodotti...</div>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <a href="catalogo.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--surf);border:1px solid var(--bdr);color:var(--ink2);padding:12px 24px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:600;transition:all .2s" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--bdr)';this.style.color='var(--ink2)'">
+        Vedi catalogo completo con schede tecniche →
+      </a>
     </div>
   </div>
 </section>
@@ -551,8 +556,8 @@
         <div class="contatto-item">
           <div class="contatto-icon">📍</div>
           <div>
-            <h4>Sede legale <span style="font-size:.7rem;color:var(--muted)">⚠️ dato fittizio</span></h4>
-            <p>Via dell'Industria, 42<br>35121 Padova (PD), Italia</p>
+            <h4>Sede</h4>
+            <p>Padova (PD), Italia</p>
           </div>
         </div>
         <div class="contatto-item">
@@ -566,8 +571,7 @@
           <div class="contatto-icon">✉️</div>
           <div>
             <h4>Email <span style="font-size:.7rem;color:var(--muted)">⚠️ dato fittizio</span></h4>
-            <a href="mailto:info@bekelectric.it">info@bekelectric.it</a><br>
-            <a href="mailto:tecnico@bekelectric.it">tecnico@bekelectric.it</a>
+            <a href="mailto:info@bekelectric.com">info@bekelectric.com</a>
           </div>
         </div>
         <div class="contatto-item">
@@ -613,7 +617,7 @@
           <li><a href="#prodotti">Linea Smart BEK</a></li>
           <li><a href="#prodotti">Avviamento Diretto</a></li>
           <li><a href="#prodotti">Stella-Triangolo</a></li>
-          <li><a href="#" onclick="openModal('preventivo'); return false;">Richiedi Preventivo</a></li>
+          <li><a href="PREVENTIVO.html">Richiedi Preventivo</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -629,7 +633,7 @@
       <div class="footer-col">
         <h5>Contatti</h5>
         <ul>
-          <li><a href="mailto:info@bekelectric.it">info@bekelectric.it</a></li>
+          <li><a href="mailto:info@bekelectric.com">info@bekelectric.com</a></li>
           <li><a href="tel:+390412345678">+39 041 234 5678</a></li>
           <li><a href="#">Padova (PD)</a></li>
         </ul>
@@ -733,7 +737,7 @@
     <div class="modal-body">
       <div class="modal-warning">⚠️ Documento fittizio a scopo illustrativo. Non ha valore legale.</div>
       <h4>1. Titolare del Trattamento</h4>
-      <p>BEK Electric System S.r.l. (dato fittizio), Via dell'Industria 42, 35121 Padova (PD) — email: privacy@bekelectric.it</p>
+      <p>BEK Electric System S.r.l. (dato fittizio), Padova (PD) — email: info@bekelectric.com</p>
       <h4>2. Dati raccolti</h4>
       <p>Raccogliamo i dati che ci fornisci volontariamente tramite il modulo di contatto/preventivo: nome, cognome, email, telefono, ragione sociale. Raccogliamo inoltre dati di navigazione anonimi tramite cookie tecnici.</p>
       <h4>3. Finalità e base giuridica</h4>
@@ -745,7 +749,7 @@
       <h4>4. Conservazione dei dati</h4>
       <p>I dati relativi alle richieste commerciali sono conservati per 5 anni. I dati di navigazione anonimi vengono eliminati dopo 26 mesi.</p>
       <h4>5. Diritti dell'interessato</h4>
-      <p>Hai diritto di accesso, rettifica, cancellazione, portabilità e opposizione al trattamento. Contatta: privacy@bekelectric.it</p>
+      <p>Hai diritto di accesso, rettifica, cancellazione, portabilità e opposizione al trattamento. Contatta: info@bekelectric.com</p>
       <h4>6. Cookie</h4>
       <p>Per informazioni sui cookie utilizzati consulta la nostra Cookie Policy.</p>
     </div>
@@ -818,7 +822,7 @@
       P.IVA: 01234567890<br>
       REA: PD-123456<br>
       Capitale sociale: € 50.000 i.v.<br>
-      Sede: Via dell'Industria 42, 35121 Padova (PD)</p>
+      Sede: Padova (PD)</p>
       <h4>Proprietà intellettuale</h4>
       <p>Tutti i contenuti del presente sito (testi, immagini, loghi, schede tecniche) sono di proprietà di BEK Electric System S.r.l. e protetti dalle leggi sul diritto d'autore. Qualsiasi riproduzione è vietata senza autorizzazione scritta.</p>
       <h4>Limitazione di responsabilità</h4>
@@ -861,18 +865,12 @@ function updateNavTop() {
 updateNavTop();
 window.addEventListener('resize', updateNavTop);
 
-/* ─── PRODUCTS LOAD ─── */
-async function loadProducts() {
-  const grid = document.getElementById('productsGrid');
-  try {
-    const resp = await fetch('./products.json');
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    const data = await resp.json();
-    window._productsData = data;
-    renderProducts('all', data.products);
-  } catch (e) {
-    grid.innerHTML = '<div class="products-loading">Impossibile caricare il catalogo. <a href="#contatti" style="color:var(--accent)">Contattaci</a> per ricevere la scheda tecnica.</div>';
-  }
+/* ─── PRODUCTS DATA (embedded — no server required) ─── */
+const _PRODUCTS_DATA=[{"code":"6003011","name":"EGE SMART 3","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":3,"hp":5,"currentMax":7,"box":{"h":500,"l":400,"w":200},"weight":16.8},{"code":"6005511","name":"EGE SMART 5,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":5.5,"hp":7.5,"currentMax":12,"box":{"h":500,"l":400,"w":200},"weight":16.8},{"code":"6007511","name":"EGE SMART 7,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":7.5,"hp":10,"currentMax":16,"box":{"h":500,"l":400,"w":200},"weight":17},{"code":"6011011","name":"EGE SMART 11","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":11,"hp":15,"currentMax":24,"box":{"h":500,"l":400,"w":200},"weight":17.6},{"code":"6011021","name":"EGE SMART 11 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":11,"hp":15,"currentMax":24,"box":{"h":500,"l":400,"w":200},"weight":18.3},{"code":"6015011","name":"EGE SMART 15","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":15,"hp":20,"currentMax":32,"box":{"h":500,"l":400,"w":200},"weight":17.8},{"code":"6015021","name":"EGE SMART 15 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":15,"hp":20,"currentMax":32,"box":{"h":500,"l":400,"w":200},"weight":18},{"code":"6018511","name":"EGE SMART 18,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":18.5,"hp":25,"currentMax":36,"box":{"h":500,"l":400,"w":200},"weight":18.5},{"code":"6018521","name":"EGE SMART 18,5 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":18.5,"hp":25,"currentMax":36,"box":{"h":500,"l":400,"w":200},"weight":18.5},{"code":"6022011","name":"EGE SMART 22","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":22,"hp":30,"currentMax":40,"box":{"h":500,"l":400,"w":200},"weight":19},{"code":"6022021","name":"EGE SMART 22 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":22,"hp":30,"currentMax":40,"box":{"h":500,"l":400,"w":200},"weight":19.2},{"code":"6030021","name":"EGE SMART 30 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":30,"hp":40,"currentMax":60,"box":{"h":500,"l":400,"w":200},"weight":20.1},{"code":"6037022","name":"EGE SMART 37 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":37,"hp":50,"currentMax":70,"box":{"h":700,"l":500,"w":250},"weight":33.6},{"code":"6045022","name":"EGE SMART 45 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":45,"hp":60,"currentMax":80,"box":{"h":700,"l":500,"w":250},"weight":34},{"code":"6055022","name":"EGE SMART 55 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":55,"hp":75,"currentMax":100,"box":{"h":700,"l":500,"w":250},"weight":38.5},{"code":"6075023","name":"EGE SMART 75 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":75,"hp":100,"currentMax":132,"box":{"h":800,"l":600,"w":250},"weight":54.5},{"code":"6090023","name":"EGE SMART 90 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":90,"hp":125,"currentMax":160,"box":{"h":800,"l":600,"w":250},"weight":64},{"code":"6110023","name":"EGE SMART 110 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":110,"hp":150,"currentMax":200,"box":{"h":800,"l":600,"w":250},"weight":85},{"code":"6132024","name":"EGE SMART 132 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":132,"hp":200,"currentMax":240,"box":{"h":1000,"l":800,"w":300},"weight":95},{"code":"6160024","name":"EGE SMART 160 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":160,"hp":200,"currentMax":296,"box":{"h":1000,"l":800,"w":300},"weight":100}];
+
+function loadProducts() {
+  window._productsData = { products: _PRODUCTS_DATA };
+  renderProducts('all', _PRODUCTS_DATA);
 }
 
 function renderProducts(cat, products) {
@@ -896,7 +894,7 @@ function renderProducts(cat, products) {
         <div class="spec-row"><span class="spec-label">Peso</span><span class="spec-value">${p.weight} kg</span></div>
       </div>
       <div class="product-dims">📦 ${p.box.h}×${p.box.l}×${p.box.w} mm (H×L×P)</div>
-      <button class="product-cta" onclick="openPreventivoForProduct('${p.name}')">Richiedi Preventivo</button>
+      <button class="product-cta" onclick="window.location.href='PREVENTIVO.html?model='+encodeURIComponent(this.dataset.m)" data-m="${p.name.replace(/EGE SMART /g,'BEK Smart ')}">Preventivo →</button>
     </div>`;
   }).join('');
 }
@@ -911,12 +909,7 @@ document.getElementById('productTabs').addEventListener('click', e => {
 });
 
 function openPreventivoForProduct(name) {
-  const sel = document.querySelector('#modal-preventivo select');
-  if (sel) {
-    const kw = name.replace('EGE SMART ', 'BEK ').replace(' Y/D', ' Y/D').trim() + ' kW';
-    for (let opt of sel.options) { if (opt.value === kw) { sel.value = kw; break; } }
-  }
-  openModal('preventivo');
+  window.location.href = 'PREVENTIVO.html?model=' + encodeURIComponent(name.replace(/EGE SMART /g, 'BEK Smart '));
 }
 
 /* ─── FAQ ACCORDION ─── */
