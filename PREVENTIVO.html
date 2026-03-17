@@ -479,13 +479,16 @@
   }
 
   // Form submit
-  function submitForm(e) {
+  async function submitForm(e) {
     e.preventDefault();
     const errEl = document.getElementById('form-error');
     errEl.style.display = 'none';
-    const nome = document.getElementById('f-nome');
+
+    const nome    = document.getElementById('f-nome');
     const cognome = document.getElementById('f-cognome');
-    const email = document.getElementById('f-email');
+    const email   = document.getElementById('f-email');
+
+    // Validazione campi obbligatori
     for (const [el, label] of [[nome,'Nome'],[cognome,'Cognome'],[email,'Email']]) {
       if (!el.value.trim()) {
         errEl.textContent = 'Il campo "' + label + '" è obbligatorio.';
@@ -499,20 +502,64 @@
       errEl.style.display = 'block';
       return;
     }
+
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
     btn.innerHTML = '<span>Invio in corso…</span>';
-    setTimeout(() => {
-      document.getElementById('form-body').innerHTML = `
-        <div style="text-align:center;padding:48px 16px">
-          <div style="width:52px;height:52px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 style="font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.5px;margin-bottom:10px">Richiesta inviata!</h3>
-          <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:280px;margin:0 auto 22px">Riceverai un preventivo personalizzato entro <strong>24 ore lavorative</strong>. Controlla anche la cartella spam.</p>
-          <a href="PREVIEW_SITO_V2.html" style="display:inline-block;background:var(--accent);color:#fff;padding:11px 22px;border-radius:9px;text-decoration:none;font-size:13px;font-weight:700;">Torna al sito →</a>
-        </div>`;
-    }, 1000);
+
+    // Raccolta dati form
+    const versioneTarga = document.getElementById('tab-targa').classList.contains('active') ? 'Con Targa Personalizzata' : 'Solo Richiesta Tecnica';
+    const modello   = document.getElementById('form-model') ? document.getElementById('form-model').value : '';
+    const azienda   = document.querySelector('input[placeholder="Rossi Impianti S.r.l."]');
+    const telefono  = document.querySelector('input[type="tel"]');
+    const note      = document.querySelector('textarea');
+    const targaRiepilogo = document.getElementById('summary-text');
+
+    const payload = {
+      _subject: '🔥 Nuova richiesta preventivo BEK — ' + nome.value.trim() + ' ' + cognome.value.trim(),
+      nome:     nome.value.trim(),
+      cognome:  cognome.value.trim(),
+      email:    email.value.trim(),
+      azienda:  azienda ? azienda.value.trim() : '',
+      telefono: telefono ? telefono.value.trim() : '',
+      versione: versioneTarga,
+      modello:  modello,
+      targa:    targaRiepilogo ? targaRiepilogo.textContent.trim() : '',
+      note:     note ? note.value.trim() : '',
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/xaqploqj', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        document.getElementById('form-body').innerHTML = `
+          <div style="text-align:center;padding:48px 16px">
+            <div style="width:56px;height:56px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 style="font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.5px;margin-bottom:10px">Richiesta inviata!</h3>
+            <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:300px;margin:0 auto 24px">
+              Ti risponderemo entro <strong>24 ore lavorative</strong> all'indirizzo <strong>${payload.email}</strong>.<br>Controlla anche la cartella spam.
+            </p>
+            <a href="PREVIEW_SITO_V2.html" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 24px;border-radius:9px;text-decoration:none;font-size:13px;font-weight:700;">Torna al sito →</a>
+          </div>`;
+      } else {
+        const data = await res.json().catch(() => ({}));
+        errEl.textContent = data.errors ? data.errors.map(e => e.message).join(', ') : 'Errore durante l\'invio. Riprova o scrivici direttamente a info@bekelectric.com';
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<span id="submit-label">Riprova</span>';
+      }
+    } catch (_) {
+      errEl.textContent = 'Connessione non riuscita. Controlla la rete e riprova, oppure scrivici a info@bekelectric.com';
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = '<span id="submit-label">Riprova</span>';
+    }
   }
 
   // Download preview
