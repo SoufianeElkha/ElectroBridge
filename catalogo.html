@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogo Prodotti — BEK Electric System</title>
+  <meta name="description" content="Catalogo quadri elettrici antincendio EN 12845. Linea Smart BEK, da 3 a 160 kW.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><rect width='36' height='36' rx='8' fill='%23F97316'/><path d='M20 6 L12 20 L18 20 L16 30 L24 16 L18 16 Z' fill='white'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #111827; --ink2: #374151; --accent: #F97316; --accent-dark: #EA580C;
+      --muted: #6B7280; --bg: #FFFFFF; --surface: #F9FAFB; --border: #E5E7EB;
+      --nav-h: 64px; --radius: 12px; --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+    }
+    [data-theme="dark"] {
+      --ink: #F1F5F9; --ink2: #CBD5E1; --accent: #FB923C; --accent-dark: #F97316;
+      --muted: #94A3B8; --bg: #0F172A; --surface: #1E293B; --border: #334155;
+      --shadow: 0 1px 3px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.3);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); height: var(--nav-h); display: flex; align-items: center; transition: background .3s; }
+    nav.scrolled { background: rgba(255,255,255,.85); backdrop-filter: blur(16px); }
+    [data-theme="dark"] nav.scrolled { background: rgba(15,23,42,.85); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; gap: 16px; }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
+    .nav-logo-icon { width: 36px; height: 36px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .nav-logo-icon svg { width: 20px; height: 20px; fill: white; }
+    .nav-logo-text { font-size: 1.1rem; font-weight: 800; color: var(--ink); letter-spacing: -.02em; }
+    .nav-logo-text span { color: var(--accent); }
+    .nav-back { display: flex; align-items: center; gap: 6px; text-decoration: none; color: var(--muted); font-size: .8rem; font-weight: 600; padding: 7px 14px; border: 1px solid var(--border); border-radius: 8px; transition: all .15s; white-space: nowrap; }
+    .nav-back:hover { color: var(--ink); border-color: var(--accent); }
+    .nav-spacer { flex: 1; }
+    .dark-toggle { background: none; border: 1px solid var(--border); color: var(--ink2); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: border-color .15s; }
+    .dark-toggle:hover { border-color: var(--accent); }
+    .btn-targa { background: var(--accent); color: white; border: none; padding: 8px 18px; border-radius: 8px; font-size: .875rem; font-weight: 700; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background .15s; }
+    .btn-targa:hover { background: var(--accent-dark); }
+    .page-hero { background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #0F172A 100%); padding: 64px 24px 56px; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(249,115,22,.18); color: #FB923C; border: 1px solid rgba(249,115,22,.35); padding: 5px 14px; border-radius: 100px; font-size: .78rem; font-weight: 700; letter-spacing: .06em; margin-bottom: 18px; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: white; letter-spacing: -.04em; margin-bottom: 10px; }
+    .page-hero h1 span { color: #FB923C; }
+    .page-hero p { font-size: 1rem; color: rgba(255,255,255,.6); max-width: 520px; margin: 0 auto; }
+    .filter-bar { position: sticky; top: var(--nav-h); z-index: 90; background: var(--bg); border-bottom: 1px solid var(--border); padding: 12px 24px; }
+    .filter-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .tabs { display: flex; gap: 6px; }
+    .tab-btn { background: var(--surface); border: 1px solid var(--border); color: var(--ink2); padding: 7px 16px; border-radius: 8px; font-size: .825rem; font-weight: 600; cursor: pointer; transition: all .15s; white-space: nowrap; }
+    .tab-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+    .tab-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+    .search-wrap { flex: 1; min-width: 160px; max-width: 260px; position: relative; }
+    .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--muted); pointer-events: none; }
+    .search-input { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px 8px 30px; font-size: .825rem; color: var(--ink); font-family: inherit; outline: none; transition: border-color .15s; }
+    .search-input:focus { border-color: var(--accent); }
+    .result-count { margin-left: auto; font-size: .78rem; color: var(--muted); white-space: nowrap; }
+    .catalog-wrap { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .product-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; transition: box-shadow .2s, border-color .2s, transform .2s; }
+    .product-card:hover { box-shadow: var(--shadow); border-color: var(--accent); transform: translateY(-3px); }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; gap: 8px; }
+    .product-name { font-size: 1rem; font-weight: 800; color: var(--ink); letter-spacing: -.02em; line-height: 1.3; }
+    .badges { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+    .badge { font-size: .68rem; font-weight: 700; padding: 3px 8px; border-radius: 100px; white-space: nowrap; }
+    .badge-dol { background: rgba(59,130,246,.12); color: #1D4ED8; }
+    .badge-yd { background: rgba(139,92,246,.12); color: #6D28D9; }
+    [data-theme="dark"] .badge-dol { background: rgba(59,130,246,.2); color: #93C5FD; }
+    [data-theme="dark"] .badge-yd { background: rgba(139,92,246,.2); color: #C4B5FD; }
+    .badge-kw { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-dark); }
+    .product-code { font-size: .72rem; color: var(--muted); font-family: 'Courier New', monospace; margin-bottom: 14px; }
+    .specs { display: flex; flex-direction: column; gap: 0; flex: 1; }
+    .spec-row { display: flex; justify-content: space-between; font-size: .8rem; padding: 6px 0; border-bottom: 1px solid var(--border); }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label { color: var(--muted); }
+    .spec-value { font-weight: 600; color: var(--ink); }
+    .dims { font-size: .72rem; color: var(--muted); margin: 10px 0 14px; padding: 7px 10px; background: var(--surface); border-radius: 6px; text-align: center; }
+    .card-cta { display: block; text-align: center; background: var(--accent); color: white; border: none; padding: 10px; border-radius: 8px; font-size: .875rem; font-weight: 700; text-decoration: none; transition: background .15s; margin-top: auto; }
+    .card-cta:hover { background: var(--accent-dark); }
+    .no-results { text-align: center; padding: 80px; color: var(--muted); }
+    .bottom-cta { background: var(--accent); padding: 64px 24px; text-align: center; }
+    .bottom-cta h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: white; letter-spacing: -.03em; margin-bottom: 10px; }
+    .bottom-cta p { color: rgba(255,255,255,.8); margin-bottom: 28px; font-size: .95rem; }
+    .btn-white { background: white; color: var(--accent); border: none; padding: 14px 32px; border-radius: 10px; font-size: 1rem; font-weight: 800; text-decoration: none; display: inline-block; transition: transform .15s, box-shadow .15s; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .page-footer { background: #0F172A; color: rgba(255,255,255,.4); padding: 20px; text-align: center; font-size: .75rem; }
+    .page-footer a { color: rgba(255,255,255,.4); text-decoration: none; margin: 0 6px; }
+    .page-footer a:hover { color: #FB923C; }
+    @media (max-width: 960px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .products-grid { grid-template-columns: 1fr; } .filter-inner { gap: 8px; } .search-wrap { max-width: 100%; flex: 0 0 100%; } }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="PREVIEW_SITO_V2.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L9 22L19.5 10H13L13 2Z"/></svg>
+      </div>
+      <span class="nav-logo-text"><span>BEK</span> Electric</span>
+    </a>
+    <a href="PREVIEW_SITO_V2.html" class="nav-back">&#8592; Torna al sito</a>
+    <div class="nav-spacer"></div>
+    <button class="dark-toggle" id="darkToggle">&#127769;</button>
+    <a href="PREVENTIVO.html" class="btn-targa">&#127991; Targa personalizzata</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-badge">&#9889; Linea Smart BEK &middot; EN 12845</div>
+  <h1>Catalogo <span>Prodotti</span></h1>
+  <p>Quadri elettrici di comando per impianti antincendio. Da 3 a 160 kW, avviamento diretto e stella-triangolo.</p>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="tabs" id="tabsBar">
+      <button class="tab-btn active" data-cat="all">Tutti (20)</button>
+      <button class="tab-btn" data-cat="direct">DOL &mdash; Avviamento Diretto</button>
+      <button class="tab-btn" data-cat="star-delta">Y/&#916; &mdash; Stella-Triangolo</button>
+    </div>
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" class="search-input" placeholder="Cerca per kW, nome, codice...">
+    </div>
+    <div class="result-count" id="resultCount">20 prodotti</div>
+  </div>
+</div>
+
+<div class="catalog-wrap">
+  <div class="products-grid" id="productsGrid"></div>
+</div>
+
+<div class="bottom-cta">
+  <h2>Trovato il modello che cercavi?</h2>
+  <p>Richiedi un preventivo personalizzato con targa identificativa inclusa.</p>
+  <a href="PREVENTIVO.html" class="btn-white">&#128203; Richiedi Preventivo + Targa</a>
+</div>
+
+<footer class="page-footer">
+  &#169; 2026 BEK Electric System S.r.l. &nbsp;&middot;&nbsp;
+  <a href="mailto:info@bekelectric.com">info@bekelectric.com</a> &nbsp;&middot;&nbsp;
+  Padova (PD), Italia &nbsp;&middot;&nbsp;
+  <a href="PREVIEW_SITO_V2.html">Privacy &amp; Cookie</a>
+  &nbsp;<span style="opacity:.4">&#9888;&#65039; dati fittizi</span>
+</footer>
+
+<script>
+const root = document.documentElement;
+const toggle = document.getElementById('darkToggle');
+function setTheme(dark) {
+  root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  toggle.innerHTML = dark ? '&#9728;&#65039;' : '&#127769;';
+  localStorage.setItem('bek-theme', dark ? 'dark' : 'light');
+}
+const saved = localStorage.getItem('bek-theme');
+setTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+toggle.addEventListener('click', () => setTheme(root.getAttribute('data-theme') !== 'dark'));
+
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+const PRODUCTS = [
+  {code:"6003011",name:"EGE SMART 3",cat:"direct",v:"3~400V",f:"50/60",kw:3,hp:5,a:7,box:{h:500,l:400,w:200},kg:16.8},
+  {code:"6005511",name:"EGE SMART 5,5",cat:"direct",v:"3~400V",f:"50/60",kw:5.5,hp:7.5,a:12,box:{h:500,l:400,w:200},kg:16.8},
+  {code:"6007511",name:"EGE SMART 7,5",cat:"direct",v:"3~400V",f:"50/60",kw:7.5,hp:10,a:16,box:{h:500,l:400,w:200},kg:17},
+  {code:"6011011",name:"EGE SMART 11",cat:"direct",v:"3~400V",f:"50/60",kw:11,hp:15,a:24,box:{h:500,l:400,w:200},kg:17.6},
+  {code:"6011021",name:"EGE SMART 11 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:11,hp:15,a:24,box:{h:500,l:400,w:200},kg:18.3},
+  {code:"6015011",name:"EGE SMART 15",cat:"direct",v:"3~400V",f:"50/60",kw:15,hp:20,a:32,box:{h:500,l:400,w:200},kg:17.8},
+  {code:"6015021",name:"EGE SMART 15 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:15,hp:20,a:32,box:{h:500,l:400,w:200},kg:18},
+  {code:"6018511",name:"EGE SMART 18,5",cat:"direct",v:"3~400V",f:"50/60",kw:18.5,hp:25,a:36,box:{h:500,l:400,w:200},kg:18.5},
+  {code:"6018521",name:"EGE SMART 18,5 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:18.5,hp:25,a:36,box:{h:500,l:400,w:200},kg:18.5},
+  {code:"6022011",name:"EGE SMART 22",cat:"direct",v:"3~400V",f:"50/60",kw:22,hp:30,a:40,box:{h:500,l:400,w:200},kg:19},
+  {code:"6022021",name:"EGE SMART 22 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:22,hp:30,a:40,box:{h:500,l:400,w:200},kg:19.2},
+  {code:"6030021",name:"EGE SMART 30 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:30,hp:40,a:60,box:{h:500,l:400,w:200},kg:20.1},
+  {code:"6037022",name:"EGE SMART 37 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:37,hp:50,a:70,box:{h:700,l:500,w:250},kg:33.6},
+  {code:"6045022",name:"EGE SMART 45 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:45,hp:60,a:80,box:{h:700,l:500,w:250},kg:34},
+  {code:"6055022",name:"EGE SMART 55 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:55,hp:75,a:100,box:{h:700,l:500,w:250},kg:38.5},
+  {code:"6075023",name:"EGE SMART 75 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:75,hp:100,a:132,box:{h:800,l:600,w:250},kg:54.5},
+  {code:"6090023",name:"EGE SMART 90 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:90,hp:125,a:160,box:{h:800,l:600,w:250},kg:64},
+  {code:"6110023",name:"EGE SMART 110 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:110,hp:150,a:200,box:{h:800,l:600,w:250},kg:85},
+  {code:"6132024",name:"EGE SMART 132 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:132,hp:200,a:240,box:{h:1000,l:800,w:300},kg:95},
+  {code:"6160024",name:"EGE SMART 160 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:160,hp:200,a:296,box:{h:1000,l:800,w:300},kg:100}
+];
+
+function dn(n) { return n.replace('EGE SMART','BEK Smart'); }
+
+let cat = 'all', q = '';
+function render() {
+  const filtered = PRODUCTS.filter(p => {
+    const ok1 = cat === 'all' || p.cat === cat;
+    const s = q.trim().toLowerCase();
+    const ok2 = !s || dn(p.name).toLowerCase().includes(s) || String(p.kw).includes(s) || p.code.includes(s);
+    return ok1 && ok2;
+  });
+  document.getElementById('resultCount').textContent = filtered.length + ' prodott' + (filtered.length===1?'o':'i');
+  const grid = document.getElementById('productsGrid');
+  if (!filtered.length) { grid.innerHTML = '<div class="no-results">Nessun prodotto trovato.</div>'; return; }
+  grid.innerHTML = filtered.map(p => {
+    const dol = p.cat === 'direct';
+    const nm = dn(p.name);
+    const url = 'PREVENTIVO.html?model=' + encodeURIComponent(nm);
+    return '<div class="product-card">' +
+      '<div class="card-top"><div class="product-name">' + nm + '</div>' +
+      '<div class="badges"><span class="badge ' + (dol?'badge-dol':'badge-yd') + '">' + (dol?'DOL':'Y/&#916;') + '</span>' +
+      '<span class="badge badge-kw">' + p.kw + ' kW</span></div></div>' +
+      '<div class="product-code">Cod. ' + p.code + '</div>' +
+      '<div class="specs">' +
+        '<div class="spec-row"><span class="spec-label">Potenza</span><span class="spec-value">' + p.kw + ' kW / ' + p.hp + ' HP</span></div>' +
+        '<div class="spec-row"><span class="spec-label">Corrente max</span><span class="spec-value">' + p.a + ' A</span></div>' +
+        '<div class="spec-row"><span class="spec-label">Tensione</span><span class="spec-value">3 ~ 400 V / ' + p.f + ' Hz</span></div>' +
+        '<div class="spec-row"><span class="spec-label">Peso</span><span class="spec-value">' + p.kg + ' kg</span></div>' +
+      '</div>' +
+      '<div class="dims">Armadio: ' + p.box.h + ' &times; ' + p.box.l + ' &times; ' + p.box.w + ' mm (H&times;L&times;P)</div>' +
+      '<a href="' + url + '" class="card-cta">Richiedi Preventivo &#8594;</a>' +
+    '</div>';
+  }).join('');
+}
+
+document.getElementById('tabsBar').addEventListener('click', e => {
+  const b = e.target.closest('.tab-btn');
+  if (!b) return;
+  document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  cat = b.dataset.cat;
+  render();
+});
+document.getElementById('searchInput').addEventListener('input', e => { q = e.target.value; render(); });
+render();
+</script>
+</body>
+</html>
