@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalogo Prodotti — BEK Electric System</title>
-  <meta name="description" content="Catalogo quadri elettrici antincendio EN 12845. Linea Smart BEK, da 3 a 160 kW.">
+  <title>Catalogo Prodotti · Linea Smart BEK — BEK Electric System</title>
+  <meta name="description" content="Catalogo completo quadri elettrici BEK Smart per impianti antincendio EN 12845. 20 modelli da 3 a 160 kW, avviamento diretto DOL e stella-triangolo Y/Δ.">
+  <meta name="theme-color" content="#F97316">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><rect width='36' height='36' rx='8' fill='%23F97316'/><path d='M20 6 L12 20 L18 20 L16 30 L24 16 L18 16 Z' fill='white'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -21,213 +22,423 @@
       --shadow: 0 1px 3px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.3);
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); }
-    nav { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); height: var(--nav-h); display: flex; align-items: center; transition: background .3s; }
-    nav.scrolled { background: rgba(255,255,255,.85); backdrop-filter: blur(16px); }
-    [data-theme="dark"] nav.scrolled { background: rgba(15,23,42,.85); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; gap: 16px; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; transition: background .3s, color .3s; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); height: var(--nav-h); display: flex; align-items: center; transition: background .3s, border-color .3s, backdrop-filter .3s; }
+    nav.scrolled { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: color-mix(in srgb, var(--bg) 85%, transparent); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; gap: 32px; }
     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
     .nav-logo-icon { width: 36px; height: 36px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
     .nav-logo-icon svg { width: 20px; height: 20px; fill: white; }
     .nav-logo-text { font-size: 1.1rem; font-weight: 800; color: var(--ink); letter-spacing: -.02em; }
     .nav-logo-text span { color: var(--accent); }
-    .nav-back { display: flex; align-items: center; gap: 6px; text-decoration: none; color: var(--muted); font-size: .8rem; font-weight: 600; padding: 7px 14px; border: 1px solid var(--border); border-radius: 8px; transition: all .15s; white-space: nowrap; }
-    .nav-back:hover { color: var(--ink); border-color: var(--accent); }
+    .nav-back { display: flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; font-size: .875rem; font-weight: 500; padding: 6px 10px; border-radius: 6px; transition: color .15s, background .15s; white-space: nowrap; }
+    .nav-back:hover { color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .nav-spacer { flex: 1; }
-    .dark-toggle { background: none; border: 1px solid var(--border); color: var(--ink2); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: border-color .15s; }
-    .dark-toggle:hover { border-color: var(--accent); }
-    .btn-targa { background: var(--accent); color: white; border: none; padding: 8px 18px; border-radius: 8px; font-size: .875rem; font-weight: 700; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background .15s; }
-    .btn-targa:hover { background: var(--accent-dark); }
-    .page-hero { background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #0F172A 100%); padding: 64px 24px 56px; text-align: center; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(249,115,22,.18); color: #FB923C; border: 1px solid rgba(249,115,22,.35); padding: 5px 14px; border-radius: 100px; font-size: .78rem; font-weight: 700; letter-spacing: .06em; margin-bottom: 18px; }
-    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: white; letter-spacing: -.04em; margin-bottom: 10px; }
-    .page-hero h1 span { color: #FB923C; }
-    .page-hero p { font-size: 1rem; color: rgba(255,255,255,.6); max-width: 520px; margin: 0 auto; }
-    .filter-bar { position: sticky; top: var(--nav-h); z-index: 90; background: var(--bg); border-bottom: 1px solid var(--border); padding: 12px 24px; }
-    .filter-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .tabs { display: flex; gap: 6px; }
-    .tab-btn { background: var(--surface); border: 1px solid var(--border); color: var(--ink2); padding: 7px 16px; border-radius: 8px; font-size: .825rem; font-weight: 600; cursor: pointer; transition: all .15s; white-space: nowrap; }
+    .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .dark-toggle { background: none; border: 1px solid var(--border); color: var(--ink2); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: border-color .15s, color .15s; }
+    .dark-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-nav { background: var(--accent); color: white; border: none; padding: 8px 18px; border-radius: 8px; font-size: .875rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: background .15s, transform .1s; white-space: nowrap; }
+    .btn-nav:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .hamburger { display: none; background: none; border: 1px solid var(--border); color: var(--ink2); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; padding: 8px; }
+    .hamburger span { display: block; width: 18px; height: 2px; background: var(--ink2); border-radius: 2px; transition: all .2s; }
+
+    /* MOBILE NAV */
+    .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 80px 24px 24px; flex-direction: column; gap: 8px; overflow-y: auto; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a, .mobile-nav button { color: var(--ink); text-decoration: none; font-size: 1.1rem; font-weight: 500; padding: 14px 0; border-bottom: 1px solid var(--border); display: block; background: none; border-left: none; border-right: none; border-top: none; cursor: pointer; text-align: left; width: 100%; font-family: inherit; }
+    .mobile-nav a:hover, .mobile-nav button:hover { color: var(--accent); }
+    .mobile-nav-cta { margin-top: 16px; background: var(--accent) !important; color: white !important; text-align: center !important; padding: 14px !important; border-radius: 10px; border: none !important; font-weight: 700 !important; }
+    .mobile-nav-close { position: absolute; top: 16px; right: 16px; background: none; border: 1px solid var(--border); color: var(--ink2); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+
+    /* PAGE HEADER */
+    .page-header { background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%); border-bottom: 1px solid var(--border); padding: 48px 24px 40px; }
+    .page-header-inner { max-width: 1200px; margin: 0 auto; }
+    .page-header-badge { display: inline-flex; align-items: center; gap: 6px; background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent-dark); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); padding: 5px 14px; border-radius: 100px; font-size: .78rem; font-weight: 700; letter-spacing: .05em; margin-bottom: 16px; }
+    .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; color: var(--ink); letter-spacing: -.03em; margin-bottom: 10px; }
+    .page-header h1 span { color: var(--accent); }
+    .page-header p { font-size: 1rem; color: var(--ink2); max-width: 560px; }
+
+    /* FILTERS BAR */
+    .filters-bar { position: sticky; top: var(--nav-h); z-index: 50; background: var(--bg); border-bottom: 1px solid var(--border); padding: 14px 24px; }
+    .filters-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tab-btn { background: var(--surface); border: 1px solid var(--border); color: var(--ink2); padding: 7px 18px; border-radius: 8px; font-size: .85rem; font-weight: 600; cursor: pointer; transition: all .15s; font-family: inherit; }
     .tab-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
     .tab-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
-    .search-wrap { flex: 1; min-width: 160px; max-width: 260px; position: relative; }
-    .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--muted); pointer-events: none; }
-    .search-input { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px 8px 30px; font-size: .825rem; color: var(--ink); font-family: inherit; outline: none; transition: border-color .15s; }
-    .search-input:focus { border-color: var(--accent); }
-    .result-count { margin-left: auto; font-size: .78rem; color: var(--muted); white-space: nowrap; }
-    .catalog-wrap { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
+    .filter-search { flex: 1; min-width: 160px; max-width: 280px; }
+    .filter-search input { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: .875rem; color: var(--ink); font-family: inherit; transition: border-color .15s; }
+    .filter-search input:focus { outline: none; border-color: var(--accent); }
+    .filter-search input::placeholder { color: var(--muted); }
+    .filter-count { margin-left: auto; font-size: .8rem; color: var(--muted); white-space: nowrap; }
+    .filter-count strong { color: var(--accent); font-weight: 700; }
+
+    /* CATALOG GRID */
+    .catalog-main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 64px; }
     .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .product-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; transition: box-shadow .2s, border-color .2s, transform .2s; }
-    .product-card:hover { box-shadow: var(--shadow); border-color: var(--accent); transform: translateY(-3px); }
-    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; gap: 8px; }
-    .product-name { font-size: 1rem; font-weight: 800; color: var(--ink); letter-spacing: -.02em; line-height: 1.3; }
-    .badges { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+    .product-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: box-shadow .2s, border-color .2s, transform .2s; display: flex; flex-direction: column; }
+    .product-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.12); border-color: var(--accent); transform: translateY(-3px); }
+    .product-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 6px; gap: 8px; }
+    .product-name { font-size: 1rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
+    .product-badges { display: flex; gap: 5px; flex-wrap: wrap; align-items: flex-start; }
     .badge { font-size: .68rem; font-weight: 700; padding: 3px 8px; border-radius: 100px; white-space: nowrap; }
-    .badge-dol { background: rgba(59,130,246,.12); color: #1D4ED8; }
-    .badge-yd { background: rgba(139,92,246,.12); color: #6D28D9; }
-    [data-theme="dark"] .badge-dol { background: rgba(59,130,246,.2); color: #93C5FD; }
-    [data-theme="dark"] .badge-yd { background: rgba(139,92,246,.2); color: #C4B5FD; }
-    .badge-kw { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-dark); }
-    .product-code { font-size: .72rem; color: var(--muted); font-family: 'Courier New', monospace; margin-bottom: 14px; }
-    .specs { display: flex; flex-direction: column; gap: 0; flex: 1; }
-    .spec-row { display: flex; justify-content: space-between; font-size: .8rem; padding: 6px 0; border-bottom: 1px solid var(--border); }
-    .spec-row:last-child { border-bottom: none; }
+    .badge-cat { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-dark); }
+    .badge-kw { background: color-mix(in srgb, #3B82F6 12%, transparent); color: #1D4ED8; }
+    [data-theme="dark"] .badge-kw { color: #93C5FD; }
+    .product-code { font-size: .72rem; color: var(--muted); font-family: 'Courier New', monospace; margin-bottom: 14px; letter-spacing: .03em; }
+    .product-specs { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; flex: 1; }
+    .spec-row { display: flex; justify-content: space-between; align-items: center; font-size: .8rem; }
     .spec-label { color: var(--muted); }
     .spec-value { font-weight: 600; color: var(--ink); }
-    .dims { font-size: .72rem; color: var(--muted); margin: 10px 0 14px; padding: 7px 10px; background: var(--surface); border-radius: 6px; text-align: center; }
-    .card-cta { display: block; text-align: center; background: var(--accent); color: white; border: none; padding: 10px; border-radius: 8px; font-size: .875rem; font-weight: 700; text-decoration: none; transition: background .15s; margin-top: auto; }
-    .card-cta:hover { background: var(--accent-dark); }
-    .no-results { text-align: center; padding: 80px; color: var(--muted); }
-    .bottom-cta { background: var(--accent); padding: 64px 24px; text-align: center; }
-    .bottom-cta h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: white; letter-spacing: -.03em; margin-bottom: 10px; }
-    .bottom-cta p { color: rgba(255,255,255,.8); margin-bottom: 28px; font-size: .95rem; }
-    .btn-white { background: white; color: var(--accent); border: none; padding: 14px 32px; border-radius: 10px; font-size: 1rem; font-weight: 800; text-decoration: none; display: inline-block; transition: transform .15s, box-shadow .15s; }
+    .product-dims { font-size: .72rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px; margin-bottom: 12px; }
+    .product-cta { display: block; width: 100%; text-align: center; background: var(--accent); color: white; border: none; padding: 10px; border-radius: 8px; font-size: .875rem; font-weight: 700; text-decoration: none; cursor: pointer; transition: background .15s, transform .1s; font-family: inherit; margin-top: auto; }
+    .product-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .no-results { text-align: center; padding: 64px 24px; color: var(--muted); font-size: .95rem; grid-column: 1/-1; }
+    .no-results p { margin-top: 8px; font-size: .85rem; }
+
+    /* CTA BOTTOM */
+    .cta-bottom { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); padding: 64px 24px; text-align: center; }
+    .cta-bottom-inner { max-width: 600px; margin: 0 auto; }
+    .cta-bottom h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: white; letter-spacing: -.03em; margin-bottom: 12px; }
+    .cta-bottom p { font-size: .95rem; color: rgba(255,255,255,.85); margin-bottom: 28px; line-height: 1.65; }
+    .cta-bottom-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .btn-white { background: white; color: var(--accent-dark); border: none; padding: 13px 28px; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: transform .1s, box-shadow .15s; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; }
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
-    .page-footer { background: #0F172A; color: rgba(255,255,255,.4); padding: 20px; text-align: center; font-size: .75rem; }
-    .page-footer a { color: rgba(255,255,255,.4); text-decoration: none; margin: 0 6px; }
-    .page-footer a:hover { color: #FB923C; }
-    @media (max-width: 960px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .products-grid { grid-template-columns: 1fr; } .filter-inner { gap: 8px; } .search-wrap { max-width: 100%; flex: 0 0 100%; } }
+    .btn-white-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,.5); padding: 11px 24px; border-radius: 10px; font-size: .95rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: border-color .15s; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; }
+    .btn-white-outline:hover { border-color: white; }
+
+    /* FOOTER */
+    footer { background: var(--ink); color: rgba(255,255,255,.6); padding: 28px 24px; text-align: center; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-copy { font-size: .8rem; margin-bottom: 10px; }
+    .footer-copy a { color: var(--accent); text-decoration: none; }
+    .footer-legal { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .footer-legal button { background: none; border: none; color: rgba(255,255,255,.45); font-size: .75rem; cursor: pointer; transition: color .15s; padding: 0; text-decoration: underline; font-family: inherit; }
+    .footer-legal button:hover { color: var(--accent); }
+
+    /* MODALS */
+    .modal-overlay { position: fixed; inset: 0; z-index: 8000; background: rgba(0,0,0,.55); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; padding: 16px; }
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: var(--bg); border-radius: 16px; max-width: 680px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 24px 80px rgba(0,0,0,.25); overflow: hidden; }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--border); }
+    .modal-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+    .modal-close { background: none; border: 1px solid var(--border); color: var(--muted); width: 34px; height: 34px; border-radius: 8px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: border-color .15s, color .15s; }
+    .modal-close:hover { border-color: var(--accent); color: var(--accent); }
+    .modal-body { padding: 24px; overflow-y: auto; font-size: .875rem; color: var(--ink2); line-height: 1.75; }
+    .modal-body h4 { font-size: .95rem; font-weight: 700; color: var(--ink); margin: 20px 0 8px; }
+    .modal-body h4:first-child { margin-top: 0; }
+    .modal-body p { margin-bottom: 10px; }
+    .modal-body ul { padding-left: 18px; margin-bottom: 10px; }
+    .modal-body ul li { margin-bottom: 5px; }
+    .modal-warning { background: #FEF9C3; border: 1px solid #FDE047; border-radius: 8px; padding: 10px 14px; font-size: .8rem; color: #713F12; margin-bottom: 16px; display: flex; gap: 8px; align-items: flex-start; }
+    [data-theme="dark"] .modal-warning { background: #422006; border-color: #854D0E; color: #FDE68A; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 960px) {
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 640px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .filters-inner { gap: 8px; }
+      .filter-count { width: 100%; margin-left: 0; }
+      .page-header { padding: 32px 20px 28px; }
+      .catalog-main { padding: 24px 16px 48px; }
+    }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="main-nav">
   <div class="nav-inner">
-    <a href="PREVIEW_SITO_V2.html" class="nav-logo">
+    <a href="PREVIEW_SITO_V2.html" class="nav-logo" aria-label="BEK Electric System">
       <div class="nav-logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L9 22L19.5 10H13L13 2Z"/></svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L4.5 13.5H11L9 22L19.5 10H13L13 2Z"/></svg>
       </div>
       <span class="nav-logo-text"><span>BEK</span> Electric</span>
     </a>
-    <a href="PREVIEW_SITO_V2.html" class="nav-back">&#8592; Torna al sito</a>
+    <a href="PREVIEW_SITO_V2.html" class="nav-back">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Torna al sito
+    </a>
     <div class="nav-spacer"></div>
-    <button class="dark-toggle" id="darkToggle">&#127769;</button>
-    <a href="PREVENTIVO.html" class="btn-targa">&#127991; Targa personalizzata</a>
+    <div class="nav-actions">
+      <button class="dark-toggle" id="darkToggle" aria-label="Modalita scura">🌙</button>
+      <a href="PREVENTIVO.html" class="btn-nav">Richiedi Preventivo</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
-<div class="page-hero">
-  <div class="hero-badge">&#9889; Linea Smart BEK &middot; EN 12845</div>
-  <h1>Catalogo <span>Prodotti</span></h1>
-  <p>Quadri elettrici di comando per impianti antincendio. Da 3 a 160 kW, avviamento diretto e stella-triangolo.</p>
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+  <a href="PREVIEW_SITO_V2.html">← Torna al sito</a>
+  <a href="PREVIEW_SITO_V2.html#chi-siamo">Chi Siamo</a>
+  <a href="PREVIEW_SITO_V2.html#certificazioni">Certificazioni</a>
+  <a href="PREVIEW_SITO_V2.html#contatti">Contatti</a>
+  <a href="PREVENTIVO.html" class="mobile-nav-cta">Richiedi Preventivo</a>
 </div>
 
-<div class="filter-bar">
-  <div class="filter-inner">
-    <div class="tabs" id="tabsBar">
-      <button class="tab-btn active" data-cat="all">Tutti (20)</button>
-      <button class="tab-btn" data-cat="direct">DOL &mdash; Avviamento Diretto</button>
-      <button class="tab-btn" data-cat="star-delta">Y/&#916; &mdash; Stella-Triangolo</button>
-    </div>
-    <div class="search-wrap">
-      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="searchInput" class="search-input" placeholder="Cerca per kW, nome, codice...">
-    </div>
-    <div class="result-count" id="resultCount">20 prodotti</div>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-badge">⚡ EN 12845 · Linea Smart BEK</div>
+    <h1>Catalogo Prodotti · <span>Linea Smart BEK</span></h1>
+    <p>20 modelli da 3 a 160 kW, avviamento diretto (DOL) e stella-triangolo (Y/Δ). Conformi EN 12845. Assemblati e testati in Italia.</p>
   </div>
 </div>
 
-<div class="catalog-wrap">
-  <div class="products-grid" id="productsGrid"></div>
+<!-- FILTERS BAR -->
+<div class="filters-bar" id="filtersBar">
+  <div class="filters-inner">
+    <div class="filter-tabs" id="filterTabs">
+      <button class="tab-btn active" data-cat="all">Tutti</button>
+      <button class="tab-btn" data-cat="direct">DOL (Avviamento Diretto)</button>
+      <button class="tab-btn" data-cat="star-delta">Y/Δ (Stella-Triangolo)</button>
+    </div>
+    <div class="filter-search">
+      <input type="search" id="searchInput" placeholder="Cerca per nome o kW (es. 22)..." autocomplete="off">
+    </div>
+    <div class="filter-count" id="filterCount"><strong>20</strong> di 20 prodotti</div>
+  </div>
 </div>
 
-<div class="bottom-cta">
-  <h2>Trovato il modello che cercavi?</h2>
-  <p>Richiedi un preventivo personalizzato con targa identificativa inclusa.</p>
-  <a href="PREVENTIVO.html" class="btn-white">&#128203; Richiedi Preventivo + Targa</a>
+<!-- CATALOG MAIN -->
+<div class="catalog-main">
+  <div class="products-grid" id="productsGrid">
+    <!-- Rendered by JS -->
+  </div>
 </div>
 
-<footer class="page-footer">
-  &#169; 2026 BEK Electric System S.r.l. &nbsp;&middot;&nbsp;
-  <a href="mailto:info@bekelectric.com">info@bekelectric.com</a> &nbsp;&middot;&nbsp;
-  Padova (PD), Italia &nbsp;&middot;&nbsp;
-  <a href="PREVIEW_SITO_V2.html">Privacy &amp; Cookie</a>
-  &nbsp;<span style="opacity:.4">&#9888;&#65039; dati fittizi</span>
+<!-- CTA BOTTOM -->
+<div class="cta-bottom">
+  <div class="cta-bottom-inner">
+    <h2>Hai trovato il modello giusto?</h2>
+    <p>Richiedi un preventivo personalizzato con spedizione inclusa. Risposta garantita entro 24 ore lavorative dal nostro team tecnico.</p>
+    <div class="cta-bottom-actions">
+      <a href="PREVENTIVO.html" class="btn-white">📋 Richiedi Preventivo</a>
+      <a href="PREVIEW_SITO_V2.html#contatti" class="btn-white-outline">✉ Contattaci</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">© 2026 <a href="PREVIEW_SITO_V2.html">BEK Electric System</a> S.r.l. — Tutti i diritti riservati</p>
+    <div class="footer-legal">
+      <button onclick="openModal('privacy')">Privacy Policy</button>
+      <button onclick="openModal('cookie')">Cookie Policy</button>
+      <button onclick="openModal('cgv')">Condizioni di Vendita</button>
+    </div>
+  </div>
 </footer>
 
+<!-- MODAL: PRIVACY POLICY -->
+<div class="modal-overlay" id="modal-privacy">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Privacy Policy</h3>
+      <button class="modal-close" onclick="closeModal('privacy')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-warning">⚠️ Documento fittizio a scopo illustrativo. Non ha valore legale.</div>
+      <h4>1. Titolare del Trattamento</h4>
+      <p>BEK Electric System S.r.l. (dato fittizio), Via dell'Industria 42, 35121 Padova (PD)</p>
+      <h4>2. Dati raccolti</h4>
+      <p>Raccogliamo i dati che ci fornisci volontariamente tramite il modulo di preventivo: nome, cognome, email, telefono, ragione sociale.</p>
+      <h4>3. Diritti dell'interessato</h4>
+      <p>Hai diritto di accesso, rettifica, cancellazione e portabilità. Contatta: info@bekelectric.com</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: COOKIE POLICY -->
+<div class="modal-overlay" id="modal-cookie">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Cookie Policy</h3>
+      <button class="modal-close" onclick="closeModal('cookie')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-warning">⚠️ Documento fittizio a scopo illustrativo. Non ha valore legale.</div>
+      <h4>Cookie tecnici (sempre attivi)</h4>
+      <ul>
+        <li><strong>theme_pref</strong> — Preferenza tema chiaro/scuro, durata: 1 anno</li>
+        <li><strong>cookie_consent</strong> — Registra il consenso cookie, durata: 1 anno</li>
+      </ul>
+      <h4>Come gestire i cookie</h4>
+      <p>Puoi disabilitare i cookie dalle impostazioni del tuo browser.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: CGV -->
+<div class="modal-overlay" id="modal-cgv">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Condizioni Generali di Vendita</h3>
+      <button class="modal-close" onclick="closeModal('cgv')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-warning">⚠️ Documento fittizio a scopo illustrativo. Non ha valore legale.</div>
+      <h4>1. Prezzi e pagamento</h4>
+      <p>I prezzi sono espressi in EUR + IVA. Il pagamento avviene a 30 giorni data fattura, salvo diversi accordi scritti.</p>
+      <h4>2. Consegna</h4>
+      <p>I tempi di consegna indicati (8 giorni lavorativi per modelli a stock) sono puramente indicativi.</p>
+      <h4>3. Garanzia</h4>
+      <p>I prodotti sono garantiti 24 mesi dalla data di consegna contro difetti di fabbricazione.</p>
+      <h4>4. Foro competente</h4>
+      <p>Per qualsiasi controversia è competente il Foro di Padova.</p>
+    </div>
+  </div>
+</div>
+
 <script>
+/* ─── PRODUCTS DATA ─── */
+const PRODUCTS = [{"code":"6003011","name":"EGE SMART 3","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":3,"hp":5,"currentMax":7,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":16.8,"price":null,"available":true},{"code":"6005511","name":"EGE SMART 5,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":5.5,"hp":7.5,"currentMax":12,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":16.8,"price":null,"available":true},{"code":"6007511","name":"EGE SMART 7,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":7.5,"hp":10,"currentMax":16,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":17,"price":null,"available":true},{"code":"6011011","name":"EGE SMART 11","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":11,"hp":15,"currentMax":24,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":17.6,"price":null,"available":true},{"code":"6011021","name":"EGE SMART 11 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":11,"hp":15,"currentMax":24,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":18.3,"price":null,"available":true},{"code":"6015011","name":"EGE SMART 15","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":15,"hp":20,"currentMax":32,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":17.8,"price":null,"available":true},{"code":"6015021","name":"EGE SMART 15 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":15,"hp":20,"currentMax":32,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":18,"price":null,"available":true},{"code":"6018511","name":"EGE SMART 18,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":18.5,"hp":25,"currentMax":36,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":18.5,"price":null,"available":true},{"code":"6018521","name":"EGE SMART 18,5 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":18.5,"hp":25,"currentMax":36,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":18.5,"price":null,"available":true},{"code":"6022011","name":"EGE SMART 22","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":22,"hp":30,"currentMax":40,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":19,"price":null,"available":true},{"code":"6022021","name":"EGE SMART 22 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":22,"hp":30,"currentMax":40,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":19.2,"price":null,"available":true},{"code":"6030021","name":"EGE SMART 30 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":30,"hp":40,"currentMax":60,"box":{"h":500,"l":400,"w":200},"material":"Metallico","weight":20.1,"price":null,"available":true},{"code":"6037022","name":"EGE SMART 37 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":37,"hp":50,"currentMax":70,"box":{"h":700,"l":500,"w":250},"material":"Metallico","weight":33.6,"price":null,"available":true},{"code":"6045022","name":"EGE SMART 45 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":45,"hp":60,"currentMax":80,"box":{"h":700,"l":500,"w":250},"material":"Metallico","weight":34,"price":null,"available":true},{"code":"6055022","name":"EGE SMART 55 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":55,"hp":75,"currentMax":100,"box":{"h":700,"l":500,"w":250},"material":"Metallico","weight":38.5,"price":null,"available":true},{"code":"6075023","name":"EGE SMART 75 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":75,"hp":100,"currentMax":132,"box":{"h":800,"l":600,"w":250},"material":"Metallico","weight":54.5,"price":null,"available":true},{"code":"6090023","name":"EGE SMART 90 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":90,"hp":125,"currentMax":160,"box":{"h":800,"l":600,"w":250},"material":"Metallico","weight":64,"price":null,"available":true},{"code":"6110023","name":"EGE SMART 110 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":110,"hp":150,"currentMax":200,"box":{"h":800,"l":600,"w":250},"material":"Metallico","weight":85,"price":null,"available":true},{"code":"6132024","name":"EGE SMART 132 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":132,"hp":200,"currentMax":240,"box":{"h":1000,"l":800,"w":300},"material":"Metallico","weight":95,"price":null,"available":true},{"code":"6160024","name":"EGE SMART 160 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":160,"hp":200,"currentMax":296,"box":{"h":1000,"l":800,"w":300},"material":"Metallico","weight":100,"price":null,"available":true}];
+
+/* ─── DARK MODE ─── */
 const root = document.documentElement;
 const toggle = document.getElementById('darkToggle');
 function setTheme(dark) {
   root.setAttribute('data-theme', dark ? 'dark' : 'light');
-  toggle.innerHTML = dark ? '&#9728;&#65039;' : '&#127769;';
+  toggle.textContent = dark ? '☀️' : '🌙';
   localStorage.setItem('bek-theme', dark ? 'dark' : 'light');
 }
 const saved = localStorage.getItem('bek-theme');
-setTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+setTheme(saved ? saved === 'dark' : prefersDark);
 toggle.addEventListener('click', () => setTheme(root.getAttribute('data-theme') !== 'dark'));
 
-window.addEventListener('scroll', () => {
-  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
+/* ─── MOBILE NAV ─── */
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const mobileNavClose = document.getElementById('mobileNavClose');
+function closeMobileNav() { mobileNav.classList.remove('open'); }
+hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+mobileNavClose.addEventListener('click', closeMobileNav);
 
-const PRODUCTS = [
-  {code:"6003011",name:"EGE SMART 3",cat:"direct",v:"3~400V",f:"50/60",kw:3,hp:5,a:7,box:{h:500,l:400,w:200},kg:16.8},
-  {code:"6005511",name:"EGE SMART 5,5",cat:"direct",v:"3~400V",f:"50/60",kw:5.5,hp:7.5,a:12,box:{h:500,l:400,w:200},kg:16.8},
-  {code:"6007511",name:"EGE SMART 7,5",cat:"direct",v:"3~400V",f:"50/60",kw:7.5,hp:10,a:16,box:{h:500,l:400,w:200},kg:17},
-  {code:"6011011",name:"EGE SMART 11",cat:"direct",v:"3~400V",f:"50/60",kw:11,hp:15,a:24,box:{h:500,l:400,w:200},kg:17.6},
-  {code:"6011021",name:"EGE SMART 11 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:11,hp:15,a:24,box:{h:500,l:400,w:200},kg:18.3},
-  {code:"6015011",name:"EGE SMART 15",cat:"direct",v:"3~400V",f:"50/60",kw:15,hp:20,a:32,box:{h:500,l:400,w:200},kg:17.8},
-  {code:"6015021",name:"EGE SMART 15 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:15,hp:20,a:32,box:{h:500,l:400,w:200},kg:18},
-  {code:"6018511",name:"EGE SMART 18,5",cat:"direct",v:"3~400V",f:"50/60",kw:18.5,hp:25,a:36,box:{h:500,l:400,w:200},kg:18.5},
-  {code:"6018521",name:"EGE SMART 18,5 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:18.5,hp:25,a:36,box:{h:500,l:400,w:200},kg:18.5},
-  {code:"6022011",name:"EGE SMART 22",cat:"direct",v:"3~400V",f:"50/60",kw:22,hp:30,a:40,box:{h:500,l:400,w:200},kg:19},
-  {code:"6022021",name:"EGE SMART 22 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:22,hp:30,a:40,box:{h:500,l:400,w:200},kg:19.2},
-  {code:"6030021",name:"EGE SMART 30 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:30,hp:40,a:60,box:{h:500,l:400,w:200},kg:20.1},
-  {code:"6037022",name:"EGE SMART 37 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:37,hp:50,a:70,box:{h:700,l:500,w:250},kg:33.6},
-  {code:"6045022",name:"EGE SMART 45 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:45,hp:60,a:80,box:{h:700,l:500,w:250},kg:34},
-  {code:"6055022",name:"EGE SMART 55 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:55,hp:75,a:100,box:{h:700,l:500,w:250},kg:38.5},
-  {code:"6075023",name:"EGE SMART 75 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:75,hp:100,a:132,box:{h:800,l:600,w:250},kg:54.5},
-  {code:"6090023",name:"EGE SMART 90 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:90,hp:125,a:160,box:{h:800,l:600,w:250},kg:64},
-  {code:"6110023",name:"EGE SMART 110 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:110,hp:150,a:200,box:{h:800,l:600,w:250},kg:85},
-  {code:"6132024",name:"EGE SMART 132 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:132,hp:200,a:240,box:{h:1000,l:800,w:300},kg:95},
-  {code:"6160024",name:"EGE SMART 160 Y/D",cat:"star-delta",v:"3~400V",f:"50/60",kw:160,hp:200,a:296,box:{h:1000,l:800,w:300},kg:100}
-];
+/* ─── NAV BLUR ON SCROLL ─── */
+(function() {
+  const nav = document.getElementById('main-nav');
+  function onScroll() {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
 
-function dn(n) { return n.replace('EGE SMART','BEK Smart'); }
+/* ─── FILTERS STATE ─── */
+let currentCat = 'all';
+let currentSearch = '';
 
-let cat = 'all', q = '';
-function render() {
-  const filtered = PRODUCTS.filter(p => {
-    const ok1 = cat === 'all' || p.cat === cat;
-    const s = q.trim().toLowerCase();
-    const ok2 = !s || dn(p.name).toLowerCase().includes(s) || String(p.kw).includes(s) || p.code.includes(s);
-    return ok1 && ok2;
+function getDisplayName(name) {
+  return name.replace('EGE SMART', 'BEK Smart');
+}
+
+function getCatLabel(cat) {
+  return cat === 'direct' ? 'DOL' : 'Y/\u0394';
+}
+
+function filterProducts() {
+  return PRODUCTS.filter(p => {
+    const matchCat = currentCat === 'all' || p.category === currentCat;
+    const q = currentSearch.trim().toLowerCase();
+    if (!q) return matchCat;
+    const displayName = getDisplayName(p.name).toLowerCase();
+    const matchName = displayName.includes(q) || p.code.includes(q);
+    const matchKw = String(p.kw).includes(q);
+    return matchCat && (matchName || matchKw);
   });
-  document.getElementById('resultCount').textContent = filtered.length + ' prodott' + (filtered.length===1?'o':'i');
+}
+
+function renderProducts() {
   const grid = document.getElementById('productsGrid');
-  if (!filtered.length) { grid.innerHTML = '<div class="no-results">Nessun prodotto trovato.</div>'; return; }
+  const countEl = document.getElementById('filterCount');
+  const filtered = filterProducts();
+
+  countEl.innerHTML = '<strong>' + filtered.length + '</strong> di ' + PRODUCTS.length + ' prodotti';
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results"><strong>Nessun prodotto trovato</strong><p>Prova a modificare i filtri o la ricerca.</p></div>';
+    return;
+  }
+
   grid.innerHTML = filtered.map(p => {
-    const dol = p.cat === 'direct';
-    const nm = dn(p.name);
-    const url = 'PREVENTIVO.html?model=' + encodeURIComponent(nm);
+    const displayName = getDisplayName(p.name);
+    const catLabel = getCatLabel(p.category);
+    const modelParam = encodeURIComponent(displayName);
     return '<div class="product-card">' +
-      '<div class="card-top"><div class="product-name">' + nm + '</div>' +
-      '<div class="badges"><span class="badge ' + (dol?'badge-dol':'badge-yd') + '">' + (dol?'DOL':'Y/&#916;') + '</span>' +
-      '<span class="badge badge-kw">' + p.kw + ' kW</span></div></div>' +
-      '<div class="product-code">Cod. ' + p.code + '</div>' +
-      '<div class="specs">' +
-        '<div class="spec-row"><span class="spec-label">Potenza</span><span class="spec-value">' + p.kw + ' kW / ' + p.hp + ' HP</span></div>' +
-        '<div class="spec-row"><span class="spec-label">Corrente max</span><span class="spec-value">' + p.a + ' A</span></div>' +
-        '<div class="spec-row"><span class="spec-label">Tensione</span><span class="spec-value">3 ~ 400 V / ' + p.f + ' Hz</span></div>' +
-        '<div class="spec-row"><span class="spec-label">Peso</span><span class="spec-value">' + p.kg + ' kg</span></div>' +
+      '<div class="product-card-header">' +
+        '<div class="product-name">' + displayName + '</div>' +
+        '<div class="product-badges">' +
+          '<span class="badge badge-cat">' + catLabel + '</span>' +
+          '<span class="badge badge-kw">' + p.kw + ' kW</span>' +
+        '</div>' +
       '</div>' +
-      '<div class="dims">Armadio: ' + p.box.h + ' &times; ' + p.box.l + ' &times; ' + p.box.w + ' mm (H&times;L&times;P)</div>' +
-      '<a href="' + url + '" class="card-cta">Richiedi Preventivo &#8594;</a>' +
+      '<div class="product-code">Cod. ' + p.code + '</div>' +
+      '<div class="product-specs">' +
+        '<div class="spec-row"><span class="spec-label">Potenza</span><span class="spec-value">' + p.kw + ' kW / ' + p.hp + ' HP</span></div>' +
+        '<div class="spec-row"><span class="spec-label">Corrente max</span><span class="spec-value">' + p.currentMax + ' A</span></div>' +
+        '<div class="spec-row"><span class="spec-label">Tensione</span><span class="spec-value">' + p.voltage + '</span></div>' +
+        '<div class="spec-row"><span class="spec-label">Frequenza</span><span class="spec-value">' + p.frequency + '</span></div>' +
+        '<div class="spec-row"><span class="spec-label">Peso</span><span class="spec-value">' + p.weight + ' kg</span></div>' +
+      '</div>' +
+      '<div class="product-dims">📦 ' + p.box.h + '×' + p.box.l + '×' + p.box.w + ' mm (H×L×P)</div>' +
+      '<a href="PREVENTIVO.html?model=' + modelParam + '" class="product-cta">Richiedi Preventivo</a>' +
     '</div>';
   }).join('');
 }
 
-document.getElementById('tabsBar').addEventListener('click', e => {
-  const b = e.target.closest('.tab-btn');
-  if (!b) return;
-  document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
-  b.classList.add('active');
-  cat = b.dataset.cat;
-  render();
+/* ─── FILTER TABS ─── */
+document.getElementById('filterTabs').addEventListener('click', function(e) {
+  const btn = e.target.closest('.tab-btn');
+  if (!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  currentCat = btn.dataset.cat;
+  renderProducts();
 });
-document.getElementById('searchInput').addEventListener('input', e => { q = e.target.value; render(); });
-render();
+
+/* ─── SEARCH INPUT ─── */
+document.getElementById('searchInput').addEventListener('input', function(e) {
+  currentSearch = e.target.value;
+  renderProducts();
+});
+
+/* ─── MODALS ─── */
+function openModal(id) {
+  const m = document.getElementById('modal-' + id);
+  if (m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeModal(id) {
+  const m = document.getElementById('modal-' + id);
+  if (m) { m.classList.remove('open'); document.body.style.overflow = ''; }
+}
+document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+  });
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+      m.classList.remove('open'); document.body.style.overflow = '';
+    });
+  }
+});
+
+/* ─── INIT ─── */
+renderProducts();
 </script>
 </body>
 </html>

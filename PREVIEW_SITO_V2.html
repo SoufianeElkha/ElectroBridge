@@ -266,6 +266,7 @@
       .perche-grid { grid-template-columns: 1fr 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .contatti-grid { grid-template-columns: 1fr; }
+      .servizi-grid { grid-template-columns: 1fr; gap: 20px; }
     }
     @media (max-width: 640px) {
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
@@ -346,19 +347,19 @@
 <div class="stats-strip">
   <div class="stats-inner">
     <div class="stat-item">
-      <div class="stat-number">20+</div>
+      <div class="stat-number" data-counter="20" data-suffix="+">20+</div>
       <div class="stat-label">Modelli disponibili</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">3–160 kW</div>
+      <div class="stat-number" data-static="3–160 kW">3–160 kW</div>
       <div class="stat-label">Gamma di potenza</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">EN 12845</div>
+      <div class="stat-number" data-static="EN 12845">EN 12845</div>
       <div class="stat-label">Standard certificato</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">8 gg</div>
+      <div class="stat-number" data-counter="8" data-suffix=" gg">8 gg</div>
       <div class="stat-label">Consegna rapida</div>
     </div>
   </div>
@@ -501,7 +502,7 @@
 <section id="prodotti">
   <div class="section-inner">
     <div class="section-header centered">
-      <div class="section-tag">I Nostri Servizi</div>
+      <div class="section-tag">Catalogo &amp; Servizi</div>
       <h2 class="section-title">Tutto quello che ti serve</h2>
       <p class="section-desc">Dal catalogo tecnico alla targa personalizzata: scegli il tuo percorso.</p>
     </div>
@@ -1021,63 +1022,9 @@ function updateNavTop() {
 updateNavTop();
 window.addEventListener('resize', updateNavTop);
 
-/* ─── PRODUCTS LOAD ─── */
-async function loadProducts() {
-  const grid = document.getElementById('productsGrid');
-  try {
-    const resp = await fetch('./products.json');
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    const data = await resp.json();
-    window._productsData = data;
-    renderProducts('all', data.products);
-  } catch (e) {
-    grid.innerHTML = '<div class="products-loading">Impossibile caricare il catalogo. <a href="#contatti" style="color:var(--accent)">Contattaci</a> per ricevere la scheda tecnica.</div>';
-  }
-}
 
-function renderProducts(cat, products) {
-  const grid = document.getElementById('productsGrid');
-  const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
-  if (!filtered.length) { grid.innerHTML = '<div class="products-loading">Nessun prodotto trovato.</div>'; return; }
-  grid.innerHTML = filtered.map(p => {
-    const catLabel = p.category === 'direct' ? 'DOL' : 'Y/Δ';
-    return `
-    <div class="product-card">
-      <div class="product-card-header">
-        <div class="product-name">${p.name.replace('EGE SMART', 'BEK Smart')}</div>
-        <span class="product-badge">${catLabel}</span>
-      </div>
-      <div class="product-code">Cod. ${p.code}</div>
-      <div class="product-specs">
-        <div class="spec-row"><span class="spec-label">Potenza</span><span class="spec-value">${p.kw} kW / ${p.hp} HP</span></div>
-        <div class="spec-row"><span class="spec-label">Corrente max</span><span class="spec-value">${p.currentMax} A</span></div>
-        <div class="spec-row"><span class="spec-label">Tensione</span><span class="spec-value">${p.voltage}</span></div>
-        <div class="spec-row"><span class="spec-label">Frequenza</span><span class="spec-value">${p.frequency} Hz</span></div>
-        <div class="spec-row"><span class="spec-label">Peso</span><span class="spec-value">${p.weight} kg</span></div>
-      </div>
-      <div class="product-dims">📦 ${p.box.h}×${p.box.l}×${p.box.w} mm (H×L×P)</div>
-      <button class="product-cta" onclick="openPreventivoForProduct('${p.name}')">Richiedi Preventivo</button>
-    </div>`;
-  }).join('');
-}
 
-/* ─── PRODUCT TABS ─── */
-document.getElementById('productTabs').addEventListener('click', e => {
-  const btn = e.target.closest('.tab-btn');
-  if (!btn) return;
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  if (window._productsData) renderProducts(btn.dataset.cat, window._productsData.products);
-});
 
-function openPreventivoForProduct(name) {
-  const sel = document.querySelector('#modal-preventivo select');
-  if (sel) {
-    const kw = name.replace('EGE SMART ', 'BEK ').replace(' Y/D', ' Y/D').trim() + ' kW';
-    for (let opt of sel.options) { if (opt.value === kw) { sel.value = kw; break; } }
-  }
-  openModal('preventivo');
-}
 
 /* ─── FAQ ACCORDION ─── */
 document.querySelectorAll('.faq-q').forEach(btn => {
@@ -1180,7 +1127,61 @@ if (statsStrip) statsObserver.observe(statsStrip);
 })();
 
 /* ─── INIT ─── */
-loadProducts();
+
+/* ─── NAV BLUR ON SCROLL ─── */
+(function() {
+  const nav = document.getElementById('main-nav');
+  function onScroll() {
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ─── SCROLL REVEAL (IntersectionObserver) ─── */
+(function() {
+  const revealEls = document.querySelectorAll('.reveal');
+  if (!revealEls.length) return;
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(function(el) { observer.observe(el); });
+})();
+
+/* ─── COUNTER ANIMATION ─── */
+(function() {
+  const counters = document.querySelectorAll('[data-counter]');
+  if (!counters.length) return;
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-counter'), 10);
+      const suffix = el.getAttribute('data-suffix') || '';
+      const duration = 1200;
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(function(el) { observer.observe(el); });
+})();
+
 </script>
 </body>
 </html>
