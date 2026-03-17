@@ -92,7 +92,7 @@
 
     /* STATS STRIP */
     .stats-strip { background: var(--accent); padding: 28px 24px; }
-    .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+    .stats-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
     .stat-item { }
     .stat-number { font-size: 1.8rem; font-weight: 900; color: white; letter-spacing: -.03em; }
     .stat-label { font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.8); text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
@@ -152,6 +152,16 @@
     .perche-card p { font-size: .875rem; color: var(--muted); line-height: 1.65; }
 
     /* CERTIFICAZIONI */
+    /* APPLICAZIONI */
+    .appl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 0; }
+    .appl-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 28px 20px; text-align: center; transition: border-color .2s, transform .2s; }
+    .appl-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .appl-icon { font-size: 2rem; margin-bottom: 12px; }
+    .appl-card h4 { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .appl-card p { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+    @media (max-width:768px) { .appl-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width:480px) { .appl-grid { grid-template-columns: 1fr; } }
+
     .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
     .cert-card { background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius); padding: 24px; text-align: center; transition: border-color .2s; }
     .cert-card:hover { border-color: var(--accent); }
@@ -449,12 +459,8 @@
 <div class="stats-strip">
   <div class="stats-inner">
     <div class="stat-item">
-      <div class="stat-number">−52%</div>
-      <div class="stat-label">vs Fourgroup (DOL 15 kW)</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">−63%</div>
-      <div class="stat-label">vs Elentek (vantaggio max)</div>
+      <div class="stat-number">−60%</div>
+      <div class="stat-label">rispetto ai concorrenti</div>
     </div>
     <div class="stat-item">
       <div class="stat-number">100%</div>
@@ -624,6 +630,126 @@
       </div>
     </div>
     <a href="PREVENTIVO.html" class="btn-primary rv">Richiedi il tuo preventivo →</a>
+  </div>
+</section>
+
+<!-- APPLICAZIONI TIPICHE -->
+<section id="applicazioni" class="section-alt">
+  <div class="section-inner">
+    <div class="section-header centered">
+      <div class="section-tag">Utilizzo</div>
+      <h2 class="section-title rv">Applicazioni tipiche</h2>
+      <p class="section-desc rv">I quadri ROIV sono progettati per comandare e proteggere i gruppi di pompaggio antincendio in ogni contesto industriale, commerciale e civile conforme alla norma EN 12845.</p>
+    </div>
+
+    <!-- Schema SVG -->
+    <div class="rv" style="margin: 0 auto 56px; max-width: 860px;">
+      <svg viewBox="0 0 860 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;" role="img" aria-label="Schema impianto antincendio con quadro ROIV">
+
+        <!-- Sfondo arrotondato -->
+        <rect width="860" height="260" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+
+        <!-- ── FONTE IDRICA ── -->
+        <rect x="24" y="90" width="120" height="80" rx="10" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+        <text x="84" y="123" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#0369a1">SERBATOIO /</text>
+        <text x="84" y="138" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#0369a1">RETE IDRICA</text>
+        <!-- icona acqua -->
+        <text x="84" y="158" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16">💧</text>
+
+        <!-- freccia fonte → quadro -->
+        <line x1="144" y1="130" x2="198" y2="130" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,3"/>
+        <polygon points="198,125 208,130 198,135" fill="#94a3b8"/>
+
+        <!-- ── QUADRO ROIV ── -->
+        <rect x="208" y="60" width="140" height="140" rx="12" fill="#FF6B00" stroke="#ea5500" stroke-width="2"/>
+        <text x="278" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="white">QUADRO</text>
+        <text x="278" y="117" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="900" fill="white">ROIV</text>
+        <text x="278" y="138" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.85)">EN 12845 / UNI 10779</text>
+        <!-- icona fulmine -->
+        <text x="278" y="162" text-anchor="middle" font-family="system-ui,sans-serif" font-size="20">⚡</text>
+        <!-- bordo LED -->
+        <circle cx="228" cy="80" r="5" fill="#4ade80"/>
+        <circle cx="244" cy="80" r="5" fill="#facc15"/>
+        <circle cx="260" cy="80" r="5" fill="#f87171"/>
+
+        <!-- ── FRECCE QUADRO → POMPE ── -->
+        <!-- verso pompa principale (alto) -->
+        <line x1="348" y1="105" x2="408" y2="82" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="403,77 414,80 407,88" fill="#94a3b8"/>
+        <!-- verso jockey (centro) -->
+        <line x1="348" y1="130" x2="408" y2="130" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="408,125 418,130 408,135" fill="#94a3b8"/>
+        <!-- verso diesel (basso) -->
+        <line x1="348" y1="155" x2="408" y2="178" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="403,172 414,180 407,187" fill="#94a3b8"/>
+
+        <!-- ── POMPE ── -->
+        <!-- Pompa principale -->
+        <rect x="418" y="52" width="128" height="58" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+        <text x="482" y="74" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#1e293b">POMPA PRINCIPALE</text>
+        <text x="482" y="88" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#64748b">Avv. diretto / stella-Δ</text>
+        <text x="482" y="102" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14">🔵</text>
+
+        <!-- Pompa jockey -->
+        <rect x="418" y="101" width="128" height="58" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+        <text x="482" y="123" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#1e293b">POMPA JOCKEY</text>
+        <text x="482" y="137" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#64748b">Mantenimento pressione</text>
+        <text x="482" y="151" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14">🟢</text>
+
+        <!-- Motopompa diesel -->
+        <rect x="418" y="150" width="128" height="58" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+        <text x="482" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#1e293b">MOTOPOMPA DIESEL</text>
+        <text x="482" y="186" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#64748b">Backup autonomo</text>
+        <text x="482" y="200" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14">🔴</text>
+
+        <!-- ── FRECCE POMPE → USCITE ── -->
+        <line x1="546" y1="81" x2="596" y2="81" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="596,76 606,81 596,86" fill="#94a3b8"/>
+        <line x1="546" y1="130" x2="596" y2="130" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="596,125 606,130 596,135" fill="#94a3b8"/>
+        <line x1="546" y1="179" x2="596" y2="179" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="596,174 606,179 596,184" fill="#94a3b8"/>
+
+        <!-- connettore verticale uscite -->
+        <line x1="606" y1="81" x2="606" y2="179" stroke="#94a3b8" stroke-width="2"/>
+        <line x1="606" y1="130" x2="656" y2="130" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="656,125 666,130 656,135" fill="#94a3b8"/>
+
+        <!-- ── IMPIANTO FINALE ── -->
+        <rect x="666" y="70" width="168" height="120" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+        <text x="750" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#166534">IMPIANTO</text>
+        <text x="750" y="114" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#166534">ANTINCENDIO</text>
+        <text x="750" y="136" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">🚿 Sprinkler EN 12845</text>
+        <text x="750" y="152" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">🔧 Rete idranti UNI 10779</text>
+        <text x="750" y="168" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#166534">🏭 Impianti industriali</text>
+
+      </svg>
+      <p style="text-align:center;font-size:.75rem;color:var(--muted);margin-top:10px;">Schema tipico di un gruppo di pressurizzazione antincendio EN 12845 comandato da quadri ROIV</p>
+    </div>
+
+    <!-- Schede applicazione -->
+    <div class="appl-grid rv">
+      <div class="appl-card">
+        <div class="appl-icon">🏭</div>
+        <h4>Impianti industriali</h4>
+        <p>Stabilimenti produttivi, magazzini logistici e capannoni con obbligo di protezione attiva per superfici superiori a 600 m².</p>
+      </div>
+      <div class="appl-card">
+        <div class="appl-icon">🏢</div>
+        <h4>Edifici commerciali</h4>
+        <p>Centri commerciali, hotel, ospedali e uffici dove la normativa impone impianti sprinkler o reti idranti certificati EN 12845.</p>
+      </div>
+      <div class="appl-card">
+        <div class="appl-icon">🚿</div>
+        <h4>Impianti sprinkler</h4>
+        <p>Comando di pompe principali e jockey per il mantenimento della pressione di rete e l'attivazione automatica all'incendio.</p>
+      </div>
+      <div class="appl-card">
+        <div class="appl-icon">⛽</div>
+        <h4>Gruppi diesel di riserva</h4>
+        <p>Quadri Diesel-EN per motopompe con avviamento automatico, prova settimanale programmata e segnalazioni di allarme complete.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1244,7 +1370,7 @@ if (document.getElementById('productsGrid')) loadProducts();
   // Elements to reveal
   var selectors = [
     '.section-tag', '.section-title', '.section-desc',
-    '.feature-card', '.cert-card', '.why-item',
+    '.feature-card', '.cert-card', '.why-item', '.appl-card',
     '.faq-item', '.contact-card',
     '.stat-item'
   ];
