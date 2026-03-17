@@ -257,12 +257,30 @@
           <div>
             <span class="ctrl-label">Modello quadro (per targa)</span>
             <select class="ctrl-input" id="in-model" onchange="updateModel()">
-              <option value="DIRECTO-EN / 7,5 kW | EN 12845">Directo-EN / 7,5 kW</option>
-              <option value="DIRECTO-EN / 15 kW | EN 12845" selected>Directo-EN / 15 kW</option>
-              <option value="DIRECTO-EN / 22 kW | EN 12845">Directo-EN / 22 kW</option>
-              <option value="STARDELTA-EN / 4–132 kW | EN 12845">Stardelta-EN / 4–132 kW</option>
-              <option value="REACTO-EN / 4–132 kW | EN 12845">Reacto-EN / 4–132 kW</option>
-              <option value="DIESEL-EN | EN 12845">Diesel-EN</option>
+              <optgroup label="— Avviamento Diretto (DOL) —">
+                <option value="BEK Smart 3 · 3 kW DOL | EN 12845">BEK Smart 3 — 3 kW</option>
+                <option value="BEK Smart 5,5 · 5,5 kW DOL | EN 12845">BEK Smart 5,5 — 5,5 kW</option>
+                <option value="BEK Smart 7,5 · 7,5 kW DOL | EN 12845">BEK Smart 7,5 — 7,5 kW</option>
+                <option value="BEK Smart 11 · 11 kW DOL | EN 12845">BEK Smart 11 — 11 kW</option>
+                <option value="BEK Smart 15 · 15 kW DOL | EN 12845" selected>BEK Smart 15 — 15 kW</option>
+                <option value="BEK Smart 18,5 · 18,5 kW DOL | EN 12845">BEK Smart 18,5 — 18,5 kW</option>
+                <option value="BEK Smart 22 · 22 kW DOL | EN 12845">BEK Smart 22 — 22 kW</option>
+              </optgroup>
+              <optgroup label="— Stella-Triangolo (Y/Δ) —">
+                <option value="BEK Smart 11 Y/D · 11 kW Y/Δ | EN 12845">BEK Smart 11 Y/D — 11 kW</option>
+                <option value="BEK Smart 15 Y/D · 15 kW Y/Δ | EN 12845">BEK Smart 15 Y/D — 15 kW</option>
+                <option value="BEK Smart 18,5 Y/D · 18,5 kW Y/Δ | EN 12845">BEK Smart 18,5 Y/D — 18,5 kW</option>
+                <option value="BEK Smart 22 Y/D · 22 kW Y/Δ | EN 12845">BEK Smart 22 Y/D — 22 kW</option>
+                <option value="BEK Smart 30 Y/D · 30 kW Y/Δ | EN 12845">BEK Smart 30 Y/D — 30 kW</option>
+                <option value="BEK Smart 37 Y/D · 37 kW Y/Δ | EN 12845">BEK Smart 37 Y/D — 37 kW</option>
+                <option value="BEK Smart 45 Y/D · 45 kW Y/Δ | EN 12845">BEK Smart 45 Y/D — 45 kW</option>
+                <option value="BEK Smart 55 Y/D · 55 kW Y/Δ | EN 12845">BEK Smart 55 Y/D — 55 kW</option>
+                <option value="BEK Smart 75 Y/D · 75 kW Y/Δ | EN 12845">BEK Smart 75 Y/D — 75 kW</option>
+                <option value="BEK Smart 90 Y/D · 90 kW Y/Δ | EN 12845">BEK Smart 90 Y/D — 90 kW</option>
+                <option value="BEK Smart 110 Y/D · 110 kW Y/Δ | EN 12845">BEK Smart 110 Y/D — 110 kW</option>
+                <option value="BEK Smart 132 Y/D · 132 kW Y/Δ | EN 12845">BEK Smart 132 Y/D — 132 kW</option>
+                <option value="BEK Smart 160 Y/D · 160 kW Y/Δ | EN 12845">BEK Smart 160 Y/D — 160 kW</option>
+              </optgroup>
             </select>
           </div>
         </div>
@@ -294,12 +312,33 @@
         <div class="fg">
           <label>Prodotto richiesto</label>
           <select id="form-model">
-            <option>Directo-EN — Avviamento Diretto</option>
-            <option>Stardelta-EN — Stella-Triangolo</option>
-            <option>Reacto-EN — Avviamento ad Impedenza</option>
-            <option>Diesel-EN — Motopompa Diesel</option>
-            <option>Quadri Jockey / Accessori</option>
-            <option>Altro / Personalizzato</option>
+            <optgroup label="Avviamento Diretto (DOL)">
+              <option>BEK Smart 3 — 3 kW DOL</option>
+              <option>BEK Smart 5,5 — 5,5 kW DOL</option>
+              <option>BEK Smart 7,5 — 7,5 kW DOL</option>
+              <option>BEK Smart 11 — 11 kW DOL</option>
+              <option>BEK Smart 15 — 15 kW DOL</option>
+              <option>BEK Smart 18,5 — 18,5 kW DOL</option>
+              <option>BEK Smart 22 — 22 kW DOL</option>
+            </optgroup>
+            <optgroup label="Stella-Triangolo (Y/Δ)">
+              <option>BEK Smart 11 Y/D — 11 kW Y/Δ</option>
+              <option>BEK Smart 15 Y/D — 15 kW Y/Δ</option>
+              <option>BEK Smart 18,5 Y/D — 18,5 kW Y/Δ</option>
+              <option>BEK Smart 22 Y/D — 22 kW Y/Δ</option>
+              <option>BEK Smart 30 Y/D — 30 kW Y/Δ</option>
+              <option>BEK Smart 37 Y/D — 37 kW Y/Δ</option>
+              <option>BEK Smart 45 Y/D — 45 kW Y/Δ</option>
+              <option>BEK Smart 55 Y/D — 55 kW Y/Δ</option>
+              <option>BEK Smart 75 Y/D — 75 kW Y/Δ</option>
+              <option>BEK Smart 90 Y/D — 90 kW Y/Δ</option>
+              <option>BEK Smart 110 Y/D — 110 kW Y/Δ</option>
+              <option>BEK Smart 132 Y/D — 132 kW Y/Δ</option>
+              <option>BEK Smart 160 Y/D — 160 kW Y/Δ</option>
+            </optgroup>
+            <optgroup label="Altro">
+              <option>Altro / Personalizzato</option>
+            </optgroup>
           </select>
         </div>
         <div class="fg">
