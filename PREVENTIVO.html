@@ -203,13 +203,13 @@
   <h1>Richiedi il tuo preventivo</h1>
   <p>Scegli se includere una targa personalizzata con il tuo logo e i dati aziendali, oppure invia direttamente la richiesta tecnica.</p>
   <div class="version-toggle">
-    <button class="vtab active" id="tab-targa" onclick="setVersion('targa')">
+    <button type="button" class="vtab active" id="tab-targa" onclick="setVersion('targa')">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/><circle cx="7" cy="13" r="2" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="10" x2="20" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      Con Targa Personalizzata
+      Preventivo con Targa Personalizzata
     </button>
-    <button class="vtab" id="tab-notarga" onclick="setVersion('notarga')">
+    <button type="button" class="vtab" id="tab-notarga" onclick="setVersion('notarga')">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M9 12h6M9 16h4M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V8l-6-5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Solo Richiesta Tecnica
+      Preventivo Semplice
     </button>
   </div>
 </div>
@@ -249,7 +249,7 @@
 
         <input type="file" id="logo-input" accept="image/*">
         <div style="text-align:center;margin-bottom:20px;">
-          <button class="btn-download" onclick="downloadPreview()">
+          <button type="button" class="btn-download" onclick="downloadPreview()">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Scarica anteprima targa
           </button>
@@ -377,9 +377,9 @@
           <textarea placeholder="Es: 2× Directo-EN / 15 kW trifase 400V, con quadro jockey. Cantiere: Milano.&#10;Specifiche particolari o normative aggiuntive..."></textarea>
         </div>
         <div id="form-error" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:11px 13px;font-size:12px;color:#DC2626;margin-bottom:12px;"></div>
-        <button class="btn-submit" id="submit-btn" onclick="submitForm(event)">
+        <button type="button" class="btn-submit" id="submit-btn" onclick="submitForm(event)">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span id="submit-label">Invia Richiesta con Targa</span>
+          <span id="submit-label">Invia Preventivo con Targa</span>
         </button>
         <p class="privacy-note">Risposta entro 24h lavorative · Nessun impegno<br>I tuoi dati non vengono condivisi con terze parti.</p>
       </div>
@@ -475,7 +475,7 @@
     document.getElementById('tab-targa').classList.toggle('active', isTarga);
     document.getElementById('tab-notarga').classList.toggle('active', !isTarga);
     document.getElementById('targa-summary').style.display = isTarga ? '' : 'none';
-    document.getElementById('submit-label').textContent = isTarga ? 'Invia Richiesta con Targa' : 'Invia Richiesta';
+    document.getElementById('submit-label').textContent = isTarga ? 'Invia Preventivo con Targa' : 'Invia Preventivo Semplice';
   }
 
   // Form submit
@@ -516,7 +516,7 @@
     const targaRiepilogo = document.getElementById('summary-text');
 
     const payload = {
-      _subject: '🔥 Nuova richiesta preventivo BEK — ' + nome.value.trim() + ' ' + cognome.value.trim(),
+      _subject: 'Nuova richiesta preventivo BEK - ' + nome.value.trim() + ' ' + cognome.value.trim(),
       nome:     nome.value.trim(),
       cognome:  cognome.value.trim(),
       email:    email.value.trim(),
