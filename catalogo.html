@@ -255,6 +255,16 @@ function applySearch(){
   render();
 }
 
+// pre-filter da URL ?cat=direct|star-delta
+(function(){
+  const c=new URLSearchParams(location.search).get('cat');
+  if(c==='direct'||c==='star-delta'){
+    activeCat=c;
+    document.querySelectorAll('.tab-btn').forEach(b=>{
+      b.classList.toggle('active', b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+c+"'"));
+    });
+  }
+})();
 render();
 </script>
 </body>
