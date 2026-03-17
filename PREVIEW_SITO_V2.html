@@ -912,7 +912,8 @@ function renderProducts(cat, products) {
 }
 
 /* ─── PRODUCT TABS ─── */
-document.getElementById('productTabs').addEventListener('click', e => {
+const _productTabsEl = document.getElementById('productTabs');
+if (_productTabsEl) _productTabsEl.addEventListener('click', e => {
   const btn = e.target.closest('.tab-btn');
   if (!btn) return;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -985,7 +986,58 @@ document.getElementById('cookieDecline').addEventListener('click', () => { local
 })();
 
 /* ─── INIT ─── */
-loadProducts();
+if (document.getElementById('productsGrid')) loadProducts();
 </script>
+
+<!-- ─── FLOATING CONTACT WIDGET ─── -->
+<div id="contactWidget" style="
+  position:fixed;right:16px;bottom:80px;z-index:9999;
+  display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
+
+  <!-- Toggle button -->
+  <button id="contactToggle" onclick="(function(){var w=document.getElementById('contactBtns');var open=w.style.display!=='none';w.style.display=open?'none':'flex';document.getElementById('contactToggle').setAttribute('aria-expanded',String(!open));})()" aria-expanded="false" aria-label="Contattaci" style="
+    width:52px;height:52px;border-radius:50%;background:var(--accent);color:white;border:none;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 16px rgba(249,115,22,.45);font-size:1.3rem;transition:transform .15s;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    💬
+  </button>
+
+  <!-- Contact buttons (hidden by default) -->
+  <div id="contactBtns" style="display:none;flex-direction:column;align-items:flex-end;gap:8px;">
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/393481234567?text=Ciao%20BEK%20Electric%2C%20vorrei%20un%20preventivo%20per%20un%20quadro%20antincendio." target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:10px;background:#25D366;color:white;text-decoration:none;
+              padding:10px 16px 10px 14px;border-radius:30px;font-size:.85rem;font-weight:700;
+              box-shadow:0 3px 12px rgba(37,211,102,.4);white-space:nowrap;transition:transform .15s;"
+       onmouseover="this.style.transform='translateX(-4px)'" onmouseout="this.style.transform=''">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.092 1.508 5.816L0 24l6.343-1.483A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.884 0-3.65-.49-5.187-1.349l-.371-.22-3.867.905.922-3.775-.241-.388A9.955 9.955 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp
+    </a>
+
+    <!-- Telefono -->
+    <a href="tel:+393481234567"
+       style="display:flex;align-items:center;gap:10px;background:#1D4ED8;color:white;text-decoration:none;
+              padding:10px 16px 10px 14px;border-radius:30px;font-size:.85rem;font-weight:700;
+              box-shadow:0 3px 12px rgba(29,78,216,.35);white-space:nowrap;transition:transform .15s;"
+       onmouseover="this.style.transform='translateX(-4px)'" onmouseout="this.style.transform=''">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      +39 348 123 4567
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:info@bekelectric.it?subject=Richiesta%20preventivo%20quadro%20antincendio"
+       style="display:flex;align-items:center;gap:10px;background:var(--ink);color:white;text-decoration:none;
+              padding:10px 16px 10px 14px;border-radius:30px;font-size:.85rem;font-weight:700;
+              box-shadow:0 3px 12px rgba(0,0,0,.25);white-space:nowrap;transition:transform .15s;"
+       onmouseover="this.style.transform='translateX(-4px)'" onmouseout="this.style.transform=''">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      info@bekelectric.it
+    </a>
+
+  </div>
+</div>
+
 </body>
 </html>
