@@ -270,7 +270,7 @@
             <div class="logo-drop" onclick="document.getElementById('logo-input').click()">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" style="margin:0 auto;display:block;color:var(--muted)"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <p><strong>Clicca per caricare</strong> oppure trascina qui</p>
-              <p>PNG, JPG, SVG — max 5 MB</p>
+              <p>PNG, JPG, WebP — max 2 MB</p>
             </div>
           </div>
           <div>
@@ -437,10 +437,26 @@
     el.classList.add('active');
   }
 
-  // Logo upload
-  document.getElementById('logo-input').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (!file) return;
+  // ── Sicurezza logo: tipi e dimensione consentiti ──
+  const LOGO_ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+  const LOGO_ALLOWED_EXT   = ['jpg', 'jpeg', 'png', 'webp'];
+  const LOGO_MAX_BYTES     = 2 * 1024 * 1024; // 2 MB
+
+  function validateLogoFile(file) {
+    if (!file) return 'Nessun file selezionato.';
+    if (!LOGO_ALLOWED_TYPES.includes(file.type))
+      return 'Formato non supportato. Usa PNG, JPG o WebP.';
+    const ext = file.name.split('.').pop().toLowerCase();
+    if (!LOGO_ALLOWED_EXT.includes(ext))
+      return 'Estensione non valida. Usa .png, .jpg o .webp.';
+    if (file.size > LOGO_MAX_BYTES)
+      return 'File troppo grande. Massimo 2 MB.';
+    return null; // ok
+  }
+
+  function applyLogoFile(file) {
+    const err = validateLogoFile(file);
+    if (err) { alert('Logo non accettato: ' + err); return; }
     const reader = new FileReader();
     reader.onload = ev => {
       document.getElementById('logo-preview').src = ev.target.result;
@@ -448,6 +464,13 @@
       document.getElementById('logo-placeholder').style.display = 'none';
     };
     reader.readAsDataURL(file);
+  }
+
+  // Logo upload — input file
+  document.getElementById('logo-input').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) applyLogoFile(file);
+    this.value = ''; // reset input per permettere ricaricamento stesso file
   });
 
   // Drag & drop
@@ -457,14 +480,7 @@
   drop.addEventListener('drop', e => {
     e.preventDefault(); drop.style.borderColor = '';
     const file = e.dataTransfer.files[0];
-    if (!file || !file.type.startsWith('image/')) return;
-    const reader = new FileReader();
-    reader.onload = ev => {
-      document.getElementById('logo-preview').src = ev.target.result;
-      document.getElementById('logo-preview').style.display = 'block';
-      document.getElementById('logo-placeholder').style.display = 'none';
-    };
-    reader.readAsDataURL(file);
+    if (file) applyLogoFile(file);
   });
 
   // Version toggle
@@ -486,10 +502,10 @@
 
     const nome    = document.getElementById('f-nome');
     const cognome = document.getElementById('f-cognome');
-    const email   = document.getElementById('f-email');
+    const emailEl = document.getElementById('f-email');
 
     // Validazione campi obbligatori
-    for (const [el, label] of [[nome,'Nome'],[cognome,'Cognome'],[email,'Email']]) {
+    for (const [el, label] of [[nome,'Nome'],[cognome,'Cognome'],[emailEl,'Email']]) {
       if (!el.value.trim()) {
         errEl.textContent = 'Il campo "' + label + '" è obbligatorio.';
         errEl.style.display = 'block';
@@ -497,7 +513,7 @@
         return;
       }
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
       errEl.textContent = 'Inserisci un indirizzo email valido.';
       errEl.style.display = 'block';
       return;
@@ -507,35 +523,47 @@
     btn.disabled = true;
     btn.innerHTML = '<span>Invio in corso…</span>';
 
-    // Raccolta dati form
-    const versioneTarga = document.getElementById('tab-targa').classList.contains('active') ? 'Con Targa Personalizzata' : 'Solo Richiesta Tecnica';
-    const modello   = document.getElementById('form-model') ? document.getElementById('form-model').value : '';
+    const isTarga   = document.getElementById('tab-targa').classList.contains('active');
+    const modello   = (document.getElementById('form-model') || {}).value || '';
     const azienda   = document.querySelector('input[placeholder="Rossi Impianti S.r.l."]');
     const telefono  = document.querySelector('input[type="tel"]');
     const note      = document.querySelector('textarea');
-    const targaRiepilogo = document.getElementById('summary-text');
+    const targaTxt  = (document.getElementById('summary-text') || {}).textContent || '';
 
-    const payload = {
-      _subject: 'Nuova richiesta preventivo BEK - ' + nome.value.trim() + ' ' + cognome.value.trim(),
-      nome:     nome.value.trim(),
-      cognome:  cognome.value.trim(),
-      email:    email.value.trim(),
-      azienda:  azienda ? azienda.value.trim() : '',
-      telefono: telefono ? telefono.value.trim() : '',
-      versione: versioneTarga,
-      modello:  modello,
-      targa:    targaRiepilogo ? targaRiepilogo.textContent.trim() : '',
-      note:     note ? note.value.trim() : '',
-    };
+    // Costruzione FormData (supporta allegati file)
+    const fd = new FormData();
+    fd.append('_subject', 'Preventivo BEK - ' + nome.value.trim() + ' ' + cognome.value.trim());
+    fd.append('nome',     nome.value.trim());
+    fd.append('cognome',  cognome.value.trim());
+    fd.append('email',    emailEl.value.trim());
+    fd.append('azienda',  azienda  ? azienda.value.trim()  : '');
+    fd.append('telefono', telefono ? telefono.value.trim() : '');
+    fd.append('versione', isTarga  ? 'Preventivo con Targa Personalizzata' : 'Preventivo Semplice');
+    fd.append('modello',  modello);
+    fd.append('note',     note ? note.value.trim() : '');
 
     try {
+      // In modalità targa: genera PNG della targa e allegalo
+      if (isTarga) {
+        btn.innerHTML = '<span>Generazione targa…</span>';
+        const canvas = await html2canvas(document.getElementById('nameplate'), {
+          scale: 3, useCORS: true, backgroundColor: null, logging: false
+        });
+        const targaBlob = await new Promise(res => canvas.toBlob(res, 'image/png'));
+        const nomeFile  = 'targa-bek-' + nome.value.trim().toLowerCase().replace(/\s+/g, '-') + '.png';
+        fd.append('targa_personalizzata', targaBlob, nomeFile);
+        fd.append('targa_descrizione', targaTxt);
+        btn.innerHTML = '<span>Invio in corso…</span>';
+      }
+
       const res = await fetch('https://formspree.io/f/xaqploqj', {
         method:  'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body:    JSON.stringify(payload),
+        headers: { 'Accept': 'application/json' }, // NO Content-Type: lascia che il browser imposti il boundary multipart
+        body:    fd,
       });
 
       if (res.ok) {
+        const emailSafe = emailEl.value.trim();
         document.getElementById('form-body').innerHTML = `
           <div style="text-align:center;padding:48px 16px">
             <div style="width:56px;height:56px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
@@ -543,18 +571,18 @@
             </div>
             <h3 style="font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.5px;margin-bottom:10px">Richiesta inviata!</h3>
             <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:300px;margin:0 auto 24px">
-              Ti risponderemo entro <strong>24 ore lavorative</strong> all'indirizzo <strong>${payload.email}</strong>.<br>Controlla anche la cartella spam.
+              Ti risponderemo entro <strong>24 ore lavorative</strong> all'indirizzo<br><strong>${emailSafe}</strong>.<br>Controlla anche la cartella spam.
             </p>
             <a href="PREVIEW_SITO_V2.html" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 24px;border-radius:9px;text-decoration:none;font-size:13px;font-weight:700;">Torna al sito →</a>
           </div>`;
       } else {
         const data = await res.json().catch(() => ({}));
-        errEl.textContent = data.errors ? data.errors.map(e => e.message).join(', ') : 'Errore durante l\'invio. Riprova o scrivici direttamente a info@bekelectric.com';
+        errEl.textContent = data.errors ? data.errors.map(er => er.message).join(', ') : 'Errore durante l\'invio. Riprova o scrivici a info@bekelectric.com';
         errEl.style.display = 'block';
         btn.disabled = false;
         btn.innerHTML = '<span id="submit-label">Riprova</span>';
       }
-    } catch (_) {
+    } catch (err) {
       errEl.textContent = 'Connessione non riuscita. Controlla la rete e riprova, oppure scrivici a info@bekelectric.com';
       errEl.style.display = 'block';
       btn.disabled = false;
@@ -588,6 +616,27 @@
       alert('Errore durante la generazione dell\'immagine. Riprova.');
     });
   }
+
+  /* ─── GOOGLE ANALYTICS 4 — caricato solo dopo consenso cookie ─── */
+  (function() {
+    var GA_ID = 'G-4LSKCJ5C1T';
+    function getCookie(name) {
+      var match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1') + '=([^;]*)'));
+      return match ? decodeURIComponent(match[1]) : null;
+    }
+    function loadAnalytics() {
+      if (typeof window.gtag === 'function') return;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function() { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', GA_ID, { anonymize_ip: true });
+    }
+    if (getCookie('bek_cookie_consent') === 'all') loadAnalytics();
+  })();
 </script>
 
 <!-- FOOTER -->
