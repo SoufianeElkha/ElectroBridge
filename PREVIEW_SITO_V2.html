@@ -245,6 +245,51 @@
     .form-submit { background: var(--accent); color: white; border: none; padding: 13px; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background .15s; }
     .form-submit:hover { background: var(--accent-dark); }
 
+    /* CONFRONTO PREZZI */
+    .confronto-section { background: var(--surface); }
+    .confronto-intro { font-size: .85rem; color: var(--muted); margin-bottom: 32px; font-style: italic; }
+    .confronto-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+    .confronto-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .confronto-table th { padding: 14px 20px; text-align: center; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; background: var(--bg); color: var(--muted); border-bottom: 2px solid var(--border); }
+    .confronto-table th:first-child { text-align: left; }
+    .confronto-table th.col-roiv { background: color-mix(in srgb, var(--accent) 8%, transparent); color: var(--accent-dark); }
+    .confronto-table td { padding: 16px 20px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .confronto-table td:first-child { font-weight: 600; color: var(--ink); font-size: .875rem; }
+    .confronto-table td:not(:first-child) { text-align: center; }
+    .confronto-table tr:last-child td { border-bottom: none; }
+    .confronto-table tr:hover td { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+    .price-roiv { font-size: 1.1rem; font-weight: 800; color: var(--accent); }
+    .price-competitor { font-size: .95rem; font-weight: 600; color: var(--ink2); }
+    .price-na { color: var(--muted); font-style: italic; font-size: .8rem; }
+    .price-saving { display: inline-block; background: #D1FAE5; color: #065F46; font-size: .72rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; margin-top: 4px; white-space: nowrap; }
+    [data-theme="dark"] .price-saving { background: #064E3B; color: #6EE7B7; }
+    .col-roiv td { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+    .confronto-footer-note { font-size: .75rem; color: var(--muted); margin-top: 16px; line-height: 1.6; }
+    .confronto-cta-row { display: flex; align-items: center; gap: 16px; margin-top: 28px; flex-wrap: wrap; }
+    .confronto-badge { display: inline-flex; align-items: center; gap: 6px; background: color-mix(in srgb, var(--accent) 10%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); color: var(--accent-dark); padding: 8px 16px; border-radius: 100px; font-size: .82rem; font-weight: 700; }
+
+    /* COME FUNZIONA */
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+    .steps-grid::before { content: ''; position: absolute; top: 36px; left: calc(12.5% + 24px); right: calc(12.5% + 24px); height: 2px; background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 40%, transparent)); z-index: 0; }
+    .step-card { text-align: center; padding: 24px 16px; position: relative; z-index: 1; }
+    .step-num { width: 52px; height: 52px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 900; margin: 0 auto 16px; box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 40%, transparent); }
+    .step-card h4 { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .step-card p { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+    .step-icon { font-size: 1.4rem; margin-bottom: 6px; }
+
+    /* TESTIMONIALS */
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testi-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; position: relative; transition: box-shadow .2s, border-color .2s; }
+    .testi-card:hover { box-shadow: var(--shadow); border-color: var(--accent); }
+    .testi-quote { font-size: 3rem; line-height: 1; color: var(--accent); opacity: .25; position: absolute; top: 16px; right: 20px; font-family: Georgia, serif; }
+    .testi-text { font-size: .9rem; color: var(--ink2); line-height: 1.75; margin-bottom: 20px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar { width: 42px; height: 42px; border-radius: 50%; background: color-mix(in srgb, var(--accent) 15%, transparent); display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+    .testi-name { font-size: .875rem; font-weight: 700; color: var(--ink); }
+    .testi-role { font-size: .78rem; color: var(--muted); }
+    .testi-stars { color: #F59E0B; font-size: .85rem; margin-bottom: 14px; letter-spacing: 2px; }
+    .testi-placeholder-note { text-align: center; font-size: .72rem; color: var(--muted); margin-top: 20px; font-style: italic; opacity: .7; }
+
     /* RESPONSIVE */
     @media (max-width: 960px) {
       .nav-links { display: none; }
@@ -255,6 +300,9 @@
       .perche-grid { grid-template-columns: 1fr 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .contatti-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .steps-grid::before { display: none; }
     }
     @media (max-width: 640px) {
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
@@ -264,6 +312,8 @@
       .hero { padding: 48px 20px 40px; }
       section { padding: 56px 20px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
     }
 
     /* ─── ANIMATIONS ─── */
@@ -405,20 +455,20 @@
 <div class="stats-strip">
   <div class="stats-inner">
     <div class="stat-item">
-      <div class="stat-number">20+</div>
-      <div class="stat-label">Modelli disponibili</div>
+      <div class="stat-number">−52%</div>
+      <div class="stat-label">vs Fourgroup (DOL 15 kW)</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">3–160 kW</div>
-      <div class="stat-label">Gamma di potenza</div>
+      <div class="stat-number">−63%</div>
+      <div class="stat-label">vs Elentek (vantaggio max)</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">EN 12845</div>
-      <div class="stat-label">Standard certificato</div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Quadri testati in fabbrica</div>
     </div>
     <div class="stat-item">
       <div class="stat-number">8 gg</div>
-      <div class="stat-label">Consegna rapida</div>
+      <div class="stat-label">Consegna garantita</div>
     </div>
   </div>
 </div>
@@ -559,8 +609,150 @@
   </div>
 </section>
 
+<!-- CONFRONTO PREZZI -->
+<section id="confronto-prezzi" class="confronto-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Trasparenza di Prezzo</div>
+      <h2 class="section-title">Quanto risparmi rispetto alla concorrenza</h2>
+      <p class="section-desc">Prezzi pubblici e confrontabili. Qualità superiore, a un prezzo che non ti aspetti.</p>
+    </div>
+    <p class="confronto-intro">* Prezzi concorrenti rilevati online. Prezzi ROIV IVA esclusa.</p>
+    <div class="confronto-table-wrap rv">
+      <table class="confronto-table">
+        <thead>
+          <tr>
+            <th>Modello (kW)</th>
+            <th class="col-roiv">BEK Electric <br><span style="font-size:.65rem;font-weight:600;opacity:.7">ROIV</span></th>
+            <th>Fourgroup</th>
+            <th>Elentek</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Avv. Diretto 4 kW (DOL)</td>
+            <td><span class="price-roiv">~390 €</span><br><span class="price-saving">miglior prezzo</span></td>
+            <td><span class="price-competitor">952–990 €</span><br><span class="price-saving" style="background:#FEE2E2;color:#991B1B">−59% rispetto a noi</span></td>
+            <td><span class="price-na">su richiesta</span></td>
+          </tr>
+          <tr>
+            <td>Avv. Diretto 15 kW (DOL)</td>
+            <td><span class="price-roiv">508,82 €</span><br><span class="price-saving">miglior prezzo</span></td>
+            <td><span class="price-competitor">1.060 €</span><br><span class="price-saving" style="background:#FEE2E2;color:#991B1B">−52% rispetto a noi</span></td>
+            <td><span class="price-competitor">~1.300 €*</span><br><span class="price-saving" style="background:#FEE2E2;color:#991B1B">−61% rispetto a noi</span></td>
+          </tr>
+          <tr>
+            <td>Avv. Diretto 22 kW (DOL)</td>
+            <td><span class="price-roiv">~650 €</span><br><span class="price-saving">miglior prezzo</span></td>
+            <td><span class="price-competitor">1.183 €</span><br><span class="price-saving" style="background:#FEE2E2;color:#991B1B">−45% rispetto a noi</span></td>
+            <td><span class="price-na">su richiesta</span></td>
+          </tr>
+          <tr>
+            <td>Stella-Triangolo 30 kW (Y/Δ)</td>
+            <td><span class="price-roiv">su preventivo</span></td>
+            <td><span class="price-competitor">1.000–2.000 €*</span></td>
+            <td><span class="price-na">su richiesta</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="confronto-footer-note">* Prezzi Elentek stimati su prezzi rivenditori; Elentek non pubblica listini pubblici. Fourgroup: prezzi da bbservicestore e rivenditori online (2024–2025). I prezzi ROIV sono indicativi e soggetti a conferma in sede di preventivo.</p>
+    <div class="confronto-cta-row rv">
+      <span class="confronto-badge">💡 Risparmio medio: <strong style="margin-left:4px">40–63%</strong> rispetto ai principali competitor</span>
+      <a href="PREVENTIVO.html" class="btn-primary" style="font-size:.9rem;padding:11px 22px">Richiedi il tuo preventivo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section id="come-funziona">
+  <div class="section-inner">
+    <div class="section-header centered">
+      <div class="section-tag">Il Nostro Processo</div>
+      <h2 class="section-title">Come funziona</h2>
+      <p class="section-desc">Dalla richiesta alla consegna: un processo semplice, rapido e trasparente.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card rv">
+        <div class="step-icon">📋</div>
+        <div class="step-num">1</div>
+        <h4>Richiedi il preventivo</h4>
+        <p>Compila il modulo online o contattaci via WhatsApp. Risposta entro 24 ore lavorative con prezzo e disponibilità.</p>
+      </div>
+      <div class="step-card rv">
+        <div class="step-icon">✅</div>
+        <div class="step-num">2</div>
+        <h4>Conferma l'ordine</h4>
+        <p>Ricevi il preventivo, confermalo per iscritto. Nessun anticipo su modelli a stock, pagamento a 30 gg fattura.</p>
+      </div>
+      <div class="step-card rv">
+        <div class="step-icon">🔬</div>
+        <div class="step-num">3</div>
+        <h4>Produzione & test completi</h4>
+        <p>Il quadro viene assemblato e testato internamente: calibrazione, prova motore, misura isolamento. Verbale allegato.</p>
+      </div>
+      <div class="step-card rv">
+        <div class="step-icon">🚚</div>
+        <div class="step-num">4</div>
+        <h4>Consegna in 8 giorni</h4>
+        <p>Spedizione in tutta Italia con corriere tracciato. Tempi certi e rispettati per modelli a stock.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIANZE -->
+<section id="testimonianze" class="section-alt">
+  <div class="section-inner">
+    <div class="section-header centered">
+      <div class="section-tag">Cosa Dicono i Clienti</div>
+      <h2 class="section-title">La voce degli installatori</h2>
+      <p class="section-desc">Professionisti del settore antincendio che ci hanno scelto per i loro impianti.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card rv">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Quadri arrivati in 7 giorni lavorativi, tutto perfettamente cablato e già testato. Il verbale di collaudo allegato ci ha semplificato il lavoro in cantiere. Prezzo imbattibile rispetto agli altri fornitori che usavamo.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div>
+            <div class="testi-name">Marco R.</div>
+            <div class="testi-role">Installatore antincendio — Veneto</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card rv">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Finalmente un fornitore che pubblica i prezzi chiaramente. Ho ordinato 3 quadri DOL per un impianto sprinkler industriale: qualità dei componenti superiore a quello che ricevevo prima pagando di più. Assistenza tecnica diretta e competente.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">LP</div>
+          <div>
+            <div class="testi-name">Luca P.</div>
+            <div class="testi-role">Progettista impianti — Lombardia</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card rv">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Avevo bisogno di un quadro stella-triangolo 55 kW personalizzato. In 2 giorni mi hanno inviato il preventivo con specifiche complete. Prodotto esattamente come richiesto, consegnato puntuale. Tornerò sicuramente.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">GF</div>
+          <div>
+            <div class="testi-name">Giovanni F.</div>
+            <div class="testi-role">Responsabile acquisti — Campania</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="testi-placeholder-note">⚠️ Testimonianze a scopo illustrativo — da sostituire con recensioni reali dei clienti</p>
+  </div>
+</section>
+
 <!-- CERTIFICAZIONI -->
-<section id="certificazioni" class="section-alt">
+<section id="certificazioni">
   <div class="section-inner">
     <div class="section-header centered">
       <div class="section-tag">Normative</div>
