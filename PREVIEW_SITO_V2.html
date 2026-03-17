@@ -29,32 +29,23 @@
 
     /* PREVIEW BANNER */
 
-    /* HEADER */
-    header { position: sticky; top: 0; z-index: 100; }
-
-    /* TOPBAR — banda arancione con link di navigazione */
-    .topbar { background: var(--accent); }
-    .topbar-inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; gap: 8px; height: 48px; }
-    .topbar-links { display: flex; align-items: center; gap: 2px; flex: 1; }
-    .topbar-links a { color: rgba(255,255,255,.93); text-decoration: none; font-size: .875rem; font-weight: 500; padding: 5px 10px; border-radius: 6px; transition: background .15s; white-space: nowrap; }
+    /* HEADER — unica banda arancione con logo + link + azioni */
+    header { position: sticky; top: 0; z-index: 100; background: var(--accent); }
+    .topbar-inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; gap: 24px; height: 72px; }
+    .topbar-logo { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
+    .topbar-logo img { height: 52px; width: auto; display: block; }
+    .topbar-links { display: flex; align-items: center; gap: 2px; flex: 1; justify-content: center; }
+    .topbar-links a { color: rgba(255,255,255,.93); text-decoration: none; font-size: .875rem; font-weight: 500; padding: 6px 11px; border-radius: 6px; transition: background .15s; white-space: nowrap; }
     .topbar-links a:hover { background: rgba(255,255,255,.18); color: white; }
     .topbar-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
     .topbar-action-link { color: rgba(255,255,255,.85); text-decoration: none; font-size: .8rem; display: flex; align-items: center; gap: 4px; padding: 5px 8px; border-radius: 6px; transition: background .15s; white-space: nowrap; }
     .topbar-action-link:hover { background: rgba(255,255,255,.18); color: white; }
-    .btn-topbar { background: white; color: var(--accent); border: none; padding: 7px 18px; border-radius: 7px; font-size: .875rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background .15s; white-space: nowrap; }
+    .btn-topbar { background: white; color: var(--accent); border: none; padding: 8px 18px; border-radius: 8px; font-size: .875rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background .15s; white-space: nowrap; }
     .btn-topbar:hover { background: rgba(255,255,255,.88); }
-    .dark-toggle { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); color: white; width: 32px; height: 32px; border-radius: 7px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .9rem; transition: background .15s; }
+    .dark-toggle { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); color: white; width: 34px; height: 34px; border-radius: 7px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .9rem; transition: background .15s; }
     .dark-toggle:hover { background: rgba(255,255,255,.28); }
     .hamburger { display: none; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.35); color: white; width: 36px; height: 36px; border-radius: 8px; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; padding: 8px; }
     .hamburger span { display: block; width: 18px; height: 2px; background: white; border-radius: 2px; transition: all .2s; }
-
-    /* LOGOBAR — banda bianca con logo grande */
-    .logobar { background: #ffffff; border-bottom: 1px solid #E8E8E8; }
-    [data-theme="dark"] .logobar { background: var(--bg); border-bottom-color: var(--border); }
-    .logobar-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; }
-    .logobar-logo { text-decoration: none; display: flex; align-items: center; }
-    .logobar-logo img { height: 76px; width: auto; display: block; }
-    [data-theme="dark"] .logobar-logo img { filter: brightness(0) invert(1); }
 
     /* MOBILE NAV */
     .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 80px 24px 24px; flex-direction: column; gap: 8px; overflow-y: auto; }
@@ -198,24 +189,24 @@
     .whatsapp-btn:hover { background: #1ebe5d; transform: translateY(-1px); }
 
     /* FOOTER */
-    footer { background: #0D1526; color: rgba(255,255,255,.65); padding: 56px 24px 28px; border-top: 1px solid rgba(255,255,255,.06); }
-    [data-theme="dark"] footer { background: #060C18; }
+    footer { background: var(--accent); color: rgba(255,255,255,.85); padding: 56px 24px 28px; border-top: none; }
+    [data-theme="dark"] footer { background: var(--accent-dark); }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
     .footer-brand { }
     .footer-logo { margin-bottom: 14px; }
     .footer-logo img { height: 52px; width: auto; display: block; filter: brightness(0) invert(1); }
-    .footer-tagline { font-size: .82rem; line-height: 1.7; max-width: 240px; color: rgba(255,255,255,.5); margin-top: 4px; }
-    .footer-col h5 { color: rgba(255,255,255,.9); font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; }
+    .footer-tagline { font-size: .82rem; line-height: 1.7; max-width: 240px; color: rgba(255,255,255,.7); margin-top: 4px; }
+    .footer-col h5 { color: white; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .84rem; transition: color .15s, padding-left .15s; display: inline-block; }
-    .footer-col ul a:hover { color: var(--accent); padding-left: 4px; }
-    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,.08); margin-bottom: 22px; }
+    .footer-col ul a { color: rgba(255,255,255,.75); text-decoration: none; font-size: .84rem; transition: color .15s, padding-left .15s; display: inline-block; }
+    .footer-col ul a:hover { color: white; padding-left: 4px; }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,.2); margin-bottom: 22px; }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .footer-copy { font-size: .76rem; color: rgba(255,255,255,.35); }
+    .footer-copy { font-size: .76rem; color: rgba(255,255,255,.6); }
     .footer-legal { display: flex; gap: 16px; flex-wrap: wrap; }
-    .footer-legal button { background: none; border: none; color: rgba(255,255,255,.4); font-size: .76rem; cursor: pointer; transition: color .15s; padding: 0; text-decoration: none; }
-    .footer-legal button:hover { color: var(--accent); text-decoration: underline; }
+    .footer-legal button { background: none; border: none; color: rgba(255,255,255,.65); font-size: .76rem; cursor: pointer; transition: color .15s; padding: 0; text-decoration: none; }
+    .footer-legal button:hover { color: white; text-decoration: underline; }
 
     /* GDPR BANNER */
     .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 9000; background: var(--surface); border-top: 1px solid var(--border); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; box-shadow: 0 -4px 24px rgba(0,0,0,.1); }
@@ -305,6 +296,7 @@
     @media (max-width: 960px) {
       .topbar-links { display: none; }
       .topbar-action-link { display: none; }
+      .topbar-logo img { height: 40px; }
       .hamburger { display: flex; }
       .chi-siamo-grid { grid-template-columns: 1fr; }
       .chi-siamo-visual { aspect-ratio: 16/7; }
@@ -402,41 +394,30 @@
 <body>
 
 
-<!-- HEADER -->
+<!-- HEADER — banda arancione unica -->
 <header id="main-header">
-
-  <!-- BANDA ARANCIONE: navigazione + azioni -->
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="topbar-links">
-        <a href="#prodotti">Prodotti</a>
-        <a href="#chi-siamo">Chi Siamo</a>
-        <a href="#perche-noi">Perché Noi</a>
-        <a href="#certificazioni">Certificazioni</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contatti">Contatti</a>
-      </div>
-      <div class="topbar-actions">
-        <a href="mailto:info@bekelectric.com" class="topbar-action-link">✉ info@bekelectric.com</a>
-        <a href="tel:+390412345678" class="topbar-action-link">📞 +39 041 234 5678</a>
-        <button class="dark-toggle" id="darkToggle" aria-label="Modalità scura">🌙</button>
-        <a href="PREVENTIVO.html" class="btn-topbar">Preventivo</a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+  <div class="topbar-inner">
+    <a href="#" class="topbar-logo" aria-label="BEK Electric Systems — Home">
+      <img src="assets/BE_Electric_06_minimal_line_bek_PRINCIPALE.svg" alt="BEK Electric Systems">
+    </a>
+    <div class="topbar-links">
+      <a href="#prodotti">Prodotti</a>
+      <a href="#chi-siamo">Chi Siamo</a>
+      <a href="#perche-noi">Perché Noi</a>
+      <a href="#certificazioni">Certificazioni</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contatti">Contatti</a>
+    </div>
+    <div class="topbar-actions">
+      <a href="mailto:info@bekelectric.com" class="topbar-action-link">✉ info@bekelectric.com</a>
+      <a href="tel:+390412345678" class="topbar-action-link">📞 +39 041 234 5678</a>
+      <button class="dark-toggle" id="darkToggle" aria-label="Modalità scura">🌙</button>
+      <a href="PREVENTIVO.html" class="btn-topbar">Preventivo</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
-
-  <!-- BANDA BIANCA: logo ufficiale grande -->
-  <div class="logobar">
-    <div class="logobar-inner">
-      <a href="#" class="logobar-logo" aria-label="BEK Electric Systems — Home">
-        <img src="assets/BE_Electric_06_minimal_line_bek_PRINCIPALE.svg" alt="BEK Electric Systems">
-      </a>
-    </div>
-  </div>
-
 </header>
 
 <!-- MOBILE NAV -->
