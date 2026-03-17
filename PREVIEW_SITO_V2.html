@@ -28,8 +28,6 @@
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; transition: background .3s, color .3s; }
 
     /* PREVIEW BANNER */
-    .preview-banner { background: #FEF08A; color: #713F12; text-align: center; padding: 8px 16px; font-size: .8rem; font-weight: 600; letter-spacing: .05em; position: sticky; top: 0; z-index: 200; }
-    .preview-banner span { opacity: .7; }
 
     /* NAV */
     nav { position: sticky; top: 32px; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); height: var(--nav-h); display: flex; align-items: center; transition: background .3s, border-color .3s; }
@@ -390,10 +388,6 @@
 </head>
 <body>
 
-<!-- PREVIEW BANNER -->
-<div class="preview-banner">
-  ⚠️ ANTEPRIMA DESIGN — In validazione &nbsp;<span>| Dati fittizi a scopo illustrativo</span>
-</div>
 
 <!-- NAV -->
 <nav id="main-nav">
@@ -699,11 +693,6 @@
         <h4>EN 17451</h4>
         <p>Standard europeo per quadri di comando per pompe antincendio</p>
       </div>
-      <div class="cert-card">
-        <div class="cert-badge">🌍</div>
-        <h4>NFPA 20</h4>
-        <p>Standard americano per pompe antincendio (riferimento internazionale)</p>
-      </div>
     </div>
   </div>
 </section>
@@ -765,14 +754,14 @@
         <div class="contatto-item">
           <div class="contatto-icon">📞</div>
           <div>
-            <h4>Telefono <span style="font-size:.7rem;color:var(--muted)">⚠️ dato fittizio</span></h4>
+            <h4>Telefono</h4>
             <a href="tel:+390412345678">+39 041 234 5678</a>
           </div>
         </div>
         <div class="contatto-item">
           <div class="contatto-icon">✉️</div>
           <div>
-            <h4>Email <span style="font-size:.7rem;color:var(--muted)">⚠️ dato fittizio</span></h4>
+            <h4>Email</h4>
             <a href="mailto:info@bekelectric.com">info@bekelectric.com</a>
           </div>
         </div>
@@ -843,7 +832,7 @@
     </div>
     <hr class="footer-divider">
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 BEK Electric System S.r.l. — P.IVA 01234567890 <span style="opacity:.4">⚠️ dati fittizi</span></p>
+      <p class="footer-copy">© 2026 BEK Electric System S.r.l. — P.IVA 01234567890</p>
       <div class="footer-legal">
         <button onclick="openModal('privacy')">Privacy Policy</button>
         <button onclick="openModal('cookie')">Cookie Policy</button>
@@ -937,9 +926,8 @@
       <button class="modal-close" onclick="closeModal('privacy')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-warning">⚠️ Documento fittizio a scopo illustrativo. Non ha valore legale.</div>
       <h4>1. Titolare del Trattamento</h4>
-      <p>BEK Electric System S.r.l. (dato fittizio), Padova (PD) — email: info@bekelectric.com</p>
+      <p>BEK Electric System S.r.l., Padova (PD) — email: info@bekelectric.com</p>
       <h4>2. Dati raccolti</h4>
       <p>Raccogliamo i dati che ci fornisci volontariamente tramite il modulo di contatto/preventivo: nome, cognome, email, telefono, ragione sociale. Raccogliamo inoltre dati di navigazione anonimi tramite cookie tecnici.</p>
       <h4>3. Finalità e base giuridica</h4>
@@ -966,7 +954,6 @@
       <button class="modal-close" onclick="closeModal('cookie')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-warning">⚠️ Documento fittizio a scopo illustrativo. Non ha valore legale.</div>
       <h4>Cosa sono i cookie</h4>
       <p>I cookie sono piccoli file di testo che i siti web salvano nel browser dell'utente per ricordare preferenze e migliorare l'esperienza di navigazione.</p>
       <h4>Cookie tecnici (sempre attivi)</h4>
@@ -993,7 +980,6 @@
       <button class="modal-close" onclick="closeModal('cgv')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-warning">⚠️ Documento fittizio a scopo illustrativo. Non ha valore legale.</div>
       <h4>1. Ambito di applicazione</h4>
       <p>Le presenti condizioni si applicano a tutti i contratti di vendita conclusi tra BEK Electric System S.r.l. e i clienti professionali (B2B).</p>
       <h4>2. Ordini</h4>
@@ -1018,9 +1004,8 @@
       <button class="modal-close" onclick="closeModal('note-legali')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-warning">⚠️ Documento fittizio a scopo illustrativo. Non ha valore legale.</div>
       <h4>Informazioni societarie</h4>
-      <p>BEK Electric System S.r.l. (dato fittizio)<br>
+      <p>BEK Electric System S.r.l.<br>
       P.IVA: 01234567890<br>
       REA: PD-123456<br>
       Capitale sociale: € 50.000 i.v.<br>
@@ -1058,14 +1043,7 @@ hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
 mobileNavClose.addEventListener('click', closeMobileNav);
 document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', closeMobileNav));
 
-/* ─── NAV STICKY OFFSET (for preview banner) ─── */
-function updateNavTop() {
-  const banner = document.querySelector('.preview-banner');
-  const nav = document.getElementById('main-nav');
-  nav.style.top = banner ? banner.offsetHeight + 'px' : '0';
-}
-updateNavTop();
-window.addEventListener('resize', updateNavTop);
+document.getElementById('main-nav').style.top = '0';
 
 /* ─── PRODUCTS DATA (embedded — no server required) ─── */
 const _PRODUCTS_DATA=[{"code":"6003011","name":"EGE SMART 3","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":3,"hp":5,"currentMax":7,"box":{"h":500,"l":400,"w":200},"weight":16.8},{"code":"6005511","name":"EGE SMART 5,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":5.5,"hp":7.5,"currentMax":12,"box":{"h":500,"l":400,"w":200},"weight":16.8},{"code":"6007511","name":"EGE SMART 7,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":7.5,"hp":10,"currentMax":16,"box":{"h":500,"l":400,"w":200},"weight":17},{"code":"6011011","name":"EGE SMART 11","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":11,"hp":15,"currentMax":24,"box":{"h":500,"l":400,"w":200},"weight":17.6},{"code":"6011021","name":"EGE SMART 11 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":11,"hp":15,"currentMax":24,"box":{"h":500,"l":400,"w":200},"weight":18.3},{"code":"6015011","name":"EGE SMART 15","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":15,"hp":20,"currentMax":32,"box":{"h":500,"l":400,"w":200},"weight":17.8},{"code":"6015021","name":"EGE SMART 15 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":15,"hp":20,"currentMax":32,"box":{"h":500,"l":400,"w":200},"weight":18},{"code":"6018511","name":"EGE SMART 18,5","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":18.5,"hp":25,"currentMax":36,"box":{"h":500,"l":400,"w":200},"weight":18.5},{"code":"6018521","name":"EGE SMART 18,5 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":18.5,"hp":25,"currentMax":36,"box":{"h":500,"l":400,"w":200},"weight":18.5},{"code":"6022011","name":"EGE SMART 22","category":"direct","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":22,"hp":30,"currentMax":40,"box":{"h":500,"l":400,"w":200},"weight":19},{"code":"6022021","name":"EGE SMART 22 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":22,"hp":30,"currentMax":40,"box":{"h":500,"l":400,"w":200},"weight":19.2},{"code":"6030021","name":"EGE SMART 30 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":30,"hp":40,"currentMax":60,"box":{"h":500,"l":400,"w":200},"weight":20.1},{"code":"6037022","name":"EGE SMART 37 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":37,"hp":50,"currentMax":70,"box":{"h":700,"l":500,"w":250},"weight":33.6},{"code":"6045022","name":"EGE SMART 45 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":45,"hp":60,"currentMax":80,"box":{"h":700,"l":500,"w":250},"weight":34},{"code":"6055022","name":"EGE SMART 55 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":55,"hp":75,"currentMax":100,"box":{"h":700,"l":500,"w":250},"weight":38.5},{"code":"6075023","name":"EGE SMART 75 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":75,"hp":100,"currentMax":132,"box":{"h":800,"l":600,"w":250},"weight":54.5},{"code":"6090023","name":"EGE SMART 90 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":90,"hp":125,"currentMax":160,"box":{"h":800,"l":600,"w":250},"weight":64},{"code":"6110023","name":"EGE SMART 110 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":110,"hp":150,"currentMax":200,"box":{"h":800,"l":600,"w":250},"weight":85},{"code":"6132024","name":"EGE SMART 132 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":132,"hp":200,"currentMax":240,"box":{"h":1000,"l":800,"w":300},"weight":95},{"code":"6160024","name":"EGE SMART 160 Y/D","category":"star-delta","voltage":"3 ~ 400 V","frequency":"50/60 Hz","kw":160,"hp":200,"currentMax":296,"box":{"h":1000,"l":800,"w":300},"weight":100}];
@@ -1151,11 +1129,59 @@ function handlePreventivoSubmit(e) {
   setTimeout(() => { closeModal('preventivo'); btn.textContent = 'Invia Richiesta Preventivo'; btn.disabled = false; btn.style.background = ''; e.target.reset(); }, 2000);
 }
 
-/* ─── COOKIE BANNER ─── */
-const banner = document.getElementById('cookieBanner');
-if (localStorage.getItem('bek-cookie-consent')) banner.classList.add('hidden');
-document.getElementById('cookieAccept').addEventListener('click', () => { localStorage.setItem('bek-cookie-consent', 'all'); banner.classList.add('hidden'); });
-document.getElementById('cookieDecline').addEventListener('click', () => { localStorage.setItem('bek-cookie-consent', 'essential'); banner.classList.add('hidden'); });
+/* ─── COOKIE CONSENT ─── */
+(function() {
+  var GA_ID = 'G-XXXXXXXXXX'; // ← sostituisci con il tuo Google Analytics ID
+
+  function setCookie(name, value, days) {
+    var expires = '';
+    if (days) {
+      var d = new Date();
+      d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = '; expires=' + d.toUTCString();
+    }
+    document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/; SameSite=Lax';
+  }
+
+  function getCookie(name) {
+    var match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1') + '=([^;]*)'));
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+
+  function loadAnalytics() {
+    if (typeof window.gtag === 'function') return; // già caricato
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function() { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  var banner = document.getElementById('cookieBanner');
+  var consent = getCookie('bek_cookie_consent');
+
+  // Se consenso già dato, nascondi il banner e carica analytics se accettato
+  if (consent) {
+    banner.classList.add('hidden');
+    if (consent === 'all') loadAnalytics();
+  }
+
+  document.getElementById('cookieAccept').addEventListener('click', function() {
+    setCookie('bek_cookie_consent', 'all', 365);
+    setCookie('bek_analytics', '1', 365);
+    banner.classList.add('hidden');
+    loadAnalytics();
+  });
+
+  document.getElementById('cookieDecline').addEventListener('click', function() {
+    setCookie('bek_cookie_consent', 'essential', 365);
+    setCookie('bek_analytics', '0', 365);
+    banner.classList.add('hidden');
+  });
+})();
 
 /* ─── SCROLL ZOOM ─── */
 (function() {
