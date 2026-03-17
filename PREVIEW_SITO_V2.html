@@ -32,7 +32,9 @@
     .preview-banner span { opacity: .7; }
 
     /* NAV */
-    nav { position: sticky; top: 32px; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); height: var(--nav-h); display: flex; align-items: center; transition: background .3s, border-color .3s; }
+    nav { position: sticky; top: 32px; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); height: var(--nav-h); display: flex; align-items: center; transition: background .3s, border-color .3s, backdrop-filter .3s; }
+    nav.scrolled { background: rgba(255,255,255,.82); backdrop-filter: blur(16px); }
+    [data-theme="dark"] nav.scrolled { background: rgba(15,23,42,.82); }
     .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; gap: 32px; }
     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
     .nav-logo-icon { width: 36px; height: 36px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
@@ -75,7 +77,7 @@
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
     /* SCROLL ZOOM PANEL */
-    .scroll-zoom-section { position: relative; height: 520px; overflow: hidden; background: #0F172A; }
+    .scroll-zoom-section { position: relative; height: 680px; overflow: hidden; background: #0F172A; }
     .scroll-zoom-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; will-change: transform; }
     .scroll-zoom-img { width: 100%; height: 100%; object-fit: cover; transform-origin: center center; transition: transform .05s linear; }
     .scroll-zoom-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(15,23,42,.35) 0%, rgba(15,23,42,.1) 50%, rgba(15,23,42,.65) 100%); pointer-events: none; }
@@ -123,6 +125,24 @@
     .product-cta { display: block; width: 100%; text-align: center; background: color-mix(in srgb, var(--accent) 8%, transparent); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); padding: 9px; border-radius: 8px; font-size: .875rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background .15s, color .15s; margin-top: 14px; }
     .product-cta:hover { background: var(--accent); color: white; }
     .products-loading { text-align: center; padding: 60px; color: var(--muted); font-size: .95rem; }
+
+    /* SERVICES GRID */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 32px 28px; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 16px; position: relative; overflow: hidden; transition: border-color .2s, box-shadow .2s, transform .2s; }
+    .service-card:hover { border-color: var(--accent); box-shadow: 0 8px 32px color-mix(in srgb, var(--accent) 15%, transparent); transform: translateY(-4px); }
+    .service-card--primary { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 4%, var(--bg)); }
+    .service-card--primary:hover { background: color-mix(in srgb, var(--accent) 8%, var(--bg)); }
+    .service-icon { font-size: 2.4rem; }
+    .service-content h3 { font-size: 1.1rem; font-weight: 800; color: var(--ink); margin-bottom: 8px; letter-spacing: -.02em; }
+    .service-content p { font-size: .875rem; color: var(--muted); line-height: 1.65; }
+    .service-cta { font-size: .875rem; font-weight: 700; color: var(--accent); margin-top: 8px; display: block; }
+    .service-badge { position: absolute; top: 20px; right: 20px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-dark); font-size: .7rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; }
+    @media (max-width: 960px) { .services-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* REVEAL ANIMATION */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* CHI SIAMO */
     .chi-siamo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
@@ -246,6 +266,7 @@
       .perche-grid { grid-template-columns: 1fr 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .contatti-grid { grid-template-columns: 1fr; }
+      .servizi-grid { grid-template-columns: 1fr; gap: 20px; }
     }
     @media (max-width: 640px) {
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
@@ -283,7 +304,7 @@
       <a href="#contatti">Contatti</a>
     </div>
     <div class="nav-actions">
-      <a href="mailto:info@bekelectric.it" class="nav-action-link">✉ info@bekelectric.it</a>
+      <a href="mailto:info@bekelectric.com" class="nav-action-link">✉ info@bekelectric.com</a>
       <a href="tel:+390412345678" class="nav-action-link">📞 +39 041 234 5678</a>
       <button class="dark-toggle" id="darkToggle" aria-label="Modalità scura">🌙</button>
       <a href="#" class="btn-nav" onclick="openModal('preventivo'); return false;">Preventivo</a>
@@ -303,7 +324,7 @@
   <a href="#certificazioni" class="mobile-link">Certificazioni</a>
   <a href="#faq" class="mobile-link">FAQ</a>
   <a href="#contatti" class="mobile-link">Contatti</a>
-  <a href="mailto:info@bekelectric.it" class="mobile-link">✉ info@bekelectric.it</a>
+  <a href="mailto:info@bekelectric.com" class="mobile-link">✉ info@bekelectric.com</a>
   <a href="tel:+390412345678" class="mobile-link">📞 +39 041 234 5678</a>
   <a href="#" class="btn-primary mobile-nav-cta" onclick="openModal('preventivo'); closeMobileNav(); return false;">Richiedi Preventivo</a>
 </div>
@@ -326,19 +347,19 @@
 <div class="stats-strip">
   <div class="stats-inner">
     <div class="stat-item">
-      <div class="stat-number">20+</div>
+      <div class="stat-number" data-counter="20" data-suffix="+">20+</div>
       <div class="stat-label">Modelli disponibili</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">3–160 kW</div>
+      <div class="stat-number" data-static="3–160 kW">3–160 kW</div>
       <div class="stat-label">Gamma di potenza</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">EN 12845</div>
+      <div class="stat-number" data-static="EN 12845">EN 12845</div>
       <div class="stat-label">Standard certificato</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">8 gg</div>
+      <div class="stat-number" data-counter="8" data-suffix=" gg">8 gg</div>
       <div class="stat-label">Consegna rapida</div>
     </div>
   </div>
@@ -477,27 +498,48 @@
   </div>
 </div>
 
-<!-- PRODOTTI -->
+<!-- SERVIZI / CATALOGO TEASER -->
 <section id="prodotti">
   <div class="section-inner">
-    <div class="section-header">
-      <div class="section-tag">Catalogo Prodotti</div>
-      <h2 class="section-title">Linea Smart BEK</h2>
-      <p class="section-desc">Quadri di comando per elettropompe antincendio conformi EN 12845. Disponibili in versione avviamento diretto (DOL) e stella-triangolo (Y/Δ).</p>
+    <div class="section-header centered">
+      <div class="section-tag">Catalogo &amp; Servizi</div>
+      <h2 class="section-title">Tutto quello che ti serve</h2>
+      <p class="section-desc">Dal catalogo tecnico alla targa personalizzata: scegli il tuo percorso.</p>
     </div>
-    <div class="tabs" id="productTabs">
-      <button class="tab-btn active" data-cat="all">Tutti</button>
-      <button class="tab-btn" data-cat="direct">Avviamento Diretto (DOL)</button>
-      <button class="tab-btn" data-cat="star-delta">Stella-Triangolo (Y/Δ)</button>
-    </div>
-    <div class="products-grid" id="productsGrid">
-      <div class="products-loading">Caricamento prodotti...</div>
+    <div class="services-grid">
+      <a href="catalogo.html" class="service-card service-card--primary reveal">
+        <div class="service-icon">⚡</div>
+        <div class="service-content">
+          <h3>Catalogo Prodotti</h3>
+          <p>20+ modelli, da 3 a 160 kW. Avviamento diretto (DOL) e stella-triangolo (Y/Δ). Conformi EN 12845.</p>
+          <span class="service-cta">Sfoglia il catalogo →</span>
+        </div>
+        <div class="service-badge">20+ modelli</div>
+      </a>
+      <a href="PREVENTIVO.html" class="service-card reveal" style="transition-delay:.1s">
+        <div class="service-icon">🏷️</div>
+        <div class="service-content">
+          <h3>Targa Personalizzata</h3>
+          <p>Progetta la targa di identificazione del quadro con il tuo logo, i tuoi dati tecnici e le tue specifiche.</p>
+          <span class="service-cta">Crea la tua targa →</span>
+        </div>
+        <div class="service-badge">Design tool</div>
+      </a>
+      <div class="service-card reveal" style="cursor:pointer;transition-delay:.2s" onclick="openModal('preventivo')">
+        <div class="service-icon">📋</div>
+        <div class="service-content">
+          <h3>Richiedi Preventivo</h3>
+          <p>Indica il modello e la potenza. Risposta entro 24 ore lavorative. Nessun impegno.</p>
+          <span class="service-cta">Ottieni il tuo preventivo →</span>
+        </div>
+        <div class="service-badge">Risposta 24h</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CHI SIAMO -->
-<section id="chi-siamo" class="section-alt">
+<section id="chi-siamo" class="section-alt reveal">
   <div class="section-inner">
     <div class="chi-siamo-grid">
       <div>
@@ -540,7 +582,7 @@
 </section>
 
 <!-- PERCHE NOI -->
-<section id="perche-noi">
+<section id="perche-noi" class="reveal">
   <div class="section-inner">
     <div class="section-header centered">
       <div class="section-tag">Perché Sceglierci</div>
@@ -583,7 +625,7 @@
 </section>
 
 <!-- CERTIFICAZIONI -->
-<section id="certificazioni" class="section-alt">
+<section id="certificazioni" class="section-alt reveal">
   <div class="section-inner">
     <div class="section-header centered">
       <div class="section-tag">Normative</div>
@@ -621,7 +663,7 @@
 </section>
 
 <!-- FAQ -->
-<section id="faq">
+<section id="faq" class="reveal">
   <div class="section-inner">
     <div class="section-header centered">
       <div class="section-tag">FAQ</div>
@@ -685,8 +727,8 @@
           <div class="contatto-icon">✉️</div>
           <div>
             <h4>Email <span style="font-size:.7rem;color:var(--muted)">⚠️ dato fittizio</span></h4>
-            <a href="mailto:info@bekelectric.it">info@bekelectric.it</a><br>
-            <a href="mailto:tecnico@bekelectric.it">tecnico@bekelectric.it</a>
+            <a href="mailto:info@bekelectric.com">info@bekelectric.com</a><br>
+            
           </div>
         </div>
         <div class="contatto-item">
@@ -703,7 +745,7 @@
       </div>
       <div class="map-placeholder">
         <iframe
-          src="https://www.openstreetmap.org/export/embed.html?bbox=11.98%2C45.28%2C12.08%2C45.38&amp;layer=mapnik&amp;marker=45.33%2C12.03"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=11.83%2C45.37%2C11.93%2C45.44&amp;layer=mapnik&amp;marker=45.4065%2C11.8768"
           title="Mappa sede BEK Electric System"
           loading="lazy"
           allowfullscreen>
@@ -748,7 +790,7 @@
       <div class="footer-col">
         <h5>Contatti</h5>
         <ul>
-          <li><a href="mailto:info@bekelectric.it">info@bekelectric.it</a></li>
+          <li><a href="mailto:info@bekelectric.com">info@bekelectric.com</a></li>
           <li><a href="tel:+390412345678">+39 041 234 5678</a></li>
           <li><a href="#">Padova (PD)</a></li>
         </ul>
@@ -852,7 +894,7 @@
     <div class="modal-body">
       <div class="modal-warning">⚠️ Documento fittizio a scopo illustrativo. Non ha valore legale.</div>
       <h4>1. Titolare del Trattamento</h4>
-      <p>BEK Electric System S.r.l. (dato fittizio), Via dell'Industria 42, 35121 Padova (PD) — email: privacy@bekelectric.it</p>
+      <p>BEK Electric System S.r.l. (dato fittizio), Via dell'Industria 42, 35121 Padova (PD) — email: privacy@bekelectric.com</p>
       <h4>2. Dati raccolti</h4>
       <p>Raccogliamo i dati che ci fornisci volontariamente tramite il modulo di contatto/preventivo: nome, cognome, email, telefono, ragione sociale. Raccogliamo inoltre dati di navigazione anonimi tramite cookie tecnici.</p>
       <h4>3. Finalità e base giuridica</h4>
@@ -864,7 +906,7 @@
       <h4>4. Conservazione dei dati</h4>
       <p>I dati relativi alle richieste commerciali sono conservati per 5 anni. I dati di navigazione anonimi vengono eliminati dopo 26 mesi.</p>
       <h4>5. Diritti dell'interessato</h4>
-      <p>Hai diritto di accesso, rettifica, cancellazione, portabilità e opposizione al trattamento. Contatta: privacy@bekelectric.it</p>
+      <p>Hai diritto di accesso, rettifica, cancellazione, portabilità e opposizione al trattamento. Contatta: privacy@bekelectric.com</p>
       <h4>6. Cookie</h4>
       <p>Per informazioni sui cookie utilizzati consulta la nostra Cookie Policy.</p>
     </div>
@@ -980,63 +1022,9 @@ function updateNavTop() {
 updateNavTop();
 window.addEventListener('resize', updateNavTop);
 
-/* ─── PRODUCTS LOAD ─── */
-async function loadProducts() {
-  const grid = document.getElementById('productsGrid');
-  try {
-    const resp = await fetch('./products.json');
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    const data = await resp.json();
-    window._productsData = data;
-    renderProducts('all', data.products);
-  } catch (e) {
-    grid.innerHTML = '<div class="products-loading">Impossibile caricare il catalogo. <a href="#contatti" style="color:var(--accent)">Contattaci</a> per ricevere la scheda tecnica.</div>';
-  }
-}
 
-function renderProducts(cat, products) {
-  const grid = document.getElementById('productsGrid');
-  const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
-  if (!filtered.length) { grid.innerHTML = '<div class="products-loading">Nessun prodotto trovato.</div>'; return; }
-  grid.innerHTML = filtered.map(p => {
-    const catLabel = p.category === 'direct' ? 'DOL' : 'Y/Δ';
-    return `
-    <div class="product-card">
-      <div class="product-card-header">
-        <div class="product-name">${p.name.replace('EGE SMART', 'BEK Smart')}</div>
-        <span class="product-badge">${catLabel}</span>
-      </div>
-      <div class="product-code">Cod. ${p.code}</div>
-      <div class="product-specs">
-        <div class="spec-row"><span class="spec-label">Potenza</span><span class="spec-value">${p.kw} kW / ${p.hp} HP</span></div>
-        <div class="spec-row"><span class="spec-label">Corrente max</span><span class="spec-value">${p.currentMax} A</span></div>
-        <div class="spec-row"><span class="spec-label">Tensione</span><span class="spec-value">${p.voltage}</span></div>
-        <div class="spec-row"><span class="spec-label">Frequenza</span><span class="spec-value">${p.frequency} Hz</span></div>
-        <div class="spec-row"><span class="spec-label">Peso</span><span class="spec-value">${p.weight} kg</span></div>
-      </div>
-      <div class="product-dims">📦 ${p.box.h}×${p.box.l}×${p.box.w} mm (H×L×P)</div>
-      <button class="product-cta" onclick="openPreventivoForProduct('${p.name}')">Richiedi Preventivo</button>
-    </div>`;
-  }).join('');
-}
 
-/* ─── PRODUCT TABS ─── */
-document.getElementById('productTabs').addEventListener('click', e => {
-  const btn = e.target.closest('.tab-btn');
-  if (!btn) return;
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  if (window._productsData) renderProducts(btn.dataset.cat, window._productsData.products);
-});
 
-function openPreventivoForProduct(name) {
-  const sel = document.querySelector('#modal-preventivo select');
-  if (sel) {
-    const kw = name.replace('EGE SMART ', 'BEK ').replace(' Y/D', ' Y/D').trim() + ' kW';
-    for (let opt of sel.options) { if (opt.value === kw) { sel.value = kw; break; } }
-  }
-  openModal('preventivo');
-}
 
 /* ─── FAQ ACCORDION ─── */
 document.querySelectorAll('.faq-q').forEach(btn => {
@@ -1080,6 +1068,46 @@ if (localStorage.getItem('bek-cookie-consent')) banner.classList.add('hidden');
 document.getElementById('cookieAccept').addEventListener('click', () => { localStorage.setItem('bek-cookie-consent', 'all'); banner.classList.add('hidden'); });
 document.getElementById('cookieDecline').addEventListener('click', () => { localStorage.setItem('bek-cookie-consent', 'essential'); banner.classList.add('hidden'); });
 
+/* ─── NAV SCROLL EFFECT ─── */
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ─── SCROLL REVEAL ─── */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ─── STAT COUNTERS ─── */
+function animateCounter(el, target, suffix, prefix) {
+  let start = 0; const dur = 1800; const startTime = performance.now();
+  function step(now) {
+    const p = Math.min((now - startTime) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const val = Math.round(ease * target);
+    el.textContent = (prefix||'') + (target === val ? target : val) + (suffix||'');
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const statsObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    statsObserver.unobserve(e.target);
+    const nums = e.target.querySelectorAll('.stat-number');
+    const defs = [
+      { target: 20, suffix: '+' },
+      { target: 160, prefix: '3–', suffix: ' kW' },
+      { target: 12845, prefix: 'EN ', suffix: '' },
+      { target: 8, suffix: ' gg' }
+    ];
+    nums.forEach((el, i) => { if (defs[i]) animateCounter(el, defs[i].target, defs[i].suffix, defs[i].prefix); });
+  });
+}, { threshold: 0.5 });
+const statsStrip = document.querySelector('.stats-strip');
+if (statsStrip) statsObserver.observe(statsStrip);
+
 /* ─── SCROLL ZOOM ─── */
 (function() {
   const section = document.getElementById('scrollZoomSection');
@@ -1091,7 +1119,7 @@ document.getElementById('cookieDecline').addEventListener('click', () => { local
     // progress: 0 when section top hits bottom of viewport, 1 when section bottom hits top
     const progress = Math.min(1, Math.max(0, 1 - (rect.bottom / (wh + rect.height))));
     // scale from 1.0 (far) to 1.22 (zoomed in as you scroll past)
-    const scale = 1 + progress * 0.22;
+    const scale = 1 + progress * 0.38;
     img.style.transform = 'scale(' + scale + ')';
   }
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -1099,7 +1127,61 @@ document.getElementById('cookieDecline').addEventListener('click', () => { local
 })();
 
 /* ─── INIT ─── */
-loadProducts();
+
+/* ─── NAV BLUR ON SCROLL ─── */
+(function() {
+  const nav = document.getElementById('main-nav');
+  function onScroll() {
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ─── SCROLL REVEAL (IntersectionObserver) ─── */
+(function() {
+  const revealEls = document.querySelectorAll('.reveal');
+  if (!revealEls.length) return;
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(function(el) { observer.observe(el); });
+})();
+
+/* ─── COUNTER ANIMATION ─── */
+(function() {
+  const counters = document.querySelectorAll('[data-counter]');
+  if (!counters.length) return;
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-counter'), 10);
+      const suffix = el.getAttribute('data-suffix') || '';
+      const duration = 1200;
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(function(el) { observer.observe(el); });
+})();
+
 </script>
 </body>
 </html>
